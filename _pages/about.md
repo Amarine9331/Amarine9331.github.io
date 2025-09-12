@@ -1,13 +1,15 @@
 ---
 permalink: /
-title: "David M's personal Website"
+title: "Andy's personal Website"
 author_profile: true
 redirect_from: 
   - /about/
   - /about.html
 ---
 
-Hi Everyone.
+👋🏼 Hello there. My Name is David A. Marinelarena and I am a Biolgist.
+
+
 
 Research Interest
 ======
@@ -15,8 +17,11 @@ Like many other Jekyll-based GitHub Pages templates, Academic Pages makes you se
 
 Many of the features of dynamic content management systems (like Wordpress) can be achieved in this fashion, using a fraction of the computational resources and with far less vulnerability to hacking and DDoSing. You can also modify the theme to your heart's content without touching the content of your site. If you get to a point where you've broken something in Jekyll/HTML/CSS beyond repair, your Markdown files describing your talks, publications, etc. are safe. You can rollback the changes or even delete the repository and start over - just be sure to save the Markdown files! You can also write scripts that process the structured data on the site, such as [this one](https://github.com/academicpages/academicpages.github.io/blob/master/talkmap.ipynb) that analyzes metadata in pages about talks to display [a map of every location you've given a talk](https://academicpages.github.io/talkmap.html).
 
-For those users that need more advanced functionality, the template also supports the following popular tools:
-- [MathJax](https://www.mathjax.org/) for mathematical equations
-- [Mermaid](https://mermaid.js.org/) for diagraming
-- [Plotly](https://plotly.com/javascript/) for plotting
+👨🏻‍🔬 Professional Experience
+Currently, I am working as a Research Scientist at Sakana AI exploring how to develop an openended algorithm to coevolve a population of agents and the environment they are in.
+Before this, I explored latent reasoning by combining diffusion models with large language models and how to train a process reward model for training multimodal large language models as UI-Agents.
 
+During my final year at college I was working as a Student Researcher at the Reliable Multimodal AI Lab at the TU Darmstadt under the supervision of Prof. Marcus Rohrbach working on Generative Video-Language Modelling.
+
+Additionally, I have professional experience working as an Applied Machine Learning Student Researcher at the Fraunhofer Heinrich Hertz Institute.
+There I worked on dynamic traffic flow forecasting using Graph Neural Networks.
