@@ -11,23 +11,30 @@ redirect_from:
 
 👋🏼 Hello there. My Name is David A. Marinelarena and I am a Biolgist.
 
-Currently Current Graduate Student at ASU pursuing Master’s in Computational Life Sciences. I am a Graduate Student Researcher with Qiyun Lab part of the Center for Fundamental and  Applied Microbiomics at ASU Biodesign Institute. My research is at the intersection of Genomics, Computational  Biology, Bioinformatics, ML and CS. I research Various Multi-Omic datasets utilizing Bioinformatic and ML techniques. 
+Currently I am Graduate Student at ASU pursuing Master’s in Computational Life Sciences. I am also a Graduate Student Researcher with Qiyun Lab part of the Center for Fundamental and Applied Microbiomics at ASU Biodesign Institute. My research is at the intersection of Genomics, Computational  Biology, Bioinformatics, ML and CS. I research Various Multi-Omic datasets utilizing Bioinformatics and ML techniques. 
+
+
+
 
 
 Research Interest
 ======
-Longitudinal Multi-Omics:
-Mult
 
-MicroBiomics:
+Multi-Omics: I am appreciative to play a small part in helping 
 
-Microbiomkics is a 
+- Ongoing Research
+- 
+
+
+Computational Biology:
+-
+-
+
 
 
 
 👨🏻‍🔬 Professional Experience
-Currently, I am working as a Research Scientist at Sakana AI exploring how to develop an openended algorithm to coevolve a population of agents and the environment they are in.
-Before this, I explored latent reasoning by combining diffusion models with large language models and how to train a process reward model for training multimodal large language models as UI-Agents.
+Previously, I held Professional Posiitions In Bi
 
 During my final year at college I was working as a Student Researcher at the Reliable Multimodal AI Lab at the TU Darmstadt under the supervision of Prof. Marcus Rohrbach working on Generative Video-Language Modelling.
 
