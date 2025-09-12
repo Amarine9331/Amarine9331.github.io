@@ -6,7 +6,7 @@ redirect_from:
   - /about/
   - /about.html
 ---
-<img width="500" height="300" alt="image" src="https://github.com/user-attachments/assets/2f243e9d-dc8c-4765-99ff-3b66a59876d0" />
+<img width="500" height="300" alt="image" src="https://github.com/user-attachments/assets/2f243e9d-dc8c-4765-99ff-3b66a59876d0" style="float: right; margin-left: 15px;" />
 
 
 👋🏼 Hello there. My Name is David A. Marinelarena and I am a Biolgist.
