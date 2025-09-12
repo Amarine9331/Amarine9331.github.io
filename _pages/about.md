@@ -1,6 +1,6 @@
 ---
 permalink: /
-title: "Andy's personal Website"
+title: "Andy's Professional Site"
 author_profile: true
 redirect_from: 
   - /about/
