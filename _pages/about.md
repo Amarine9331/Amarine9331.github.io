@@ -19,7 +19,11 @@ Currently I am Graduate Student at ASU pursuing Master’s in Computational Life
 
 Research Interest
 ======
+Multi-Omics:
+-
+======
 
+Computational Biology:
 Multi-Omics: I am appreciative to play a small part in helping 
 
 - Ongoing Research
