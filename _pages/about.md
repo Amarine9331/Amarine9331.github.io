@@ -16,7 +16,7 @@ I am currently a **Graduate Student at Arizona State University (ASU)** pursuing
 
 My research sits at the intersection of **genomics, computational biology, bioinformatics, and machine learning** 🧬
 
-I focus on developing and applying computational methods to analyze complex multi-omics datasets. 
+I Mainly focus on developing and applying computational methods to analyze complex multi-omics datasets. 
 This entails leveraging the entire multiome to build a more complete portrait of biological systems.  
 
 I aim to continue building computational tools and conducting research that benefits both scientists and patients.  
@@ -26,8 +26,9 @@ I aim to continue building computational tools and conducting research that bene
 ## 🔬👨🏻‍🔬 Research and Professional Interests
 
 **Multi-Omics in Microbiomics and Human Health**  
-- Integrating genomics, transcriptomics, metabolomics, and proteomics to understand microbial ecology and host–microbe interactions.  
-- Soil microbiome research with emphasis on longitudinal tracking of differential expression of multi-omic features.  
+- Integrating genomics, transcriptomics, metabolomics, and proteomics to understand microbial ecology and human health.  
+- Soil microbiome research with emphasis on longitudinal tracking of differential expression of multi-omic features.
+- Bioprospecting - discovering novel enzymes, pathways, and metabolites from diverse microbiomes for applications in biotechnology, medicine, and environmental sustainability  
 
 **Computational Biology & Bioinformatics**  
 - Development of scalable pipelines for metagenomics, transcriptomics, and phylogenetic analysis.  
