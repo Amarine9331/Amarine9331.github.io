@@ -28,7 +28,7 @@ I aim to continue building computational tools and conducting research that bene
 **Multi-Omics in Microbiomics and Human Health**  
 - Integrating genomics, transcriptomics, metabolomics, and proteomics to understand microbial ecology and human health.  
 - Soil microbiome research with emphasis on longitudinal tracking of differential expression of multi-omic features.
-- Bioprospecting - discovering novel enzymes, pathways, and metabolites from diverse microbiomes for applications in biotechnology, medicine, and environmental sustainability  
+- Bioprospecting - discovering novel enzymes, pathways, and metabolites for applications in biotechnology, medicine, and environmental sustainability.  
 
 **Computational Biology & Bioinformatics**  
 - Development of scalable pipelines for metagenomics, transcriptomics, and phylogenetic analysis.  
