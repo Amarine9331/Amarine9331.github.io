@@ -1,6 +1,6 @@
 ---
 title: "SKIDLE"
-excerpt: "Short description of portfolio item number 1<br/><img src='/images/500x300.png'>"
+excerpt: "Long Read Visualization Pipline for Metagenomics 1<br/><img src='/images/500x300.png'>"
 collection: portfolio
 ---
 
