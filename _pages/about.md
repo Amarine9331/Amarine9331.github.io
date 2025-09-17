@@ -10,13 +10,15 @@ redirect_from:
 <img width="300" height="300" alt="image" src="https://github.com/user-attachments/assets/2f243e9d-dc8c-4765-99ff-3b66a59876d0" style="float: right; margin-left: 15px;" />
 
 👋🏼 Hello there!  
-My name is **David A. Marinelarena**, and I am a biologist and computational life sciences researcher.  
+My name is **David A. Marinelarena**, and I am a Computational Biologist and Biotechnolgy Professional.  
 
 I am currently a **Graduate Student at Arizona State University (ASU)** pursuing a Master’s in *Computational Life Sciences*.  
   
 
 My research sits at the intersection of **genomics, computational biology, bioinformatics, and machine learning**.  🧬👨🏻‍💻
-I focus on developing and applying computational methods to analyze complex **multi-omics datasets** (genomics, transcriptomics, metabolomics, proteomics, and metagenomics). What this entails means using not just gentic or chemichal information to understand a Biolgical system or process but leveraging the entire multiome to build a more complete portrait of the underlying Biolgy. 
+
+I focus on developing and applying computational methods to analyze complex **multi-omics datasets** (genomics, transcriptomics, metabolomics, proteomics, and metagenomics).
+this entails utilising not just genetic information, but leveraging the entire multiome to build a more complete portrait of a Biological System.
 
 
 I hope to continue building Computational Tools and providing research that helps both researchers and patients. 
@@ -42,12 +44,25 @@ I hope to continue building Computational Tools and providing research that help
   
 ---
 
-## 📂 Projects
+## 📂 Selected work Experience
+  
+- **Research Associate II (Roche)** — design and excution of experiemts to expand assay offerings
+- **Quality Control Specialist (Roche)** — routine release testing of multiplexed syndromic dignostic panel
+- **Quality Control Associate I (Trinlink Biotechnologies)** — routine release testing rna capping reagents and small molecules
+- **Intern (Trinlink Biotechnologies)**  - analyzed and reported on quality control metrics to leadership
+
+## Education
+  
+- **M.S. Computational Life Sciences (current)** — Arizona State University
+- **B.S. Biological Sciences (2018-2022)** — Califionia State University, San Marcos
+ 
+---
+
+## 📂 Projects and Re-imlementations/analysis
   
 - **Soil Metagenomics (PNNL collaboration)** — Re-analyzed Birch effect wetting/drying experiments with machine learning and bioinformatics pipelines.
 - **SQidle (Qiyun Lab)**  - Analyzed Microbiome Data genrated from Nanopore and Visualized with BinArena 
  
-
 ---
 
 ✨🧬 Always excited about  to push the boundaries of **Biology**.
