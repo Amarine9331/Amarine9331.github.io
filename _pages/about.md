@@ -51,7 +51,7 @@ I aim to continue building computational tools and conducting research that bene
 
 ## 💼 Selected Experience
 
-- **Gradute Stuent Research (Qiyunlab)** -   
+- **Gradute Stuent Research (Qiyunlab)** - Applied Microbiomics Research, Leveraged Multi-omics to Charachterize divere Biological Systems. 
 - **Research Associate II (Roche)** — Designed and executed experiments to expand molecular diagnostic assay offerings.
 - **Quality Control Specialist (Roche)** — Performed routine release testing of multiplexed syndromic diagnostic panels.  
 - **Quality Control Associate I (TriLink Biotechnologies)** — Conducted release testing of RNA capping reagents and small molecules.  
