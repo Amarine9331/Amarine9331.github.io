@@ -61,8 +61,8 @@ I aim to continue building computational tools and conducting research that bene
 
 ## 📂 Projects and Re-Implementations / Analyses
 
-- **Soil Metagenomics (PNNL Collaboration)** — Re-analyzed Birch effect wetting/drying experiments with machine learning and bioinformatics pipelines.  
-- **SQidle (Qiyun Lab)** — Analyzed microbiome data generated from Nanopore sequencing and visualized results with BinArena.  
+- **Soil Metagenomics (PNNL Collaboration)** — Re-analyzed soil wetting/drying experiments with machine learning and bioinformatics pipelines.  
+- **Sqidle** — Analyzed microbiome data generated from Nanopore sequencing and visualized results with BinArena.  
 
 ---
 
