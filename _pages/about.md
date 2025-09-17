@@ -7,7 +7,7 @@ redirect_from:
   - /about.html
 ---
 
-<img width="300" height="300" alt="image" src="https://github.com/user-attachments/assets/2f243e9d-dc8c-4765-99ff-3b66a59876d0" style="float: right; margin-left: 15px;" />
+<img width="300" height="300" alt="image" src="https://github.com/user-attachments/assets/2f243e9d-dc8c-4765-99ff-3b66a59876d0" style="float: right; margin-left: 120px; margin-right: 0;" />
 
 👋🏼 Hello there!  
 My name is **David A. Marinelarena**, and I am a **Computational Biologist and Biotechnology Professional**.  
