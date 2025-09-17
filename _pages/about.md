@@ -55,7 +55,7 @@ I hope to continue building Computational Tools and providing research that help
 - **Intern (Trinlink Biotechnologies)**  - analyzed and reported on quality control metrics to leadership
 ---
 ## 📂 Projects and Re-imlementations/analysis
-  
+
 - **Soil Metagenomics (PNNL collaboration)** — Re-analyzed Birch effect wetting/drying experiments with machine learning and bioinformatics pipelines.
 - **SQidle (Qiyun Lab)**  - Analyzed Microbiome Data genrated from Nanopore and Visualized with BinArena 
 ---
