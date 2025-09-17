@@ -41,28 +41,23 @@ I hope to continue building Computational Tools and providing research that help
 - Nuclic Acid Sequnceing and Detecetion Technolgies
 - Analytical Applications in Quality Control and Microbiology
 - Integrating Computational and Data Science tools to improve processess   
-  
 ---
-
+## Education
+  
+- **M.S. Computational Life Sciences (current)** — Arizona State University
+- **B.S. Biological Sciences (2018-2022)** — Califionia State University, San Marcos
+---
 ## 📂 Selected work Experience
   
 - **Research Associate II (Roche)** — design and excution of experiemts to expand assay offerings
 - **Quality Control Specialist (Roche)** — routine release testing of multiplexed syndromic dignostic panel
 - **Quality Control Associate I (Trinlink Biotechnologies)** — routine release testing rna capping reagents and small molecules
 - **Intern (Trinlink Biotechnologies)**  - analyzed and reported on quality control metrics to leadership
-
-## Education
-  
-- **M.S. Computational Life Sciences (current)** — Arizona State University
-- **B.S. Biological Sciences (2018-2022)** — Califionia State University, San Marcos
- 
 ---
-
 ## 📂 Projects and Re-imlementations/analysis
   
 - **Soil Metagenomics (PNNL collaboration)** — Re-analyzed Birch effect wetting/drying experiments with machine learning and bioinformatics pipelines.
 - **SQidle (Qiyun Lab)**  - Analyzed Microbiome Data genrated from Nanopore and Visualized with BinArena 
- 
 ---
 
 ✨🧬 Always excited about  to push the boundaries of **Biology**.
