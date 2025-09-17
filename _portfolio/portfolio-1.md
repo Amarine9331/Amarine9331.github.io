@@ -4,4 +4,5 @@ excerpt: "Long Read Flye Assembly w/ BinArena Visualization Pipline for Metageno
 collection: portfolio
 ---
 
-Skidle is a vidulization pipieline that Doubles as a Long Read Metagenomics tutorial. The the tutorial is linked in a Google Collaboratory Script. [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)[(https://colab.research.google.com/drive/1grezI6faG4OpHTAgmbwmiF-_DvSujhZP)
+Skidle is a vidulization pipieline that Doubles as a Long Read Metagenomics tutorial. The the tutorial is linked in a Google Collaboratory Script.
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1grezI6faG4OpHTAgmbwmiF-_DvSujhZP)
