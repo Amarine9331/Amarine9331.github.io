@@ -10,18 +10,15 @@ redirect_from:
 <img width="300" height="300" alt="image" src="https://github.com/user-attachments/assets/2f243e9d-dc8c-4765-99ff-3b66a59876d0" style="float: right; margin-left: 15px;" />
 
 👋🏼 Hello there!  
-My name is **David A. Marinelarena**, and I am a Computational Biologist and Biotechnolgy Professional.  
+My name is **David A. Marinelarena**, and I am a **Computational Biologist and Biotechnology Professional**.  
 
 I am currently a **Graduate Student at Arizona State University (ASU)** pursuing a Master’s in *Computational Life Sciences*.  
-  
 
-My research sits at the intersection of **genomics, computational biology, bioinformatics, and machine learning**.  🧬👨🏻‍💻
+My research sits at the intersection of **genomics, computational biology, bioinformatics, and machine learning** 🧬👨🏻‍💻.  
+I focus on developing and applying computational methods to analyze complex **multi-omics datasets** (genomics, transcriptomics, metabolomics, proteomics, and metagenomics).  
+This entails leveraging the entire multi-ome—not just genetic information—to build a more complete portrait of biological systems.  
 
-I focus on developing and applying computational methods to analyze complex **multi-omics datasets** (genomics, transcriptomics, metabolomics, proteomics, and metagenomics).
-this entails utilising not just genetic information, but leveraging the entire multiome to build a more complete portrait of a Biological System.
-
-
-I hope to continue building Computational Tools and providing research that helps both researchers and patients. 
+I aim to continue building computational tools and conducting research that benefits both scientists and patients.  
 
 ---
 
@@ -29,39 +26,42 @@ I hope to continue building Computational Tools and providing research that help
 
 **Multi-Omics in Microbiomics and Human Health**  
 - Integrating genomics, transcriptomics, metabolomics, and proteomics to understand microbial ecology and host–microbe interactions.  
-- soil microbiome research, with emphasis on longitudinally tracking differential expression of Muiliomic Features  
+- Soil microbiome research with emphasis on longitudinal tracking of differential expression of multi-omic features.  
 
 **Computational Biology & Bioinformatics**  
-- Development of scalable pipelines for metagenomics, transcriptomics, and phylogenetic Analysis.  
+- Development of scalable pipelines for metagenomics, transcriptomics, and phylogenetic analysis.  
 - Applications of **machine learning** in microbiome and multi-omics data.  
-- Exploring efficient algorithms for assembly graph construction, phylogenetic tree inference, and sequence placement.
+- Designing efficient algorithms for assembly graph construction, phylogenetic tree inference, and sequence placement.  
 
 **Biotechnology**  
-- Industrial Research and Development in Bipharma and Diagnostics 
-- Nuclic Acid Sequnceing and Detecetion Technolgies
-- Analytical Applications in Quality Control and Microbiology
-- Integrating Computational and Data Science tools to improve processess   
+- Industrial R&D in biopharma and diagnostics.  
+- Nucleic acid sequencing and detection technologies.  
+- Analytical applications in quality control and microbiology.  
+- Integrating computational and data science tools to improve processes.  
 
 ---
-## Education
+
+## 🎓 Education
   
-- **M.S. Computational Life Sciences (current)** — Arizona State University
-- **B.S. Biological Sciences (2018-2022)** — Califionia State University, San Marcos
+- **M.S. Computational Life Sciences (current)** — Arizona State University  
+- **B.S. Biological Sciences (2018–2022)** — California State University, San Marcos  
 
 ---
-## 📂 Selected work Experience
+
+## 💼 Selected Work Experience
   
-- **Research Associate II (Roche)** — design and excution of experiemts to expand assay offerings
-- **Quality Control Specialist (Roche)** — routine release testing of multiplexed syndromic dignostic panel
-- **Quality Control Associate I (Trinlink Biotechnologies)** — routine release testing rna capping reagents and small molecules
-- **Intern (Trinlink Biotechnologies)**  - analyzed and reported on quality control metrics to leadership
+- **Research Associate II (Roche)** — Designed and executed experiments to expand molecular diagnostic assay offerings.  
+- **Quality Control Specialist (Roche)** — Performed routine release testing of multiplexed syndromic diagnostic panels.  
+- **Quality Control Associate I (TriLink Biotechnologies)** — Conducted release testing of RNA capping reagents and small molecules.  
+- **Intern (TriLink Biotechnologies)** — Analyzed and reported quality control metrics to leadership.  
 
 ---
 
-## 📂 Projects and Re-imlementations/analysis
+## 📂 Projects and Re-Implementations / Analyses
 
-- **Soil Metagenomics (PNNL collaboration)** — Re-analyzed Birch effect wetting/drying experiments with machine learning and bioinformatics pipelines.
-- **SQidle (Qiyun Lab)**  - Analyzed Microbiome Data genrated from Nanopore and Visualized with BinArena 
+- **Soil Metagenomics (PNNL Collaboration)** — Re-analyzed Birch effect wetting/drying experiments with machine learning and bioinformatics pipelines.  
+- **SQidle (Qiyun Lab)** — Analyzed microbiome data generated from Nanopore sequencing and visualized results with BinArena.  
+
 ---
 
-✨🧬 Always excited about  to push the boundaries of **Biology**.
+✨🧬 Always excited to push the boundaries of **biology**.
