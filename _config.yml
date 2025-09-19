@@ -23,7 +23,7 @@ repository               : "amarine9331/amarine9331.github.io.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "https://github.com/Amarine9331/Amarine9331.github.io/blob/master/images/image-500x300.jpg.png"
+  avatar           : "images/image-500x300.jpg.png"
   name             : "David A. Marinelarena"
   pronouns         : # example: "she/her"  
   bio              : "Short biography for the left-hand sidebar"
