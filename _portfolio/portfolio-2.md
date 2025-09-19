@@ -1,6 +1,6 @@
 ---
 title: "TCGA Subcutaneous Skin Cancer Bioinformatics Analysis"
-excerpt: "Learn to analyze TCGA <br/><img src='../images/20250917_1214_Beachside Data Analysis_remix_01k5chffjyes6b9egzthxg7ecr (2) (1).png'>"
+excerpt: "Learn to analyze TCGA <br/>![Beachside Data Analysis](../images/20250917_1214_Beachside_Data_Analysis_remix_01k5chffjyes6b9egzthxg7ecr_2_1.png)"
 collection: portfolio
 ---
 
