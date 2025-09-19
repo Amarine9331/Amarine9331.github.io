@@ -7,8 +7,7 @@ redirect_from:
   - /about.html
 ---
 
-<img width="1024" height="1536" alt="image" src="https://github.com/user-attachments/assets/9ed1f90b-3319-4b7f-bb0b-a7d6f402f777" />
-
+![image](https://github.com/user-attachments/assets/9ed1f90b-3319-4b7f-bb0b-a7d6f402f777){: .align-right width="300px"}
 
 
 
