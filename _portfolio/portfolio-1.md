@@ -1,6 +1,6 @@
 ---
 title: "SKIDLE"
-excerpt: "Long Read Flye Assembly w/ BinArena Visualization Pipline for Metagenomics 1<br/><img src='/images/500x300.png'>"
+excerpt: "Long Read Flye Assembly w/ BinArena Visualization Pipline for Metagenomics 1<br/><img src='/images/composite_clean.png'>"
 collection: portfolio
 ---
 
