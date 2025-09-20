@@ -7,9 +7,7 @@ redirect_from:
   - /about.html
 ---
 
-![image](<img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/5d5506cd-49b4-427d-afa9-83ffccd7fdf5" />
-){: .align-right width="300px"}
-
+![David A. Marinelarena](https://github.com/user-attachments/assets/5d5506cd-49b4-427d-afa9-83ffccd7fdf5){: .align-right width="300px"}
 
 
 👋🏼 Hello there!  
