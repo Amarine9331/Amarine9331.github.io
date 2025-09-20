@@ -52,7 +52,7 @@ I aim to continue building computational tools and conducting research that bene
 
 ## 💼 Selected Experience
 
-- **Gradute Stuent Research (Qiyunlab)** - Applied Microbiomics Research, Leveraged Multi-omics to Charachterize divere Biological Systems. 
+- **Gradute Stuent Research (Qiyunlab)** - Applied Microbiomics Research, Leveraged Multi-omics datasets to charachterize diverse biological systems. 
 - **Research Associate II (Roche)** — Designed and executed experiments to expand molecular diagnostic assay offerings.
 - **Quality Control Specialist (Roche)** — Performed routine release testing of multiplexed syndromic diagnostic panels.  
 - **Quality Control Associate I (TriLink Biotechnologies)** — Conducted release testing of RNA capping reagents and small molecules.  
@@ -60,10 +60,10 @@ I aim to continue building computational tools and conducting research that bene
 
 ---
 
-## 📂 Projects and Re-Implementations / Analyses
+## 📂 Projects
 
-- **Soil Metagenomics (PNNL Collaboration)** — Re-analyzed soil wetting/drying experiments with machine learning and bioinformatics pipelines.  
-- **Sqidle** — Analyzed microbiome data generated from Nanopore sequencing and visualized results with BinArena.  
+- **Soil Metagenomics (PNNL Collaboration)** — analyzed soil multi-omic datasets under varying conditions with machine learning and bioinformatics pipelines.  
+- **Microbiomics** — working closely with scikit-bio team to apply new differential abundance testing methods on real-world omics data. 
 
 ---
 
