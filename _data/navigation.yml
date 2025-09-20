@@ -24,7 +24,7 @@ main:
   #  url: /year-archive/
     
   - title: "CV"
-    url: "https://github.com/Amarine9331/Amarine9331.github.io/blob/master/files/David_A_CV_Aug2025.pdf"
+    url: /files/David_A_CV_Aug2025.pdf
     
   # - title: "CV"
   #   url: /cv-json/
