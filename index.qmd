@@ -69,7 +69,7 @@ I aim to keep building computational tools and conducting research that benefits
 <div class="timeline-row">
 <div class="timeline-date">2024 — Present</div>
 <div class="timeline-content">
-<div class="timeline-title"><img class="timeline-logo" src="assets/img/orgs/asu.png" alt="ASU">Graduate Researcher · Qiyun Lab, Arizona State University</div>
+<div class="timeline-title">Graduate Researcher · Qiyun Lab, Arizona State University<img class="timeline-logo" src="assets/img/orgs/asu.png" alt="ASU"></div>
 <div class="timeline-desc">Doctoral research in computational biology, microbiome multi-omics, bioinformatics, and machine-learning methods.</div>
 </div>
 </div>
@@ -77,7 +77,7 @@ I aim to keep building computational tools and conducting research that benefits
 <div class="timeline-row">
 <div class="timeline-date">2024 — 2026</div>
 <div class="timeline-content">
-<div class="timeline-title"><img class="timeline-logo" src="assets/img/orgs/asu.png" alt="ASU">M.S. Computational Life Sciences · Arizona State University</div>
+<div class="timeline-title">M.S. Computational Life Sciences · Arizona State University<img class="timeline-logo" src="assets/img/orgs/asu.png" alt="ASU"></div>
 <div class="timeline-desc">Statistical modeling, bioinformatics, and machine learning across genomics, transcriptomics, proteomics, and other omics data.</div>
 </div>
 </div>
@@ -85,7 +85,7 @@ I aim to keep building computational tools and conducting research that benefits
 <div class="timeline-row">
 <div class="timeline-date">2023 — 2025</div>
 <div class="timeline-content">
-<div class="timeline-title"><img class="timeline-logo" src="assets/img/orgs/roche.png" alt="Roche">Quality Control Specialist → Research Associate II · Roche</div>
+<div class="timeline-title">Quality Control Specialist → Research Associate II · Roche<img class="timeline-logo" src="assets/img/orgs/roche.png" alt="Roche"></div>
 <div class="timeline-desc">Routine release testing of multiplexed syndromic diagnostic panels. Designed and executed experiments to expand molecular diagnostic assay offerings.</div>
 </div>
 </div>
@@ -93,7 +93,7 @@ I aim to keep building computational tools and conducting research that benefits
 <div class="timeline-row">
 <div class="timeline-date">2021 — 2022</div>
 <div class="timeline-content">
-<div class="timeline-title"><img class="timeline-logo" src="assets/img/orgs/trilink.png" alt="TriLink">Quality Control Associate I · TriLink Biotechnologies</div>
+<div class="timeline-title">Quality Control Associate I · TriLink Biotechnologies<img class="timeline-logo" src="assets/img/orgs/trilink.png" alt="TriLink"></div>
 <div class="timeline-desc">Release testing of RNA capping reagents and small molecules.</div>
 </div>
 </div>
@@ -101,7 +101,7 @@ I aim to keep building computational tools and conducting research that benefits
 <div class="timeline-row">
 <div class="timeline-date">2018 — 2022</div>
 <div class="timeline-content">
-<div class="timeline-title"><img class="timeline-logo" src="assets/img/orgs/csusm.png" alt="CSUSM">B.S. Biological Sciences · California State University, San Marcos</div>
+<div class="timeline-title">B.S. Biological Sciences · California State University, San Marcos<img class="timeline-logo" src="assets/img/orgs/csusm.png" alt="CSUSM"></div>
 <div class="timeline-desc"></div>
 </div>
 </div>
