@@ -70,15 +70,15 @@ I aim to keep building computational tools and conducting research that benefits
 <div class="timeline-date">2024 — Present</div>
 <div class="timeline-content">
 <div class="timeline-title">Graduate Researcher · Qiyun Lab, Arizona State University</div>
-<div class="timeline-desc">Multi-omics analysis of microbiome datasets; differential-abundance methods with the scikit-bio team.</div>
+<div class="timeline-desc">Doctoral research in computational biology, microbiome multi-omics, bioinformatics, and machine-learning methods.</div>
 </div>
 </div>
 
 <div class="timeline-row">
-<div class="timeline-date">2025 — Present</div>
+<div class="timeline-date">2024 — 2026</div>
 <div class="timeline-content">
-<div class="timeline-title">PhD Student, Molecular and Cellular Biology · Arizona State University</div>
-<div class="timeline-desc">Doctoral research in computational biology, microbiome multi-omics, bioinformatics, and machine-learning methods.</div>
+<div class="timeline-title">M.S. Computational Life Sciences · Arizona State University</div>
+<div class="timeline-desc">Statistical modeling, bioinformatics, and machine learning across genomics, transcriptomics, proteomics, and other omics data.</div>
 </div>
 </div>
 
