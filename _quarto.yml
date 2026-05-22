@@ -15,7 +15,7 @@ website:
 
   navbar:
     pinned: true
-    title: false
+    title: "amarine9331"
     right:
       - text: "ABOUT"
         href: index.qmd

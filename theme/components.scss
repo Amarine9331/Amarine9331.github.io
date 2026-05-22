@@ -43,6 +43,38 @@ hr {
   padding: 0.6rem 1rem;
   box-shadow: none;
 
+  .navbar-brand-container {
+    margin-left: 0 !important;
+    margin-right: 1rem !important;
+  }
+
+  .navbar-brand {
+    display: inline-flex;
+    align-items: center;
+    border: none;
+    color: var(--fg) !important;
+    font-family: var(--bs-font-monospace, "Geist Mono", monospace);
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+
+    .navbar-title {
+      display: inline-block;
+      overflow: hidden;
+      white-space: nowrap;
+      width: 0;
+      animation: brand-type 2.4s steps(10, end) forwards;
+    }
+
+    &::after {
+      content: "/";
+      display: inline-block;
+      margin-left: 0.15rem;
+      color: var(--fg);
+      animation: slash-pulse 0.9s steps(1) infinite;
+    }
+  }
+
   .navbar-nav .nav-link {
     font-family: var(--bs-font-monospace, "Geist Mono", monospace);
     font-size: 0.72rem;
@@ -63,6 +95,28 @@ hr {
       border: none;
       color: var(--muted-fg);
       &:hover { color: var(--fg); }
+    }
+  }
+}
+
+@keyframes brand-type {
+  from { width: 0; }
+  to { width: 10ch; }
+}
+
+@keyframes slash-pulse {
+  50% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navbar .navbar-brand {
+    .navbar-title {
+      width: auto;
+      animation: none;
+    }
+
+    &::after {
+      animation: none;
     }
   }
 }
