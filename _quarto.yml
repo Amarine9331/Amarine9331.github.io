@@ -43,7 +43,7 @@ website:
         href: https://www.linkedin.com/in/david-andrew-marinelarena/
         aria-label: LinkedIn
       - icon: mortarboard
-        href: https://scholar.google.com/citations?user=PS_CX0AAAAAJ
+        href: "https://scholar.google.com/citations?user=xzyk_aQAAAAJ&hl=en"
         aria-label: Google Scholar
 
   page-footer:
@@ -60,7 +60,7 @@ website:
         href: https://www.linkedin.com/in/david-andrew-marinelarena/
         aria-label: LinkedIn
       - icon: mortarboard
-        href: https://scholar.google.com/citations?user=PS_CX0AAAAAJ
+        href: "https://scholar.google.com/citations?user=xzyk_aQAAAAJ&hl=en"
         aria-label: Google Scholar
 
 format:

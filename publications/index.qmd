@@ -17,5 +17,5 @@ toc: false
 ---
 
 ::: {.empty-note}
-Nothing published here yet — in the meantime, see [Google Scholar](https://scholar.google.com/citations?user=PS_CX0AAAAAJ).
+Nothing published here yet — in the meantime, see [Google Scholar](https://scholar.google.com/citations?user=xzyk_aQAAAAJ&hl=en).
 :::
