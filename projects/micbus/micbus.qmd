@@ -1,0 +1,810 @@
+---
+title: "MiCBuS — Ovarian HGSOC notebook (source)"
+subtitle: "Reduced V2 local R Markdown notebook, ported to Quarto. Source only — figures live in the [rendered report](report.html)."
+date: 2025-05-09
+toc: true
+number-sections: true
+format:
+  html:
+    toc-location: right
+    code-fold: false
+    code-tools: true
+execute:
+  enabled: false
+params:
+  mode: "v2_local"
+  install_missing: true
+  holdout_class: "stromal_caf"
+  optional_holdout_class: "myeloid"
+  max_cells_per_class_smoke: 400
+  max_cells_per_class_reduced: 1000
+  max_cells_per_class_v2: 2000
+  tcga_samples_smoke: 20
+  tcga_samples_reduced: 75
+  tcga_samples_v2: 150
+  pseudo_bulk_reps_smoke: 35
+  pseudo_bulk_reps_reduced: 150
+  pseudo_bulk_reps_v2: 300
+  visium_samples: ["SP1", "SP2"]
+  seed: 42
+---
+
+```{r setup, message=FALSE, warning=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,
+  message = FALSE,
+  warning = FALSE,
+  cache = TRUE,
+  fig.width = 9,
+  fig.height = 6
+)
+
+set.seed(params$seed)
+
+required_packages <- c(
+  "data.table", "dplyr", "ggplot2", "Matrix", "patchwork",
+  "pheatmap", "Seurat", "tibble", "tidyr"
+)
+
+optional_packages <- c("GEOquery", "TCGAbiolinks", "SummarizedExperiment")
+bioc_packages <- c("GEOquery", "TCGAbiolinks", "SummarizedExperiment")
+cran_packages <- setdiff(c(required_packages, optional_packages, "BiocManager", "remotes"), bioc_packages)
+
+if (isTRUE(params$install_missing)) {
+  missing_cran <- cran_packages[!vapply(cran_packages, requireNamespace, logical(1), quietly = TRUE)]
+  if (length(missing_cran) > 0) {
+    install.packages(missing_cran, repos = "https://cloud.r-project.org")
+  }
+
+  if (!requireNamespace("BiocManager", quietly = TRUE)) {
+    install.packages("BiocManager", repos = "https://cloud.r-project.org")
+  }
+
+  missing_bioc <- bioc_packages[!vapply(bioc_packages, requireNamespace, logical(1), quietly = TRUE)]
+  if (length(missing_bioc) > 0) {
+    BiocManager::install(missing_bioc, ask = FALSE, update = FALSE)
+  }
+
+  if (!requireNamespace("MiCBuS", quietly = TRUE) && requireNamespace("remotes", quietly = TRUE)) {
+    try(
+      remotes::install_github("Shanshan-Zhang/MiCBuS", upgrade = "never"),
+      silent = TRUE
+    )
+  }
+}
+
+missing_required <- required_packages[!vapply(required_packages, requireNamespace, logical(1), quietly = TRUE)]
+if (length(missing_required) > 0) {
+  stop(
+    "Install required packages before rendering: ",
+    paste(missing_required, collapse = ", ")
+  )
+}
+
+invisible(lapply(required_packages, library, character.only = TRUE))
+
+dir.create("data/raw/GSE211956", recursive = TRUE, showWarnings = FALSE)
+dir.create("data/raw/TCGA_OV", recursive = TRUE, showWarnings = FALSE)
+dir.create("data/cache", recursive = TRUE, showWarnings = FALSE)
+dir.create("results", recursive = TRUE, showWarnings = FALSE)
+
+is_smoke <- identical(params$mode, "smoke")
+is_v2_local <- identical(params$mode, "v2_local")
+max_cells_per_class <- if (is_v2_local) {
+  params$max_cells_per_class_v2
+} else if (is_smoke) {
+  params$max_cells_per_class_smoke
+} else {
+  params$max_cells_per_class_reduced
+}
+n_tcga_samples <- if (is_v2_local) {
+  params$tcga_samples_v2
+} else if (is_smoke) {
+  params$tcga_samples_smoke
+} else {
+  params$tcga_samples_reduced
+}
+n_pseudobulk <- if (is_v2_local) {
+  params$pseudo_bulk_reps_v2
+} else if (is_smoke) {
+  params$pseudo_bulk_reps_smoke
+} else {
+  params$pseudo_bulk_reps_reduced
+}
+```
+
+# Scope
+
+This notebook is a report-grade V2 local ovarian HGSOC run for testing whether
+MiCBuS can recover marker genes for a tumor microenvironment population that is
+present in bulk tumors but intentionally omitted from the single-cell reference.
+
+The default missing population is `stromal_caf`. The expected positive controls
+are `COL1A1`, `COL1A2`, `DCN`, `LUM`, `FAP`, `ACTA2`, `PDGFRA`, and `PDGFRB`.
+An optional second holdout is `myeloid`, with expected markers `LYZ`, `C1QA`,
+`C1QB`, `C1QC`, `CD68`, `APOE`, and `SPP1`.
+
+This workflow uses only public processed expression data:
+
+- `GSE211956` processed GEO files for five scRNA-seq samples and two
+  Visium sections.
+- Open TCGA-OV summarized gene expression.
+- No raw reads, dbGaP, EGA, low-pass WGS, CNA calls, or restricted data.
+
+# Helper functions
+
+```{r helpers}
+`%||%` <- function(x, y) {
+  if (is.null(x) || length(x) == 0) y else x
+}
+
+safe_genes <- function(genes, object_or_matrix) {
+  available <- if (inherits(object_or_matrix, "Seurat")) {
+    rownames(object_or_matrix)
+  } else {
+    rownames(object_or_matrix)
+  }
+  intersect(genes, available)
+}
+
+join_rna_layers <- function(seurat_object) {
+  join_fn <- NULL
+  if ("JoinLayers" %in% getNamespaceExports("Seurat")) {
+    join_fn <- getExportedValue("Seurat", "JoinLayers")
+  } else if (requireNamespace("SeuratObject", quietly = TRUE) &&
+             "JoinLayers" %in% getNamespaceExports("SeuratObject")) {
+    join_fn <- getExportedValue("SeuratObject", "JoinLayers")
+  }
+
+  if (!is.null(join_fn)) {
+    seurat_object <- join_fn(seurat_object, assay = "RNA")
+  }
+  seurat_object
+}
+
+get_rna_data <- function(seurat_object) {
+  tryCatch(
+    Seurat::GetAssayData(seurat_object, assay = "RNA", layer = "data"),
+    error = function(e) {
+      Seurat::GetAssayData(seurat_object, assay = "RNA", slot = "data")
+    }
+  )
+}
+
+marker_sets <- list(
+  malignant_epithelial = c("EPCAM", "KRT8", "KRT18", "KRT19", "PAX8", "MUC16", "MSLN"),
+  stromal_caf = c("COL1A1", "COL1A2", "COL3A1", "DCN", "LUM", "FAP", "ACTA2", "PDGFRA", "PDGFRB"),
+  myeloid = c("PTPRC", "LYZ", "C1QA", "C1QB", "C1QC", "CD68", "APOE", "SPP1"),
+  t_nk = c("PTPRC", "CD3D", "CD3E", "TRAC", "NKG7", "GNLY", "KLRD1"),
+  b_plasma = c("PTPRC", "MS4A1", "CD79A", "CD79B", "MZB1", "JCHAIN", "IGHG1"),
+  endothelial = c("PECAM1", "VWF", "KDR", "CDH5", "ENG", "PLVAP")
+)
+
+positive_controls <- list(
+  stromal_caf = c("COL1A1", "COL1A2", "DCN", "LUM", "FAP", "ACTA2", "PDGFRA", "PDGFRB"),
+  myeloid = c("LYZ", "C1QA", "C1QB", "C1QC", "CD68", "APOE", "SPP1")
+)
+
+read_count_txt <- function(path) {
+  dt <- data.table::fread(path)
+  gene_col <- names(dt)[1]
+  genes <- make.unique(as.character(dt[[gene_col]]))
+  mat <- as.matrix(dt[, -1, with = FALSE])
+  rownames(mat) <- genes
+  Matrix::Matrix(mat, sparse = TRUE)
+}
+
+sample_id_from_path <- function(path) {
+  base <- basename(path)
+  sub("^GSM[0-9]+_counts_([^.]*)\\.txt\\.gz$", "\\1", base)
+}
+
+downsample_by_class <- function(meta, class_col, max_per_class, seed = 1) {
+  set.seed(seed)
+  split(seq_len(nrow(meta)), meta[[class_col]]) |>
+    lapply(function(idx) sample(idx, min(length(idx), max_per_class))) |>
+    unlist(use.names = FALSE)
+}
+
+average_expression_by_class <- function(seurat_object, class_col = "broad_class") {
+  avg <- Seurat::AverageExpression(
+    seurat_object,
+    group.by = class_col,
+    assays = "RNA",
+    slot = "data"
+  )$RNA
+  as.matrix(avg)
+}
+
+score_gene_set_matrix <- function(expr, genes) {
+  genes <- intersect(genes, rownames(expr))
+  if (length(genes) == 0) {
+    stop("No marker genes were found in the expression matrix.")
+  }
+  colMeans(expr[genes, , drop = FALSE])
+}
+
+normalize_bulk_matrix <- function(counts_or_expression) {
+  mat <- as.matrix(counts_or_expression)
+  mat <- mat[rowSums(is.finite(mat)) == ncol(mat), , drop = FALSE]
+  mat <- mat[!duplicated(rownames(mat)), , drop = FALSE]
+  if (max(mat, na.rm = TRUE) > 100) {
+    lib <- colSums(mat)
+    mat <- t(t(mat) / lib * 1e6)
+    mat <- log2(mat + 1)
+  }
+  mat
+}
+
+query_tcga_ov_counts <- function(n_samples, seed = 1) {
+  workflows <- c("STAR - Counts", "HTSeq - Counts")
+  last_error <- NULL
+
+  for (workflow in workflows) {
+    query <- tryCatch(
+      TCGAbiolinks::GDCquery(
+        project = "TCGA-OV",
+        data.category = "Transcriptome Profiling",
+        data.type = "Gene Expression Quantification",
+        workflow.type = workflow,
+        sample.type = "Primary Tumor"
+      ),
+      error = function(e) e
+    )
+
+    if (inherits(query, "error")) {
+      last_error <- query
+      next
+    }
+
+    cases_result <- TCGAbiolinks::getResults(query, cols = "cases")
+    cases <- if (is.data.frame(cases_result)) cases_result$cases else cases_result
+    cases <- unique(cases)
+    cases <- cases[!is.na(cases)]
+    if (length(cases) == 0) {
+      next
+    }
+
+    set.seed(seed)
+    selected_cases <- sample(cases, min(n_samples, length(cases)))
+
+    subset_query <- TCGAbiolinks::GDCquery(
+      project = "TCGA-OV",
+      data.category = "Transcriptome Profiling",
+      data.type = "Gene Expression Quantification",
+      workflow.type = workflow,
+      sample.type = "Primary Tumor",
+      barcode = selected_cases
+    )
+
+    return(subset_query)
+  }
+
+  stop("Unable to create a TCGA-OV query. Last error: ", last_error$message %||% "none")
+}
+
+simulate_dirichlet_weights <- function(n, k, alpha = 1) {
+  raw <- matrix(rgamma(n * k, shape = alpha, rate = 1), nrow = n, ncol = k)
+  raw / rowSums(raw)
+}
+
+run_micbus_fallback <- function(bulk_expr, reference_profiles, n_reps, seed = 1) {
+  set.seed(seed)
+  genes <- Reduce(intersect, list(rownames(bulk_expr), rownames(reference_profiles)))
+  bulk <- bulk_expr[genes, , drop = FALSE]
+  ref <- reference_profiles[genes, , drop = FALSE]
+
+  weights <- simulate_dirichlet_weights(n_reps, ncol(ref), alpha = 1)
+  pseudo <- ref %*% t(weights)
+  colnames(pseudo) <- paste0("pseudo_", seq_len(n_reps))
+
+  combined <- cbind(bulk, pseudo)
+  group <- factor(c(rep("bulk", ncol(bulk)), rep("pseudo", ncol(pseudo))), levels = c("pseudo", "bulk"))
+
+  res <- lapply(seq_len(nrow(combined)), function(i) {
+    fit <- tryCatch(
+      stats::t.test(combined[i, group == "bulk"], combined[i, group == "pseudo"]),
+      error = function(e) NULL
+    )
+    if (is.null(fit)) {
+      return(data.frame(gene = rownames(combined)[i], logFC = NA_real_, p_value = NA_real_))
+    }
+    data.frame(
+      gene = rownames(combined)[i],
+      logFC = mean(combined[i, group == "bulk"]) - mean(combined[i, group == "pseudo"]),
+      p_value = fit$p.value
+    )
+  }) |>
+    dplyr::bind_rows() |>
+    dplyr::mutate(p_adj = p.adjust(p_value, method = "BH")) |>
+    dplyr::arrange(dplyr::desc(logFC), p_adj)
+
+  res
+}
+
+run_micbus <- function(bulk_expr, incomplete_reference, n_reps, seed = 1) {
+  # Prefer a user-installed MiCBuS package when it exposes a recognizable entry point.
+  if (requireNamespace("MiCBuS", quietly = TRUE)) {
+    ns <- asNamespace("MiCBuS")
+    exported <- getNamespaceExports("MiCBuS")
+    candidate <- intersect(c("MiCBuS", "micbus", "run_micbus", "runMiCBuS"), exported)
+
+    if (length(candidate) > 0) {
+      fn <- get(candidate[1], envir = ns)
+      message("Running MiCBuS package function: MiCBuS::", candidate[1])
+      out <- tryCatch(
+        fn(
+          bulk = bulk_expr,
+          sc_ref = incomplete_reference,
+          n_pseudobulk = n_reps,
+          seed = seed
+        ),
+        error = function(e) e
+      )
+      if (!inherits(out, "error")) {
+        return(as.data.frame(out))
+      }
+      message("Installed MiCBuS call failed; using tutorial fallback. Error: ", out$message)
+    }
+  }
+
+  message("Using tutorial fallback: Dirichlet pseudo-bulk plus bulk-vs-pseudo differential test.")
+  run_micbus_fallback(bulk_expr, incomplete_reference, n_reps = n_reps, seed = seed)
+}
+```
+
+# Download public processed data
+
+`GSE211956` contains five processed 10x scRNA-seq count matrices and eight
+processed Space Ranger Visium samples. The code below downloads the GEO
+supplementary archive through `GEOquery` and extracts only processed files.
+
+```{r download-geo}
+geo_dir <- "data/raw/GSE211956"
+raw_tar <- file.path(geo_dir, "GSE211956_RAW.tar")
+
+if (!file.exists(raw_tar)) {
+  if (!requireNamespace("GEOquery", quietly = TRUE)) {
+    stop("Install GEOquery to download GSE211956 processed files.")
+  }
+  GEOquery::getGEOSuppFiles("GSE211956", baseDir = geo_dir, makeDirectory = FALSE)
+}
+
+if (file.exists(raw_tar) && length(list.files(geo_dir, pattern = "GSM.*", full.names = TRUE)) == 0) {
+  utils::untar(raw_tar, exdir = geo_dir)
+}
+
+scrna_count_files <- list.files(
+  geo_dir,
+  pattern = "GSM[0-9]+_counts_.*\\.txt\\.gz$",
+  full.names = TRUE
+)
+
+visium_prefixes <- unlist(params$visium_samples)
+visium_files <- list.files(geo_dir, pattern = "GSM.*_SP[0-9]+_.*\\.(gz|zip)$", full.names = TRUE)
+
+length(scrna_count_files)
+basename(scrna_count_files)
+```
+
+# Build the V2 local scRNA reference
+
+The GEO scRNA files are processed count matrices without harmonized broad cell
+class labels. This report assigns broad labels by clustering the merged object
+and selecting the strongest canonical marker module for each cluster.
+
+```{r scrna-reference}
+scrna_cache <- file.path(
+  "data/cache",
+  paste0("gse211956_scrna_", params$mode, "_", max_cells_per_class, ".rds")
+)
+
+if (file.exists(scrna_cache)) {
+  scrna <- readRDS(scrna_cache)
+} else {
+  if (length(scrna_count_files) == 0) {
+    stop("No GSE211956 scRNA count files were found after GEO download.")
+  }
+
+  objects <- lapply(scrna_count_files, function(path) {
+    sample_id <- sample_id_from_path(path)
+    counts <- read_count_txt(path)
+    obj <- Seurat::CreateSeuratObject(counts, project = sample_id, min.cells = 3, min.features = 200)
+    obj$sample_id <- sample_id
+    obj[["percent.mt"]] <- Seurat::PercentageFeatureSet(obj, pattern = "^MT-")
+    subset(obj, subset = nFeature_RNA >= 500 & nCount_RNA >= 1000 & percent.mt < 20)
+  })
+
+  scrna <- Reduce(function(x, y) merge(x, y), objects)
+  scrna <- Seurat::NormalizeData(scrna)
+  scrna <- Seurat::FindVariableFeatures(scrna, nfeatures = 2500)
+  scrna <- Seurat::ScaleData(scrna, features = Seurat::VariableFeatures(scrna))
+  scrna <- Seurat::RunPCA(scrna, features = Seurat::VariableFeatures(scrna), npcs = 30)
+  scrna <- Seurat::FindNeighbors(scrna, dims = 1:20)
+  scrna <- Seurat::FindClusters(scrna, resolution = 0.5)
+  scrna <- Seurat::RunUMAP(scrna, dims = 1:20)
+
+  for (nm in names(marker_sets)) {
+    genes <- safe_genes(marker_sets[[nm]], scrna)
+    if (length(genes) > 0) {
+      scrna <- Seurat::AddModuleScore(scrna, features = list(genes), name = paste0(nm, "_score"))
+    }
+  }
+
+  score_cols <- paste0(names(marker_sets), "_score1")
+  cluster_scores <- scrna@meta.data |>
+    tibble::rownames_to_column("cell") |>
+    dplyr::group_by(seurat_clusters) |>
+    dplyr::summarise(dplyr::across(dplyr::all_of(score_cols), mean), .groups = "drop")
+
+  cluster_label <- apply(cluster_scores[, score_cols, drop = FALSE], 1, function(x) {
+    names(marker_sets)[which.max(x)]
+  })
+  names(cluster_label) <- cluster_scores$seurat_clusters
+
+  scrna$broad_class <- unname(cluster_label[as.character(scrna$seurat_clusters)])
+
+  keep_idx <- downsample_by_class(
+    scrna@meta.data,
+    class_col = "broad_class",
+    max_per_class = max_cells_per_class,
+    seed = params$seed
+  )
+  scrna <- subset(scrna, cells = colnames(scrna)[keep_idx])
+  scrna <- join_rna_layers(scrna)
+
+  saveRDS(scrna, scrna_cache)
+}
+
+table(scrna$broad_class)
+```
+
+```{r broad-class-umap}
+Seurat::DimPlot(scrna, group.by = "broad_class", label = TRUE, repel = TRUE) +
+  ggplot2::ggtitle("Reduced GSE211956 scRNA reference")
+```
+
+# Complete and incomplete references
+
+MiCBuS is tested by deliberately removing the holdout class from the scRNA
+reference. The complete object remains available only for validation.
+
+```{r complete-incomplete-reference}
+if (!exists("join_rna_layers")) {
+  join_rna_layers <- function(seurat_object) {
+    join_fn <- NULL
+    if ("JoinLayers" %in% getNamespaceExports("Seurat")) {
+      join_fn <- getExportedValue("Seurat", "JoinLayers")
+    } else if (requireNamespace("SeuratObject", quietly = TRUE) &&
+               "JoinLayers" %in% getNamespaceExports("SeuratObject")) {
+      join_fn <- getExportedValue("SeuratObject", "JoinLayers")
+    }
+
+    if (!is.null(join_fn)) {
+      seurat_object <- join_fn(seurat_object, assay = "RNA")
+    }
+    seurat_object
+  }
+}
+
+holdout_class <- params$holdout_class
+if (!holdout_class %in% scrna$broad_class) {
+  stop("Holdout class not found in broad labels: ", holdout_class)
+}
+
+complete_ref <- scrna
+incomplete_ref <- subset(scrna, subset = broad_class != holdout_class)
+complete_ref <- join_rna_layers(complete_ref)
+incomplete_ref <- join_rna_layers(incomplete_ref)
+
+complete_profiles <- average_expression_by_class(complete_ref)
+incomplete_profiles <- average_expression_by_class(incomplete_ref)
+
+colnames(complete_profiles)
+colnames(incomplete_profiles)
+```
+
+# TCGA-OV bulk expression
+
+The bulk expression input is open TCGA-OV primary tumor expression. The notebook
+uses `TCGAbiolinks` to obtain HTSeq counts from GDC and then keeps a small,
+deterministic subset for smoke testing or reduced local rendering.
+
+```{r tcga-download}
+tcga_cache <- file.path("data/cache", paste0("tcga_ov_bulk_", n_tcga_samples, ".rds"))
+
+if (file.exists(tcga_cache)) {
+  bulk_expr <- readRDS(tcga_cache)
+} else {
+  if (!requireNamespace("TCGAbiolinks", quietly = TRUE) ||
+      !requireNamespace("SummarizedExperiment", quietly = TRUE)) {
+    stop("Install TCGAbiolinks and SummarizedExperiment to download TCGA-OV bulk expression.")
+  }
+
+  query <- query_tcga_ov_counts(n_tcga_samples, seed = params$seed)
+  TCGAbiolinks::GDCdownload(query, directory = "data/raw/TCGA_OV")
+  se <- TCGAbiolinks::GDCprepare(query, directory = "data/raw/TCGA_OV")
+
+  counts <- SummarizedExperiment::assay(se)
+  rd <- as.data.frame(SummarizedExperiment::rowData(se))
+  gene_symbols <- rd$external_gene_name %||% rd$gene_name %||% rd$gene_id
+  keep <- !is.na(gene_symbols) & gene_symbols != ""
+  counts <- counts[keep, , drop = FALSE]
+  gene_symbols <- gene_symbols[keep]
+
+  counts_by_symbol <- rowsum(as.matrix(counts), group = gene_symbols)
+  bulk_expr <- normalize_bulk_matrix(counts_by_symbol)
+
+  saveRDS(bulk_expr, tcga_cache)
+}
+
+dim(bulk_expr)
+```
+
+# Run MiCBuS
+
+The primary call uses an installed `MiCBuS` package if it is present and exposes
+a recognizable exported function. If not, the tutorial falls back to the core
+teaching idea: generate Dirichlet pseudo-bulk mixtures from the incomplete
+reference and identify genes higher in TCGA bulk tumors than in those mixtures.
+
+```{r run-micbus}
+common_genes <- Reduce(intersect, list(rownames(bulk_expr), rownames(incomplete_profiles)))
+bulk_for_micbus <- bulk_expr[common_genes, , drop = FALSE]
+ref_for_micbus <- incomplete_profiles[common_genes, , drop = FALSE]
+
+micbus_res <- run_micbus(
+  bulk_expr = bulk_for_micbus,
+  incomplete_reference = ref_for_micbus,
+  n_reps = n_pseudobulk,
+  seed = params$seed
+)
+
+if (!"gene" %in% names(micbus_res)) {
+  micbus_res <- tibble::rownames_to_column(as.data.frame(micbus_res), "gene")
+}
+
+score_col <- intersect(c("score", "statistic", "logFC", "avg_log2FC"), names(micbus_res))[1]
+padj_col <- intersect(c("p_adj", "padj", "adj.P.Val", "q_value", "FDR"), names(micbus_res))[1]
+
+if (is.na(score_col)) {
+  numeric_cols <- names(micbus_res)[vapply(micbus_res, is.numeric, logical(1))]
+  score_col <- numeric_cols[1]
+}
+
+top_psmarkers <- micbus_res |>
+  dplyr::filter(!is.na(.data[[score_col]])) |>
+  dplyr::arrange(dplyr::desc(.data[[score_col]])) |>
+  dplyr::slice_head(n = 50)
+
+utils::write.csv(micbus_res, "results/v2_ovarian_micbus_psmarkers.csv", row.names = FALSE)
+
+top_psmarkers |>
+  dplyr::select(dplyr::any_of(c("gene", score_col, padj_col))) |>
+  dplyr::slice_head(n = 20)
+```
+
+# Held-out scRNA validation
+
+If MiCBuS is behaving as expected, top pseudo-marker genes should be enriched in
+the omitted broad class when the complete scRNA object is used for validation.
+
+```{r heldout-de}
+if (!exists("join_rna_layers")) {
+  join_rna_layers <- function(seurat_object) {
+    join_fn <- NULL
+    if ("JoinLayers" %in% getNamespaceExports("Seurat")) {
+      join_fn <- getExportedValue("Seurat", "JoinLayers")
+    } else if (requireNamespace("SeuratObject", quietly = TRUE) &&
+               "JoinLayers" %in% getNamespaceExports("SeuratObject")) {
+      join_fn <- getExportedValue("SeuratObject", "JoinLayers")
+    }
+
+    if (!is.null(join_fn)) {
+      seurat_object <- join_fn(seurat_object, assay = "RNA")
+    }
+    seurat_object
+  }
+}
+
+Idents(complete_ref) <- complete_ref$broad_class
+complete_ref <- join_rna_layers(complete_ref)
+heldout_markers <- Seurat::FindMarkers(
+  complete_ref,
+  ident.1 = holdout_class,
+  ident.2 = setdiff(unique(complete_ref$broad_class), holdout_class),
+  only.pos = TRUE,
+  min.pct = 0.1,
+  logfc.threshold = 0.1
+) |>
+  tibble::rownames_to_column("gene") |>
+  dplyr::arrange(dplyr::desc(avg_log2FC))
+
+top_micbus_genes <- top_psmarkers$gene
+overlap <- intersect(top_micbus_genes, heldout_markers$gene[seq_len(min(100, nrow(heldout_markers)))])
+expected <- positive_controls[[holdout_class]] %||% character(0)
+
+validation_summary <- tibble::tibble(
+  metric = c("top_50_micbus_genes", "overlap_with_top_100_heldout_de", "expected_marker_recovery"),
+  value = c(
+    length(top_micbus_genes),
+    length(overlap),
+    length(intersect(top_micbus_genes, expected))
+  )
+)
+
+validation_summary
+intersect(top_micbus_genes, expected)
+```
+
+```{r heldout-dotplot}
+plot_genes <- unique(c(
+  intersect(top_micbus_genes, rownames(complete_ref))[seq_len(min(12, length(intersect(top_micbus_genes, rownames(complete_ref)))))],
+  intersect(expected, rownames(complete_ref))
+))
+
+Seurat::DotPlot(complete_ref, features = plot_genes, group.by = "broad_class") +
+  ggplot2::coord_flip() +
+  ggplot2::ggtitle("Top MiCBuS genes and expected holdout markers across broad classes")
+```
+
+```{r heldout-heatmap}
+avg_complete <- average_expression_by_class(complete_ref)
+heat_genes <- intersect(plot_genes, rownames(avg_complete))
+pheatmap::pheatmap(
+  avg_complete[heat_genes, , drop = FALSE],
+  scale = "row",
+  cluster_cols = FALSE,
+  main = "Complete-reference average expression"
+)
+```
+
+# Bulk sanity check
+
+The top pseudo-marker score should vary across TCGA-OV tumors. This is a sanity
+check only; subtype validation is optional and intentionally not required here.
+
+```{r bulk-score}
+bulk_score_genes <- intersect(top_micbus_genes[seq_len(min(25, length(top_micbus_genes)))], rownames(bulk_expr))
+bulk_scores <- tibble::tibble(
+  sample = colnames(bulk_expr),
+  psmarker_score = score_gene_set_matrix(bulk_expr, bulk_score_genes)
+)
+
+ggplot2::ggplot(bulk_scores, ggplot2::aes(x = reorder(sample, psmarker_score), y = psmarker_score)) +
+  ggplot2::geom_col(fill = "#3d6f8e") +
+  ggplot2::coord_flip() +
+  ggplot2::labs(x = "TCGA-OV sample", y = "Mean top psMarker expression") +
+  ggplot2::theme_minimal(base_size = 11)
+```
+
+# Spatial validation with two Visium sections
+
+The Visium step scores spots for the top pseudo-marker panel and plots the score
+in tissue coordinates. This is spatial expression validation only; it does not
+make CNA or subclone claims.
+
+```{r load-visium}
+load_visium_sample <- function(prefix, geo_dir) {
+  sample_files <- list.files(geo_dir, pattern = paste0("_", prefix, "_"), full.names = TRUE)
+  matrix_file <- sample_files[grepl("_matrix\\.mtx\\.gz$", sample_files)][1]
+  feature_file <- sample_files[grepl("_features\\.tsv\\.gz$", sample_files)][1]
+  barcode_file <- sample_files[grepl("_barcodes\\.tsv\\.gz$", sample_files)][1]
+  spatial_zip <- sample_files[grepl("_spatial\\.zip$", sample_files)][1]
+
+  if (any(is.na(c(matrix_file, feature_file, barcode_file, spatial_zip)))) {
+    stop("Missing Visium processed files for ", prefix)
+  }
+
+  spatial_dir <- file.path(geo_dir, paste0(prefix, "_spatial"))
+  if (!dir.exists(spatial_dir)) {
+    dir.create(spatial_dir, recursive = TRUE)
+    utils::unzip(spatial_zip, exdir = spatial_dir)
+  }
+
+  mat <- Matrix::readMM(gzfile(matrix_file))
+  features <- data.table::fread(feature_file, header = FALSE)
+  barcodes <- data.table::fread(barcode_file, header = FALSE)
+  rownames(mat) <- make.unique(features[[2]])
+  colnames(mat) <- barcodes[[1]]
+
+  obj <- Seurat::CreateSeuratObject(mat, project = prefix, min.features = 100)
+  obj <- Seurat::NormalizeData(obj)
+
+  tissue_positions <- list.files(spatial_dir, pattern = "tissue_positions.*\\.csv$", recursive = TRUE, full.names = TRUE)[1]
+  if (!is.na(tissue_positions)) {
+    pos <- data.table::fread(tissue_positions, header = FALSE)
+    if (ncol(pos) >= 6) {
+      colnames(pos)[1:6] <- c("barcode", "in_tissue", "array_row", "array_col", "pxl_row", "pxl_col")
+      pos <- as.data.frame(pos)
+      rownames(pos) <- pos$barcode
+      obj <- AddMetaData(obj, pos[colnames(obj), c("in_tissue", "array_row", "array_col", "pxl_row", "pxl_col")])
+    }
+  }
+
+  obj$visium_sample <- prefix
+  obj
+}
+
+visium_objects <- lapply(visium_prefixes, load_visium_sample, geo_dir = geo_dir)
+names(visium_objects) <- visium_prefixes
+```
+
+```{r spatial-score}
+if (!exists("get_rna_data")) {
+  get_rna_data <- function(seurat_object) {
+    tryCatch(
+      Seurat::GetAssayData(seurat_object, assay = "RNA", layer = "data"),
+      error = function(e) {
+        Seurat::GetAssayData(seurat_object, assay = "RNA", slot = "data")
+      }
+    )
+  }
+}
+
+spatial_score_genes <- intersect(bulk_score_genes, rownames(visium_objects[[1]]))
+
+spatial_plots <- lapply(names(visium_objects), function(prefix) {
+  obj <- visium_objects[[prefix]]
+  genes <- intersect(spatial_score_genes, rownames(obj))
+  expr <- get_rna_data(obj)
+  obj$psmarker_score <- score_gene_set_matrix(expr, genes)
+
+  meta <- obj@meta.data |>
+    tibble::rownames_to_column("barcode") |>
+    dplyr::filter(!is.na(pxl_col), !is.na(pxl_row))
+
+  ggplot2::ggplot(meta, ggplot2::aes(x = pxl_col, y = -pxl_row, color = psmarker_score)) +
+    ggplot2::geom_point(size = 1.2) +
+    ggplot2::coord_fixed() +
+    ggplot2::scale_color_viridis_c(option = "magma") +
+    ggplot2::labs(title = paste0(prefix, " top psMarker score"), x = NULL, y = NULL, color = "score") +
+    ggplot2::theme_void()
+})
+
+Reduce(`+`, spatial_plots)
+```
+
+```{r spatial-feature-panel}
+if (!exists("get_rna_data")) {
+  get_rna_data <- function(seurat_object) {
+    tryCatch(
+      Seurat::GetAssayData(seurat_object, assay = "RNA", layer = "data"),
+      error = function(e) {
+        Seurat::GetAssayData(seurat_object, assay = "RNA", slot = "data")
+      }
+    )
+  }
+}
+
+feature_genes <- intersect(c(expected, top_micbus_genes), rownames(visium_objects[[1]]))
+feature_genes <- feature_genes[seq_len(min(6, length(feature_genes)))]
+
+feature_plots <- lapply(feature_genes, function(gene) {
+  obj <- visium_objects[[1]]
+  expr <- get_rna_data(obj)
+  meta <- obj@meta.data |>
+    tibble::rownames_to_column("barcode") |>
+    dplyr::filter(!is.na(pxl_col), !is.na(pxl_row)) |>
+    dplyr::mutate(expression = as.numeric(expr[gene, barcode]))
+
+  ggplot2::ggplot(meta, ggplot2::aes(x = pxl_col, y = -pxl_row, color = expression)) +
+    ggplot2::geom_point(size = 1.0) +
+    ggplot2::coord_fixed() +
+    ggplot2::scale_color_viridis_c(option = "plasma") +
+    ggplot2::labs(title = gene, x = NULL, y = NULL, color = "expr") +
+    ggplot2::theme_void()
+})
+
+patchwork::wrap_plots(feature_plots, ncol = 3)
+```
+
+# Optional second holdout
+
+This section does not rerun the full notebook by default. To test the myeloid
+holdout, render with `params$holdout_class = "myeloid"` and check recovery of
+`LYZ`, `C1QA`, `C1QB`, `C1QC`, `CD68`, `APOE`, and `SPP1`.
+
+```{r session-info}
+sessionInfo()
+```

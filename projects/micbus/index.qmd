@@ -1,0 +1,24 @@
+---
+title: "MiCBuS — Ovarian HGSOC"
+subtitle: "Can MiCBuS recover marker genes for a held-out tumor microenvironment population from bulk TCGA-OV when that population is missing from the single-cell reference?"
+date: 2025-05-09
+categories: [single-cell, spatial, tcga, ovarian, tutorial, r]
+image: cover.png
+image-alt: "UMAP of broad ovarian tumor microenvironment cell classes"
+---
+
+A lightweight R Markdown / Quarto tutorial probing whether **MiCBuS** can recover marker genes for a missing ovarian tumor microenvironment population — CAF/stromal cells by default — when that population is present in bulk tumors but **omitted** from the single-cell reference.
+
+## What's inside
+
+- **Public processed data only** — `GSE211956` scRNA-seq, TCGA-OV bulk expression, and a couple of Visium spatial sections. No raw reads, no dbGaP/EGA, no CNA validation.
+- **Reduced reference build** — broad cell classes (malignant epithelial, stromal/CAF, myeloid, T/NK, B/plasma, endothelial), downsampled per class.
+- **Hold-out experiment** — pull CAF/stromal out of the single-cell reference; run MiCBuS against TCGA-OV bulk; check whether `COL1A1`, `COL1A2`, `DCN`, `LUM`, `FAP`, `ACTA2`, `PDGFRA`, `PDGFRB` re-emerge in the recovered psMarkers.
+- **Triple validation** — held-out scRNA dot/heatmap, bulk score variation across TCGA-OV samples, and spatial feature plots on Visium.
+
+V2 targets `2,000 cells/class`, `150 TCGA samples`, `300 pseudo-bulk replicates`, and two Visium sections.
+
+## Links
+
+- **[Rendered report (V2)](report.html)** — full HTML knit with all figures.
+- **[Notebook source](micbus.qmd)** — the Quarto-ported R Markdown.

@@ -6,6 +6,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/projects/micbus/index.html",
       "/projects/skidle/index.html",
       "/projects/tcga/index.html",
       "/projects/rnaseq/index.html"
@@ -14,6 +15,7 @@
   {
     "listing": "/projects/index.html",
     "items": [
+      "/projects/micbus/index.html",
       "/projects/skidle/index.html",
       "/projects/tcga/index.html",
       "/projects/rnaseq/index.html"
