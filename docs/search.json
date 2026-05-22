@@ -1,0 +1,65 @@
+[
+  {
+    "objectID": "teaching/index.html",
+    "href": "teaching/index.html",
+    "title": "Teaching",
+    "section": "",
+    "text": "No teaching entries yet.\n\n\n\n\n\n\n\n\n\nNo matching items\n Back to top"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "David A. Marinelarena",
+    "section": "",
+    "text": "DAVID A. MARINELARENA\n\"COMPUTATIONAL BIOLOGIST · ASU\"▍\n\n\n\n\n\n\n\n\n// about\n\nI’m a Computational Biologist and Biotechnology Professional, currently a graduate student at Arizona State University pursuing an M.S. in Computational Life Sciences.\nMy research sits at the intersection of genomics, computational biology, bioinformatics, and machine learning — developing and applying computational methods to analyze complex multi-omics datasets, leveraging the entire multiome to build a more complete portrait of biological systems.\nI aim to keep building computational tools and conducting research that benefits both scientists and patients.\n\n// focus\n\n\nMULTI-OMICS\nMICROBIOME\nBIOINFORMATICS\nMACHINE LEARNING\nBIOTECHNOLOGY\n\n\n// timeline\n\n\n\n\n\n2024 — Present\n\nGraduate Researcher · Qiyun Lab, Arizona State University\nMulti-omics analysis of microbiome datasets; differential-abundance methods with the scikit-bio team.\n\n\n\n\n2024 — 2026\n\nM.S. Computational Life Sciences · Arizona State University\nCoursework and research at the intersection of genomics, bioinformatics, and machine learning.\n\n\n\n\n2023 — 2024\n\nResearch Associate II · Roche\nDesigned and executed experiments to expand molecular diagnostic assay offerings.\n\n\n\n\n2022 — 2023\n\nQuality Control Specialist · Roche\nRoutine release testing of multiplexed syndromic diagnostic panels.\n\n\n\n\n2021 — 2022\n\nQuality Control Associate I · TriLink Biotechnologies\nRelease testing of RNA capping reagents and small molecules.\n\n\n\n\n2018 — 2022\n\nB.S. Biological Sciences · California State University, San Marcos\n\n\n\n\n\n\n// recent\n\n\n\n\n\n\n\n\n\n\n\nSKIDLE\n\n\n\nSep 1, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\nTCGA Subcutaneous Skin Cancer Analysis\n\n\n\nJun 1, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\nRNA-SEQ\n\n\n\nMar 1, 2024\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "projects/skidle/index.html",
+    "href": "projects/skidle/index.html",
+    "title": "SKIDLE",
+    "section": "",
+    "text": "A visualization pipeline that doubles as a long-read metagenomics tutorial — covering Flye assembly through BinArena exploration. The full walkthrough is packaged as a Google Colaboratory notebook.\n\n\n\nOpen In Colab\n\n\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "projects/index.html",
+    "href": "projects/index.html",
+    "title": "Projects",
+    "section": "",
+    "text": "SKIDLE\n\n\nLong-read Flye assembly + BinArena visualization pipeline for metagenomics.\n\n\n\nmetagenomics\n\nlong-read\n\nassembly\n\n\n\n\nSep 1, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\nTCGA Subcutaneous Skin Cancer Analysis\n\n\nBioinformatics tutorial on analyzing TCGA data for subcutaneous skin cancer.\n\n\n\ntcga\n\ncancer-genomics\n\ntutorial\n\n\n\n\nJun 1, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\nRNA-SEQ\n\n\nShort-read RNA-seq + metagenomics tutorial pipeline.\n\n\n\nrna-seq\n\nshort-read\n\ntutorial\n\n\n\n\nMar 1, 2024\n\n\n\n\n\n\nNo matching items\n Back to top"
+  },
+  {
+    "objectID": "publications/index.html",
+    "href": "publications/index.html",
+    "title": "Publications",
+    "section": "",
+    "text": "Nothing published here yet — in the meantime, see Google Scholar.\n\n\n\n\n\n\n\n\n\nNo matching items\n Back to top"
+  },
+  {
+    "objectID": "projects/tcga/index.html",
+    "href": "projects/tcga/index.html",
+    "title": "TCGA Subcutaneous Skin Cancer Analysis",
+    "section": "",
+    "text": "An end-to-end example of using TCGA to study subcutaneous skin cancer, packaged as a Colab notebook.\n\n\n\nOpen In Colab\n\n\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "projects/rnaseq/index.html",
+    "href": "projects/rnaseq/index.html",
+    "title": "RNA-SEQ",
+    "section": "",
+    "text": "A short-read metagenomics tutorial covering an RNA-seq pipeline.\n\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "talks/index.html",
+    "href": "talks/index.html",
+    "title": "Talks",
+    "section": "",
+    "text": "No talks listed yet — check back soon.\n\n\n\n\n\n\n\n\n\nNo matching items\n Back to top"
+  },
+  {
+    "objectID": "blog/index.html",
+    "href": "blog/index.html",
+    "title": "Blog",
+    "section": "",
+    "text": "No posts yet.\n\n\n\n\n\n\n\n\n\nNo matching items\n Back to top"
+  }
+]

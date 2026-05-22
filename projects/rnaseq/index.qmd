@@ -1,0 +1,12 @@
+---
+title: "RNA-SEQ"
+subtitle: "Short-read RNA-seq + metagenomics tutorial pipeline."
+date: "2024-03-01"
+categories: [rna-seq, short-read, tutorial]
+image: rnaseq.png
+image-alt: "RNA-SEQ pipeline diagram"
+---
+
+A short-read metagenomics tutorial covering an RNA-seq pipeline.
+
+<!-- TODO: add Colab/repo link and real cover image -->

@@ -1,0 +1,40 @@
+/*-- scss:defaults --*/
+
+// shadcn dark tokens
+$background:         hsl(240 10% 3.9%) !default;
+$foreground:         hsl(0 0% 98%) !default;
+$muted:              hsl(240 3.7% 15.9%) !default;
+$muted-foreground:   hsl(240 5% 64.9%) !default;
+$border-color-shad:  hsl(240 3.7% 15.9%) !default;
+$accent-color:       hsl(240 3.7% 15.9%) !default;
+$accent-foreground:  hsl(0 0% 98%) !default;
+
+// Bootstrap variable overrides
+$body-bg:            $background !default;
+$body-color:         $foreground !default;
+$link-color:         $foreground !default;
+$link-hover-color:   $foreground !default;
+$border-color:       $border-color-shad !default;
+
+$navbar-bg:          $background !default;
+$navbar-fg:          $foreground !default;
+$navbar-hl:          $foreground !default;
+
+$footer-bg:          $background !default;
+$footer-fg:          $muted-foreground !default;
+
+$border-radius:      0.375rem !default;
+$border-radius-sm:   0.25rem !default;
+$border-radius-lg:   0.5rem !default;
+
+/*-- scss:rules --*/
+
+:root {
+  --bg: #{$background};
+  --fg: #{$foreground};
+  --muted: #{$muted};
+  --muted-fg: #{$muted-foreground};
+  --border: #{$border-color-shad};
+  --accent: #{$accent-color};
+  --hover-sweep: linear-gradient(90deg, transparent, rgba(255,255,255,0.22), transparent);
+}

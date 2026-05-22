@@ -1,0 +1,21 @@
+---
+title: "Talks"
+description: "// invited talks, workshops, and conference presentations"
+page-layout: full
+title-block-style: default
+listing:
+  contents: ["*/index.qmd", "*.qmd"]
+  exclude:
+    filename: index.qmd
+  type: default
+  sort: "date desc"
+  fields: [title, date, categories, description]
+  categories: false
+  sort-ui: false
+  filter-ui: false
+toc: false
+---
+
+::: {.empty-note}
+No talks listed yet — check back soon.
+:::

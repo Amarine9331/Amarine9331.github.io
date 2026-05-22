@@ -1,0 +1,12 @@
+---
+title: "TCGA Subcutaneous Skin Cancer Analysis"
+subtitle: "Bioinformatics tutorial on analyzing TCGA data for subcutaneous skin cancer."
+date: "2024-06-01"
+categories: [tcga, cancer-genomics, tutorial]
+image: tcga.jpg
+image-alt: "TCGA analysis visualization"
+---
+
+An end-to-end example of using TCGA to study subcutaneous skin cancer, packaged as a Colab notebook.
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1kcGHZ8bBIm0Kirkf8alLPckNoUkRrghy?usp=sharing)

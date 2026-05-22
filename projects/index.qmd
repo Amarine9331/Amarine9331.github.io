@@ -1,0 +1,17 @@
+---
+title: "Projects"
+description: "// portfolio of pipelines, tutorials, and analyses"
+page-layout: full
+title-block-style: default
+listing:
+  contents: ["*/index.qmd"]
+  type: grid
+  grid-columns: 2
+  sort: "date desc"
+  fields: [image, title, subtitle, categories, date]
+  image-height: 200px
+  categories: false
+  sort-ui: false
+  filter-ui: false
+toc: false
+---

@@ -1,0 +1,15 @@
+/*-- scss:defaults --*/
+
+// Geist Sans + Geist Mono (loaded via <link> in _includes/default-dark.html)
+$font-family-sans-serif: "Geist", system-ui, -apple-system, "Segoe UI", sans-serif !default;
+$font-family-monospace:  "Geist Mono", ui-monospace, "JetBrains Mono", "SF Mono", monospace !default;
+
+$headings-font-family: $font-family-sans-serif !default;
+$headings-font-weight: 600 !default;
+
+$font-size-base: 0.95rem !default;
+$line-height-base: 1.6 !default;
+
+$h1-font-size: 2rem !default;
+$h2-font-size: 1.5rem !default;
+$h3-font-size: 1.15rem !default;

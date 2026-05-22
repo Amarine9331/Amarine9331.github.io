@@ -1,0 +1,34 @@
+[
+  {
+    "listing": "/teaching/index.html",
+    "items": []
+  },
+  {
+    "listing": "/index.html",
+    "items": [
+      "/projects/skidle/index.html",
+      "/projects/tcga/index.html",
+      "/projects/rnaseq/index.html"
+    ]
+  },
+  {
+    "listing": "/projects/index.html",
+    "items": [
+      "/projects/skidle/index.html",
+      "/projects/tcga/index.html",
+      "/projects/rnaseq/index.html"
+    ]
+  },
+  {
+    "listing": "/publications/index.html",
+    "items": []
+  },
+  {
+    "listing": "/talks/index.html",
+    "items": []
+  },
+  {
+    "listing": "/blog/index.html",
+    "items": []
+  }
+]

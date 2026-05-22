@@ -1,0 +1,12 @@
+---
+title: "SKIDLE"
+subtitle: "Long-read Flye assembly + BinArena visualization pipeline for metagenomics."
+date: "2024-09-01"
+categories: [metagenomics, long-read, assembly]
+image: skidle.png
+image-alt: "BinArena visualization of a metagenomic assembly"
+---
+
+A visualization pipeline that doubles as a long-read metagenomics tutorial — covering Flye assembly through BinArena exploration. The full walkthrough is packaged as a Google Colaboratory notebook.
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1grezI6faG4OpHTAgmbwmiF-_DvSujhZP)

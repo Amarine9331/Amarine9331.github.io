@@ -1,0 +1,24 @@
+---
+title: "Blog"
+description: "// notes from the lab"
+page-layout: full
+title-block-style: default
+listing:
+  contents: ["*/index.qmd", "*.qmd"]
+  exclude:
+    filename: index.qmd
+  type: default
+  sort: "date desc"
+  fields: [title, date, categories, description, image]
+  image-height: 130px
+  image-align: right
+  categories: false
+  sort-ui: false
+  filter-ui: false
+feed: true
+toc: false
+---
+
+::: {.empty-note}
+No posts yet.
+:::

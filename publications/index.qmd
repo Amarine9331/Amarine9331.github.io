@@ -1,0 +1,21 @@
+---
+title: "Publications"
+description: "// peer-reviewed work and preprints"
+page-layout: full
+title-block-style: default
+listing:
+  contents: ["*/index.qmd", "*.qmd"]
+  exclude:
+    filename: index.qmd
+  type: default
+  sort: "date desc"
+  fields: [title, date, categories, description]
+  categories: false
+  sort-ui: false
+  filter-ui: false
+toc: false
+---
+
+::: {.empty-note}
+Nothing published here yet — in the meantime, see [Google Scholar](https://scholar.google.com/citations?user=PS_CX0AAAAAJ).
+:::

@@ -1,0 +1,125 @@
+---
+pagetitle: "David A. Marinelarena"
+title: ""
+page-layout: full
+toc: false
+title-block-style: none
+section-divs: false
+listing:
+  - id: recent-projects
+    contents: projects/*/index.qmd
+    type: grid
+    max-items: 3
+    grid-columns: 3
+    sort: "date desc"
+    fields: [image, title, date]
+    image-height: 130px
+    categories: false
+    sort-ui: false
+    filter-ui: false
+---
+
+```{=html}
+<section class="hero">
+<img src="assets/img/dam.png" alt="David A. Marinelarena" class="hero-avatar">
+<div class="hero-text">
+<div class="hero-name" role="heading" aria-level="1">DAVID A. MARINELARENA</div>
+<p class="hero-tagline">"COMPUTATIONAL BIOLOGIST · ASU"<span class="cursor">▍</span></p>
+<div class="hero-socials">
+<a href="https://github.com/Amarine9331" aria-label="GitHub" target="_blank" rel="noopener"><i class="bi bi-github"></i></a>
+<a href="https://scholar.google.com/citations?user=PS_CX0AAAAAJ" aria-label="Google Scholar" target="_blank" rel="noopener"><i class="bi bi-mortarboard"></i></a>
+<a href="files/David_A_CV_Aug2025.pdf" aria-label="CV" target="_blank" rel="noopener"><i class="bi bi-file-earmark-text"></i></a>
+</div>
+</div>
+</section>
+```
+
+::: {.section-label}
+// about
+:::
+
+I'm a **Computational Biologist and Biotechnology Professional**, currently a graduate student at **Arizona State University** pursuing an M.S. in *Computational Life Sciences*.
+
+My research sits at the intersection of **genomics, computational biology, bioinformatics, and machine learning** — developing and applying computational methods to analyze complex multi-omics datasets, leveraging the entire multiome to build a more complete portrait of biological systems.
+
+I aim to keep building computational tools and conducting research that benefits both scientists and patients.
+
+::: {.section-label}
+// focus
+:::
+
+```{=html}
+<div class="tag-row">
+<span class="tag">MULTI-OMICS</span>
+<span class="tag">MICROBIOME</span>
+<span class="tag">BIOINFORMATICS</span>
+<span class="tag">MACHINE LEARNING</span>
+<span class="tag">BIOTECHNOLOGY</span>
+</div>
+```
+
+::: {.section-label}
+// timeline
+:::
+
+```{=html}
+<!-- TODO: confirm exact date ranges against current CV -->
+<div class="timeline">
+
+<div class="timeline-row">
+<div class="timeline-date">2024 — Present</div>
+<div class="timeline-content">
+<div class="timeline-title">Graduate Researcher · Qiyun Lab, Arizona State University</div>
+<div class="timeline-desc">Multi-omics analysis of microbiome datasets; differential-abundance methods with the scikit-bio team.</div>
+</div>
+</div>
+
+<div class="timeline-row">
+<div class="timeline-date">2024 — 2026</div>
+<div class="timeline-content">
+<div class="timeline-title">M.S. Computational Life Sciences · Arizona State University</div>
+<div class="timeline-desc">Coursework and research at the intersection of genomics, bioinformatics, and machine learning.</div>
+</div>
+</div>
+
+<div class="timeline-row">
+<div class="timeline-date">2023 — 2024</div>
+<div class="timeline-content">
+<div class="timeline-title">Research Associate II · Roche</div>
+<div class="timeline-desc">Designed and executed experiments to expand molecular diagnostic assay offerings.</div>
+</div>
+</div>
+
+<div class="timeline-row">
+<div class="timeline-date">2022 — 2023</div>
+<div class="timeline-content">
+<div class="timeline-title">Quality Control Specialist · Roche</div>
+<div class="timeline-desc">Routine release testing of multiplexed syndromic diagnostic panels.</div>
+</div>
+</div>
+
+<div class="timeline-row">
+<div class="timeline-date">2021 — 2022</div>
+<div class="timeline-content">
+<div class="timeline-title">Quality Control Associate I · TriLink Biotechnologies</div>
+<div class="timeline-desc">Release testing of RNA capping reagents and small molecules.</div>
+</div>
+</div>
+
+<div class="timeline-row">
+<div class="timeline-date">2018 — 2022</div>
+<div class="timeline-content">
+<div class="timeline-title">B.S. Biological Sciences · California State University, San Marcos</div>
+<div class="timeline-desc"></div>
+</div>
+</div>
+
+</div>
+```
+
+::: {.section-label}
+// recent
+:::
+
+::: {#recent-projects}
+:::

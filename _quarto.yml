@@ -1,0 +1,77 @@
+project:
+  type: website
+  output-dir: docs
+  resources:
+    - "files/**"
+    - "assets/**"
+
+website:
+  title: "David A. Marinelarena"
+  site-url: https://amarine9331.github.io
+  description: "Computational biologist — multi-omics, microbiomes, and machine learning."
+  favicon: assets/img/favicon.svg
+  page-navigation: true
+  back-to-top-navigation: true
+
+  navbar:
+    pinned: true
+    title: false
+    right:
+      - text: "ABOUT"
+        href: index.qmd
+      - text: "PROJECTS"
+        href: projects/index.qmd
+      - text: "PUBLICATIONS"
+        href: publications/index.qmd
+      - text: "TALKS"
+        href: talks/index.qmd
+      - text: "TEACHING"
+        href: teaching/index.qmd
+      - text: "BLOG"
+        href: blog/index.qmd
+      - text: "CV"
+        href: files/David_A_CV_Aug2025.pdf
+        target: _blank
+    tools:
+      - icon: github
+        href: https://github.com/Amarine9331
+        aria-label: GitHub
+      - icon: mortarboard
+        href: https://scholar.google.com/citations?user=PS_CX0AAAAAJ
+        aria-label: Google Scholar
+
+  page-footer:
+    border: true
+    left: "© 2026 David A. Marinelarena — built with [Quarto](https://quarto.org)"
+    right:
+      - icon: github
+        href: https://github.com/Amarine9331
+        aria-label: GitHub
+      - icon: mortarboard
+        href: https://scholar.google.com/citations?user=PS_CX0AAAAAJ
+        aria-label: Google Scholar
+
+format:
+  html:
+    theme:
+      light:
+        - cosmo
+        - theme/fonts.scss
+        - theme/light.scss
+        - theme/components.scss
+      dark:
+        - cosmo
+        - theme/fonts.scss
+        - theme/dark.scss
+        - theme/components.scss
+    toc: false
+    code-link: true
+    lightbox: true
+    smooth-scroll: true
+    anchor-sections: false
+
+include-in-header:
+  - _includes/default-dark.html
+
+execute:
+  freeze: auto
