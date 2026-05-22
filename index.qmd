@@ -27,7 +27,8 @@ listing:
 <p class="hero-tagline">"BIOLOGICAL RESEARCHER · PhD STUDENT ASU SOLS"</p>
 <div class="hero-socials">
 <a href="https://github.com/Amarine9331" aria-label="GitHub" target="_blank" rel="noopener"><i class="bi bi-github"></i></a>
-<a href="https://x.com/Amarine9331" aria-label="X" target="_blank" rel="noopener"><span class="x-social-mark" aria-hidden="true">X</span></a>
+<a href="https://x.com/Amarine9331" aria-label="Twitter" target="_blank" rel="noopener"><i class="bi bi-twitter"></i></a>
+<a href="https://www.linkedin.com/in/david-andrew-marinelarena/" aria-label="LinkedIn" target="_blank" rel="noopener"><i class="bi bi-linkedin"></i></a>
 <a href="https://scholar.google.com/citations?user=PS_CX0AAAAAJ" aria-label="Google Scholar" target="_blank" rel="noopener"><i class="bi bi-mortarboard"></i></a>
 <a href="files/David_A_CV_Aug2025.pdf" aria-label="CV" target="_blank" rel="noopener"><i class="bi bi-file-earmark-text"></i></a>
 </div>

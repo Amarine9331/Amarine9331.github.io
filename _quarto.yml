@@ -39,6 +39,9 @@ website:
       - icon: twitter-x
         href: https://x.com/Amarine9331
         aria-label: X
+      - icon: linkedin
+        href: https://www.linkedin.com/in/david-andrew-marinelarena/
+        aria-label: LinkedIn
       - icon: mortarboard
         href: https://scholar.google.com/citations?user=PS_CX0AAAAAJ
         aria-label: Google Scholar
@@ -53,6 +56,9 @@ website:
       - icon: twitter-x
         href: https://x.com/Amarine9331
         aria-label: X
+      - icon: linkedin
+        href: https://www.linkedin.com/in/david-andrew-marinelarena/
+        aria-label: LinkedIn
       - icon: mortarboard
         href: https://scholar.google.com/citations?user=PS_CX0AAAAAJ
         aria-label: Google Scholar
