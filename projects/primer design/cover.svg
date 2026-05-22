@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">Hantavirus assay design project cover</title>
+  <desc id="desc">Abstract molecular diagnostics graphic with an RNA genome, assay targets, and epidemiology nodes.</desc>
+  <rect width="1200" height="675" fill="#f7f8fb"/>
+  <rect x="0" y="0" width="1200" height="675" fill="#ffffff"/>
+  <path d="M0 520 C180 430 270 610 455 525 C650 435 740 555 920 475 C1040 420 1130 450 1200 400 L1200 675 L0 675 Z" fill="#dcebed"/>
+  <path d="M0 600 C190 545 300 650 480 585 C640 527 760 620 945 545 C1070 494 1140 525 1200 490 L1200 675 L0 675 Z" fill="#c3dde1"/>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M170 278 C260 158 400 168 490 278 C580 388 720 398 820 278 C900 182 1020 168 1090 252" stroke="#23424a" stroke-width="18"/>
+    <path d="M170 392 C260 512 400 502 490 392 C580 282 720 272 820 392 C900 488 1020 502 1090 418" stroke="#23424a" stroke-width="18"/>
+    <g stroke="#d25b4b" stroke-width="12">
+      <path d="M236 210 L236 460"/>
+      <path d="M346 178 L346 492"/>
+      <path d="M456 232 L456 438"/>
+      <path d="M610 312 L610 358"/>
+      <path d="M745 320 L745 350"/>
+      <path d="M884 242 L884 458"/>
+      <path d="M1018 192 L1018 472"/>
+    </g>
+  </g>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="92" y="112" fill="#17323a" font-size="54" font-weight="700">Hantavirus</text>
+    <text x="94" y="162" fill="#4f6870" font-size="30">Phylogeny and assay-design case study</text>
+  </g>
+  <g>
+    <circle cx="176" cy="278" r="28" fill="#d25b4b"/>
+    <circle cx="490" cy="278" r="22" fill="#f1b44c"/>
+    <circle cx="820" cy="278" r="28" fill="#2f9c95"/>
+    <circle cx="1090" cy="252" r="22" fill="#23424a"/>
+    <path d="M176 278 L490 278 L820 278 L1090 252" fill="none" stroke="#7f969c" stroke-width="4" stroke-dasharray="12 12"/>
+  </g>
+  <g transform="translate(735 92)">
+    <rect x="0" y="0" width="330" height="96" rx="8" fill="#17323a"/>
+    <text x="28" y="41" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">RT-qPCR workflow</text>
+    <text x="28" y="70" fill="#c3dde1" font-family="Arial, Helvetica, sans-serif" font-size="18">in-silico review and validation plan</text>
+  </g>
+</svg>

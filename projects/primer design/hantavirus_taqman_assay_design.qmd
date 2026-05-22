@@ -1,0 +1,587 @@
+---
+title: "Hantavirus Phylogeny, Epidemiology, and Hypothetical TaqMan Assay Design"
+subtitle: "A molecular diagnostics case study inspired by the 2026 MV Hondius Andes virus cluster"
+author: "Portfolio notebook"
+date: "2026-05-22"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    code-fold: true
+    theme: cosmo
+  pdf:
+    toc: true
+execute:
+  eval: false
+  echo: true
+---
+
+::: {.callout-important}
+This notebook is an educational molecular diagnostics case study. It describes
+assay-development reasoning, in-silico review criteria, and validation planning
+at a conceptual level. It does not provide deployable primer/probe sequences,
+bench protocols, reaction conditions, clinical decision rules, or instructions
+for testing patient specimens.
+:::
+
+## Executive Summary
+
+In May 2026, public health agencies reported a cluster of hantavirus disease
+linked to the Dutch-flagged cruise ship MV Hondius. WHO reported that the
+cluster involved Andes virus (ANDV), an American orthohantavirus associated
+with hantavirus cardiopulmonary syndrome and unusual among hantaviruses because
+limited person-to-person transmission has been documented under close-contact
+conditions. CDC and ECDC both assessed broad public risk as very low while
+contacts were traced, monitored, and managed through public health channels.
+
+This portfolio notebook approaches the event as a hypothetical diagnostic
+development exercise:
+
+1. Frame the biological problem: hantavirus taxonomy, genome structure, host
+   ecology, and clinical syndromes.
+2. Build an epidemiological rationale for molecular detection in a travel-linked
+   outbreak.
+3. Design an in-silico workflow for a TaqMan-style RT-qPCR assay against Andes
+   virus.
+4. Define inclusivity, exclusivity, analytical-risk, and change-control
+   questions an academic or industry team would need to answer before any
+   laboratory validation.
+
+The goal is to demonstrate breadth across virology, epidemiology, phylogenetics,
+bioinformatics, and molecular diagnostics without presenting an operational test.
+
+## Learning Objectives
+
+By the end of this notebook, a reader should be able to:
+
+- Explain why hantavirus diagnostics must account for viral diversity, host
+  range, geography, and segmented RNA genome structure.
+- Distinguish inclusivity from exclusivity testing in infectious disease assay
+  development.
+- Describe how an in-silico primer/probe design screen can reduce analytical
+  risk before laboratory work.
+- Build a defensible validation plan for a hypothetical TaqMan assay without
+  claiming clinical performance.
+- Identify key limitations of sequence-only analyses for diagnostic
+  development.
+
+## Current Event: MV Hondius Andes Virus Cluster
+
+The 2026 outbreak provides a realistic case study because it combines a rare
+pathogen, international travel, contact tracing, and rapid sequence analysis.
+
+As of WHO's 13 May 2026 Disease Outbreak News update, 11 cases and three deaths
+had been reported among people associated with MV Hondius; eight cases were
+laboratory-confirmed for Andes virus, two were probable, and one was
+inconclusive pending further testing. WHO assessed global population risk as low
+while international contact tracing continued. ECDC's 21 May 2026 update
+reported 11 total cases, including nine confirmed and two probable cases, and
+stated that the EU/EEA general-population risk remained very low. CDC described
+the event as a deadly Andes virus outbreak among passengers and crew of a cruise
+ship in the Atlantic Ocean and stated that the risk of a pandemic and the
+overall risk to the American public and travelers were extremely low.
+
+Key points for diagnostics:
+
+- **Outbreak setting:** a ship creates repeated close-contact opportunities and
+  complicated exposure histories.
+- **Etiology:** Andes virus was identified, not a generic hantavirus.
+- **Transmission concern:** Andes virus is exceptional among hantaviruses
+  because limited human-to-human transmission can occur in close-contact
+  contexts.
+- **Sequence data:** preliminary analysis of cruise-ship-associated
+  Orthohantavirus andesense virus sequences was posted publicly during the
+  response, illustrating how genomic epidemiology can guide assay review.
+- **Public health posture:** risk to the general population remained low, but
+  exposed passengers and crew required active monitoring and coordinated
+  laboratory support.
+
+## Hantavirus Biology in One Page
+
+Hantaviruses are negative-sense RNA viruses in the order *Bunyavirales*. Human
+disease is associated with rodent-borne orthohantaviruses. The International
+Committee on Taxonomy of Viruses places disease-associated hantaviruses in the
+family *Hantaviridae*, subfamily *Mammantavirinae*, genus *Orthohantavirus*.
+
+Orthohantaviruses have three genome segments:
+
+- **S segment:** encodes nucleoprotein N, the abundant structural protein that
+  encapsidates viral RNA.
+- **M segment:** encodes the glycoprotein precursor, cleaved into Gn and Gc,
+  which mediate entry.
+- **L segment:** encodes the viral RNA-dependent RNA polymerase.
+
+From a diagnostic target-selection perspective:
+
+- The **S segment** is often attractive because nucleoprotein-coding regions can
+  be relatively conserved within a virus species and abundant transcripts may
+  aid detection.
+- The **M segment** can provide lineage information but may show greater
+  diversity in glycoprotein regions under host or immune selection.
+- The **L segment** contains conserved polymerase motifs that may support broad
+  detection but can be less discriminating among related viruses.
+- Segmented genomes create reassortment risk, so a robust assay strategy may
+  use more than one target if a clinical or public-health decision depends on
+  lineage certainty.
+
+## Epidemiology and Host Ecology
+
+Hantavirus risk is shaped by host ecology. Human infection classically follows
+inhalation of aerosolized excreta or secretions from infected rodents or direct
+rodent contact. Geographic patterns reflect the distribution of reservoir hosts.
+
+Broad clinical-epidemiological groupings are:
+
+| Group | Typical geography | Examples | Main syndrome association |
+|---|---:|---|---|
+| Old World orthohantaviruses | Europe and Asia | Hantaan, Dobrava, Puumala, Seoul | Hemorrhagic fever with renal syndrome |
+| New World orthohantaviruses | Americas | Andes, Sin Nombre | Hantavirus pulmonary/cardiopulmonary syndrome |
+
+For the MV Hondius case study, the key epidemiological feature is not that
+hantaviruses suddenly became broadly transmissible. Rather, Andes virus has a
+documented history of limited person-to-person transmission, and a cruise ship is
+a closed travel environment where contact networks, shared cabins, caregiving,
+medical evacuation, and international disembarkation can complicate response.
+
+## Phylogeny: What the Tree Should Answer
+
+Phylogenetics should serve an assay-development question, not just produce a
+tree. For a hypothetical Andes virus TaqMan assay, the useful questions are:
+
+1. **Target scope:** Should the assay detect all known Andes virus diversity, a
+   recent outbreak lineage, or a broader American hantavirus group?
+2. **Near-neighbor risk:** Which related orthohantaviruses are close enough to
+   create cross-reactivity concerns?
+3. **Sequence coverage:** Are available genomes representative of geography,
+   time, host, and clinical cases?
+4. **Segment consistency:** Do S, M, and L trees tell the same story, or is
+   reassortment or incomplete sampling plausible?
+5. **Outbreak stability:** Do the outbreak sequences introduce mismatches in any
+   candidate binding region?
+
+```{mermaid}
+flowchart LR
+  A[Public sequence set] --> B[Segment-aware curation]
+  B --> C[Multiple sequence alignment]
+  C --> D[Phylogenetic tree per segment]
+  C --> E[Conservation scan]
+  D --> F[Target scope decision]
+  E --> G[Candidate assay windows]
+  F --> H[Inclusivity panel]
+  G --> I[Primer/probe candidate ranking]
+  H --> J[In-silico inclusivity]
+  I --> J
+  I --> K[In-silico exclusivity]
+```
+
+### Example Phylogenetic Framing
+
+For a portfolio analysis, I would include reference sequences from:
+
+- Andes virus lineages from Chile and Argentina, including historical human and
+  reservoir-associated sequences.
+- Other New World hantaviruses such as Sin Nombre, Laguna Negra, Choclo,
+  Bayou, Black Creek Canal, and related taxa.
+- Old World representatives such as Hantaan, Dobrava, Puumala, and Seoul as
+  distant outgroups.
+- Any public MV Hondius-linked sequences, tagged as outbreak sequences and
+  reviewed separately from the design training set.
+
+The tree should not be overinterpreted as transmission proof. It is mainly used
+to understand diversity, confirm that target panels span known variation, and
+identify near-neighbor taxa for exclusivity testing.
+
+```python
+# Illustrative only. Do not run as a diagnostic workflow.
+# A real analysis would require curated accessions, versioned FASTA files,
+# documented filters, and reproducible alignment/tree software.
+
+candidate_segments = ["S", "M", "L"]
+
+reference_panel = {
+    "target": ["Andes virus sequences across geography and collection years"],
+    "near_neighbors": ["other American orthohantaviruses"],
+    "distant_outgroups": ["Old World orthohantaviruses"],
+    "outbreak_review": ["public MV Hondius-associated sequences, if available"],
+}
+
+for segment in candidate_segments:
+    print(f"Curate {segment} segment sequences")
+    print("Align sequences, mask low-quality regions, build tree")
+    print("Scan conserved candidate windows and annotate mismatches")
+```
+
+## Diagnostic Design Goal
+
+The hypothetical product requirement is:
+
+> Develop a TaqMan-style one-step RT-qPCR screening assay intended to detect
+> Andes virus RNA in appropriately handled clinical or public-health specimens,
+> with design evidence supporting broad inclusivity across known Andes virus
+> diversity and exclusivity against near-neighbor hantaviruses, common
+> respiratory pathogens, host sequences, and environmental/background organisms.
+
+This is a design brief, not a validated intended-use statement. A real clinical
+assay would require regulatory review, biosafety assessment, specimen-type
+validation, analytical and clinical performance studies, controls, quality
+systems, and laboratory authorization.
+
+## Why TaqMan RT-qPCR?
+
+A hydrolysis-probe RT-qPCR format is commonly used in molecular diagnostics
+because it can combine:
+
+- sequence-specific amplification and sequence-specific probe detection,
+- real-time amplification monitoring,
+- compatibility with multiplex internal controls,
+- straightforward analytical validation metrics such as limit of detection,
+  precision, interference, inclusivity, and cross-reactivity.
+
+For an RNA virus, reverse transcription must precede amplification. From a
+diagnostic-development perspective, the design risk is not just whether a
+primer pair can amplify a reference sequence; it is whether the assay remains
+robust across target diversity and does not produce misleading positives from
+non-target templates.
+
+## Target Selection Strategy
+
+Candidate targets should be evaluated across the three segments:
+
+| Criterion | S segment | M segment | L segment |
+|---|---|---|---|
+| Within-Andes conservation | Often favorable | Variable by region | Conserved motifs possible |
+| Discrimination from near neighbors | Moderate to high | Often high | May be lower in conserved motifs |
+| Phylogenetic information | Good for lineage context | Good for lineage/context | Good for deeper relationships |
+| Diagnostic risk | Misses if local variation affects binding | Misses if highly variable | Cross-reactivity if too conserved |
+
+Pragmatic strategy:
+
+1. Start with conserved windows in S and L.
+2. Reject windows with known outbreak-sequence mismatches near primer 3-prime
+   ends or probe-critical positions.
+3. Prefer windows that are conserved across target diversity but separated from
+   near-neighbor hantaviruses by multiple informative differences.
+4. Consider a two-target assay if single-target dropout risk is unacceptable.
+
+## In-Silico Primer/Probe Design Constraints
+
+The following are design-review constraints, not a complete recipe:
+
+| Feature | Review expectation |
+|---|---|
+| Amplicon | Short enough for degraded RNA and efficient qPCR, while retaining specificity |
+| Primers | Similar melting behavior, limited self-complementarity, limited primer-dimer risk |
+| Probe | Binds within a conserved, target-informative region and avoids highly variable positions |
+| 3-prime ends | Avoid target polymorphisms and avoid strong non-target complementarity |
+| GC content | Avoid extremes that impair binding, amplification, or synthesis |
+| Degeneracy | Use sparingly; degeneracy can improve inclusivity but reduce sensitivity and specificity |
+| Multiplexing | Check interaction among all primers, probes, and internal controls |
+| Sequence drift | Establish a surveillance process for new public genomes |
+
+No candidate oligonucleotide sequences are shown here. For a portfolio piece,
+the strongest demonstration is a transparent decision framework, ranked
+candidate windows, and a validation plan rather than a deployable assay.
+
+## Inclusivity Testing
+
+**Inclusivity** asks whether target strains or target nucleic acids are expected
+to test positive. In silico, the panel should cover the intended target breadth.
+
+For an Andes virus assay, the inclusivity panel should include:
+
+- geographically diverse Andes virus sequences,
+- human and reservoir-associated sequences where available,
+- historical and recent sequences,
+- all available segments relevant to the chosen target,
+- outbreak-associated sequences treated as a challenge set,
+- partial sequences only when the candidate target region is covered and quality
+  is sufficient.
+
+In-silico inclusivity outputs should include:
+
+- number of target sequences evaluated,
+- number with full amplicon coverage,
+- number with perfect primer and probe matches,
+- mismatch count by oligo and position,
+- special flag for mismatches near primer 3-prime ends,
+- estimated dropout risk by lineage or geography,
+- a list of sequences excluded because of incomplete coverage or poor quality.
+
+```python
+# Mock schema for an inclusivity review table.
+# Values below are placeholders for notebook demonstration only.
+
+import pandas as pd
+
+inclusivity_schema = pd.DataFrame(
+    [
+        {
+            "sequence_id": "ANDV_reference_or_lineage_id",
+            "segment": "S",
+            "region": "candidate_window_A",
+            "forward_mismatches": "count_and_positions",
+            "probe_mismatches": "count_and_positions",
+            "reverse_mismatches": "count_and_positions",
+            "risk_call": "pass / review / fail",
+            "rationale": "e.g., no critical 3-prime mismatch",
+        }
+    ]
+)
+
+inclusivity_schema
+```
+
+### Inclusivity Decision Rules
+
+An assay-development team should define decision rules before ranking
+candidates. Example rules:
+
+- **Pass:** all target sequences with adequate coverage have no critical
+  primer/probe mismatches.
+- **Review:** one or more target sequences have mismatches outside critical
+  positions, or coverage gaps make a lineage hard to assess.
+- **Fail:** a known target lineage or outbreak sequence has a mismatch pattern
+  expected to reduce amplification or probe detection.
+
+These rules should be documented and version controlled. The decision should not
+be adjusted after seeing inconvenient results unless the change is justified and
+recorded.
+
+## Exclusivity Testing
+
+**Exclusivity** asks whether non-target organisms or nucleic acids are expected
+to test negative. For a molecular assay, the panel should include both
+phylogenetic near neighbors and realistic sample-background organisms.
+
+For Andes virus, exclusivity should include:
+
+- non-Andes New World hantaviruses,
+- Old World hantaviruses,
+- common respiratory viruses that may be present in respiratory specimens,
+- human genome and transcriptome sequences,
+- rodent host sequences if environmental or reservoir samples are in scope,
+- bacterial and fungal organisms common in respiratory or environmental
+  backgrounds, if those matrices are claimed.
+
+In-silico exclusivity should not rely only on short local matches. The critical
+question is whether a primer pair can plausibly amplify a product of the
+expected size and whether the probe can bind that product. NCBI Primer-BLAST is
+useful because it combines primer design with specificity checking; NCBI advises
+selecting the relevant organism and smallest appropriate database for precise
+checks, or broader databases when broad coverage is needed.
+
+```python
+# Mock schema for an exclusivity screen.
+
+exclusivity_schema = pd.DataFrame(
+    [
+        {
+            "non_target_group": "Sin Nombre virus",
+            "database": "curated_hantavirus_near_neighbor_set",
+            "forward_hit": "yes/no + mismatch summary",
+            "reverse_hit": "yes/no + mismatch summary",
+            "probe_hit": "yes/no + mismatch summary",
+            "predicted_amplicon": "none / out_of_range / plausible",
+            "risk_call": "pass / review / fail",
+        }
+    ]
+)
+
+exclusivity_schema
+```
+
+### Cross-Reactivity Risk Matrix
+
+| Risk tier | Example non-targets | Why they matter | Expected evidence |
+|---|---|---|---|
+| Tier 1 | Closely related American hantaviruses | Highest sequence similarity | Curated local alignment and in-silico PCR |
+| Tier 2 | Old World hantaviruses | Same genus, different disease ecology | Broad BLAST or curated database search |
+| Tier 3 | Human and host background | Sample matrix contamination | Human/host genome and transcriptome screen |
+| Tier 4 | Respiratory co-pathogens | Clinical differential diagnosis | Panel review based on intended specimen type |
+| Tier 5 | Environmental organisms | If environmental matrices are claimed | Matrix-specific database screen |
+
+## Candidate Ranking Framework
+
+A useful portfolio artifact is a scored design table. The values below are
+placeholders; in a real project they would be computed from curated alignments
+and specificity searches.
+
+```python
+candidate_scores = pd.DataFrame(
+    [
+        {
+            "candidate": "S_window_A",
+            "target_segment": "S",
+            "inclusivity_score": 0.98,
+            "exclusivity_score": 0.95,
+            "oligo_quality_score": 0.90,
+            "outbreak_sequence_score": 1.00,
+            "overall_rank": 1,
+            "decision": "advance to non-clinical feasibility review",
+        },
+        {
+            "candidate": "L_window_B",
+            "target_segment": "L",
+            "inclusivity_score": 1.00,
+            "exclusivity_score": 0.82,
+            "oligo_quality_score": 0.88,
+            "outbreak_sequence_score": 1.00,
+            "overall_rank": 2,
+            "decision": "hold as backup target; review near-neighbor risk",
+        },
+        {
+            "candidate": "M_window_C",
+            "target_segment": "M",
+            "inclusivity_score": 0.86,
+            "exclusivity_score": 0.97,
+            "oligo_quality_score": 0.92,
+            "outbreak_sequence_score": 0.90,
+            "overall_rank": 3,
+            "decision": "do not advance without redesign",
+        },
+    ]
+)
+
+candidate_scores
+```
+
+Suggested ranking components:
+
+- **Target conservation:** fraction of target sequences without critical
+  mismatches.
+- **Near-neighbor separation:** absence of plausible non-target amplicons.
+- **Oligo physical quality:** absence of strong self-complementarity, primer
+  dimers, extreme GC, or problematic runs.
+- **Outbreak robustness:** no critical mismatch in current outbreak sequences.
+- **Manufacturability:** avoids unusual modifications unless justified.
+- **Change-control burden:** target region is stable enough for surveillance.
+
+## Analytical Validation Plan
+
+After in-silico review, a real molecular diagnostic assay would need laboratory
+validation. This notebook does not provide protocols, but the validation plan
+would normally address:
+
+| Performance characteristic | Question |
+|---|---|
+| Limit of detection | What is the lowest concentration detected with acceptable probability in each claimed specimen type? |
+| Inclusivity | Does the assay detect representative target diversity? |
+| Exclusivity / cross-reactivity | Does the assay avoid detection of near neighbors and likely co-occurring organisms? |
+| Precision | Are results reproducible across operators, instruments, reagent lots, days, and sites? |
+| Interference | Do substances or specimen matrix effects inhibit detection? |
+| Stability | Are specimens, controls, and reagents stable under claimed conditions? |
+| Controls | Do extraction, amplification, inhibition, positive, and negative controls behave as expected? |
+| Clinical evaluation | Does assay performance support the intended use in the target population? |
+
+CLSI MM03 describes molecular diagnostic methods for infectious diseases,
+including sequence selection, performance evaluation, inhibitors,
+false-positive control, interpretation, quality assurance, and regulatory
+considerations. CLSI MM17 addresses validation and verification concepts for
+qualitative multiplex nucleic acid assays. Those standards are useful anchors
+for turning an in-silico design into a regulated diagnostic-development plan.
+
+## Regulatory and Quality Considerations
+
+An industry or clinical laboratory team should separate four claims:
+
+1. **In-silico design claim:** the target window is predicted to be inclusive
+   and exclusive based on the current sequence database.
+2. **Analytical performance claim:** the assay detects target material under
+   controlled laboratory conditions.
+3. **Clinical performance claim:** the assay identifies infected patients in the
+   intended population and specimen type.
+4. **Public health utility claim:** the assay supports outbreak response,
+   triage, surveillance, or contact investigation.
+
+Only the first claim can be supported by this notebook. The other claims require
+laboratory and clinical evidence.
+
+Version control should capture:
+
+- source databases and access dates,
+- accession lists and exclusion criteria,
+- alignment and tree software versions,
+- primer/probe design software and parameters,
+- candidate scoring rules,
+- review sign-off,
+- periodic re-analysis triggers when new sequences appear.
+
+## Failure Modes and Mitigations
+
+| Failure mode | How it could happen | Mitigation |
+|---|---|---|
+| False negative from sequence drift | Mutation in primer/probe binding site | Multi-sequence inclusivity screen and periodic surveillance |
+| False negative from incomplete sampling | Missing lineage absent from databases | Conservative target choice and documented uncertainty |
+| False positive from near neighbor | Related hantavirus amplified | Near-neighbor exclusivity panel and in-silico PCR |
+| False positive from contamination | Amplicon or control contamination | Workflow controls and physical separation in real labs |
+| Inhibition | Specimen matrix suppresses amplification | Internal control and specimen validation |
+| Overclaiming | In-silico pass treated as clinical validation | Clear claim boundaries and regulatory review |
+
+## Portfolio Figure Ideas
+
+For an academic website, this notebook could be paired with:
+
+- a map of reported case countries and travel route, using only public aggregate
+  data;
+- a three-panel figure showing taxonomy, genome segments, and target-selection
+  logic;
+- a phylogenetic tree with target and near-neighbor groups highlighted;
+- a heatmap of hypothetical mismatch burden across candidate windows;
+- a validation waterfall from in-silico design to analytical validation to
+  clinical evaluation.
+
+## Discussion
+
+The MV Hondius cluster is a strong case study because it shows how modern
+molecular diagnostics sits between public health and molecular biology.
+Phylogeny helps define the target and near-neighbor space. Epidemiology defines
+who might be tested, what specimens might be relevant, and what turnaround time
+would matter. Assay design translates sequence conservation into a practical
+screen, while inclusivity and exclusivity testing force the developer to state
+what the assay is, and is not, designed to detect.
+
+The most important scientific discipline in this exercise is restraint. A
+sequence-perfect candidate is not a clinical test. A beautiful phylogenetic tree
+does not prove transmission. A negative in-silico cross-reactivity search does
+not replace wet-lab validation. For molecular diagnostics, evidence must be
+layered: genomic rationale first, analytical performance second, clinical
+performance third, and public-health utility last.
+
+## Reproducibility Checklist
+
+- [ ] Define intended target scope: Andes virus only, outbreak lineage, or broad
+      hantavirus screen.
+- [ ] Freeze accession lists and database versions.
+- [ ] Curate sequences by segment, quality, geography, host, and date.
+- [ ] Align S, M, and L segments separately.
+- [ ] Build segment-specific phylogenies.
+- [ ] Identify conserved target windows.
+- [ ] Rank primer/probe candidates without publishing operational sequences.
+- [ ] Run in-silico inclusivity against target diversity.
+- [ ] Run in-silico exclusivity against near neighbors and background organisms.
+- [ ] Document limitations and candidate-selection rationale.
+- [ ] Define the laboratory validation plan without claiming validation.
+- [ ] Add periodic sequence-surveillance triggers.
+
+## Sources
+
+- CDC. [Andes Virus Outbreak on a Cruise Ship: Current Situation](https://www.cdc.gov/hantavirus/situation-summary/).
+  Accessed 22 May 2026.
+- CDC Health Alert Network. [2026 Multi-country Hantavirus Cluster Linked to
+  Cruise Ship](https://www.cdc.gov/han/php/notices/han00528.html). 8 May 2026.
+- ECDC. [Andes hantavirus outbreak in cruise ship, 21 May
+  2026](https://www.ecdc.europa.eu/en/infectious-disease-topics/hantavirus-infection/surveillance-and-updates/andes-hantavirus-outbreak).
+- WHO. [Hantavirus cluster linked to cruise ship travel, Multi-country](https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON601).
+  Disease Outbreak News, 13 May 2026.
+- Virological. [Preliminary analysis of *Orthohantavirus andesense* virus
+  sequences from a cruise-ship related cluster, May
+  2026](https://virological.org/t/preliminary-analysis-of-orthohantavirus-andesense-virus-sequences-from-a-cruise-ship-related-cluster-may-2026/1029).
+- ICTV. [Genus *Orthohantavirus*](https://ictv.global/report/chapter/hantaviridae/hantaviridae/mammantavirinae/orthohantavirus).
+- NCBI. [Design PCR primers and check them for
+  specificity](https://www.ncbi.nlm.nih.gov/guide/howto/design-pcr-primers/).
+- CLSI. [MM03: Molecular Diagnostic Methods for Infectious
+  Diseases](https://clsi.org/shop/standards/mm03/).
+- CLSI. [MM17: Validation and Verification of Multiplex Nucleic Acid
+  Assays](https://clsi.org/shop/standards/mm17/).
+- ATCC. [Infectious Disease Assay Development: Establishing Inclusivity
+  Exclusivity](https://www.atcc.org/resources/white-papers/infectious-disease-assay-development-establishing-inclusivity-exclusivity).

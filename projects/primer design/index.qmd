@@ -1,0 +1,32 @@
+---
+title: "Hantavirus Assay Design"
+subtitle: "A molecular diagnostics case study on hantavirus phylogeny, epidemiology, and hypothetical TaqMan-style assay design."
+date: "2026-05-22"
+categories: [molecular diagnostics, virology, phylogenetics, qpcr]
+image: cover.svg
+image-alt: "Abstract molecular diagnostics graphic for a hantavirus assay-design project"
+---
+
+An educational portfolio notebook using the 2026 MV Hondius Andes virus cluster
+as a case study for infectious-disease assay-development reasoning. The project
+connects virology, epidemiology, phylogenetics, in-silico assay review, and
+validation planning without providing deployable primer/probe sequences or bench
+protocols.
+
+## What's inside
+
+- **Current-event framing** - public-health context for the MV Hondius Andes
+  virus cluster.
+- **Virology and epidemiology** - hantavirus taxonomy, genome structure, host
+  ecology, and transmission considerations.
+- **Assay-design workflow** - conceptual TaqMan-style RT-qPCR target-selection,
+  inclusivity, exclusivity, and change-control criteria.
+- **Validation plan** - analytical-risk questions that would need to be answered
+  before any laboratory or clinical use.
+
+## Links
+
+- **[Rendered notebook](hantavirus_taqman_assay_design.html)** - full HTML case
+  study.
+- **[Notebook source](hantavirus_taqman_assay_design.qmd)** - Quarto source.
+- **[Jupyter notebook](hantavirus_taqman_assay_design.ipynb)** - notebook export.

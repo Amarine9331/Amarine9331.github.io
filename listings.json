@@ -6,6 +6,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/projects/primer design/index.html",
       "/projects/micbus/index.html",
       "/projects/skidle/index.html",
       "/projects/tcga/index.html",
@@ -15,6 +16,7 @@
   {
     "listing": "/projects/index.html",
     "items": [
+      "/projects/primer design/index.html",
       "/projects/micbus/index.html",
       "/projects/skidle/index.html",
       "/projects/tcga/index.html",

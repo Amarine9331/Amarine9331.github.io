@@ -11,7 +11,7 @@
     "href": "index.html",
     "title": "David A. Marinelarena",
     "section": "",
-    "text": "DAVID A. MARINELARENA\n\"BIOLOGICAL RESEARCHER · PhD STUDENT ASU SOLS\"\n\n\n\n\n\n\n\n\n\n\n// about\n\nI’m a Computational Biologist and Biotechnology Professional, currently an MCB PhD student at Arizona State University.\nMy research sits at the intersection of computational biology, microbiome science, multi-omics, bioinformatics, and machine learning — developing and applying computational methods to analyze complex biological datasets and build a more complete portrait of biological systems.\nI aim to keep building computational tools and conducting research that benefits both scientists and patients.\n\n// focus\n\n\nMULTI-OMICS\nMICROBIOME\nBIOINFORMATICS\nMACHINE LEARNING\nBIOTECHNOLOGY\n\n\n// timeline\n\n\n\n\n\n2024 — Present\n\nGraduate Researcher · Qiyun Lab, Arizona State University\nDoctoral research in computational biology, microbiome multi-omics, bioinformatics, and machine-learning methods.\n\n\n\n\n2024 — 2026\n\nM.S. Computational Life Sciences · Arizona State University\nStatistical modeling, bioinformatics, and machine learning across genomics, transcriptomics, proteomics, and other omics data.\n\n\n\n\n2023 — 2025\n\nQuality Control Specialist → Research Associate II · Roche\nRoutine release testing of multiplexed syndromic diagnostic panels. Designed and executed experiments to expand molecular diagnostic assay offerings.\n\n\n\n\n2021 — 2022\n\nQuality Control Associate I · TriLink Biotechnologies\nRelease testing of RNA capping reagents and small molecules.\n\n\n\n\n2018 — 2022\n\nB.S. Biological Sciences · California State University, San Marcos\n\n\n\n\n\n\n// recent\n\n\n\n\n\n\n\n\n\n\n\nMiCBuS — Ovarian HGSOC\n\n\n\nMay 9, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\nSKIDLE\n\n\n\nSep 1, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\nTCGA Subcutaneous Skin Cancer Analysis\n\n\n\nJun 1, 2024\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n Back to top"
+    "text": "DAVID A. MARINELARENA\n\"BIOLOGICAL RESEARCHER · PhD STUDENT ASU SOLS\"\n\n\n\n\n\n\n\n\n\n\n// about\n\nI’m a Computational Biologist and Biotechnology Professional, currently an MCB PhD student at Arizona State University.\nMy research sits at the intersection of computational biology, microbiome science, multi-omics, bioinformatics, and machine learning — developing and applying computational methods to analyze complex biological datasets and build a more complete portrait of biological systems.\nI aim to keep building computational tools and conducting research that benefits both scientists and patients.\n\n// focus\n\n\nMULTI-OMICS\nMICROBIOME\nBIOINFORMATICS\nMACHINE LEARNING\nBIOTECHNOLOGY\n\n\n// timeline\n\n\n\n\n\n2024 — Present\n\nGraduate Researcher · Qiyun Lab, Arizona State University\nDoctoral research in computational biology, microbiome multi-omics, bioinformatics, and machine-learning methods.\n\n\n\n\n2024 — 2026\n\nM.S. Computational Life Sciences · Arizona State University\nStatistical modeling, bioinformatics, and machine learning across genomics, transcriptomics, proteomics, and other omics data.\n\n\n\n\n2023 — 2025\n\nQuality Control Specialist → Research Associate II · Roche\nRoutine release testing of multiplexed syndromic diagnostic panels. Designed and executed experiments to expand molecular diagnostic assay offerings.\n\n\n\n\n2021 — 2022\n\nQuality Control Associate I · TriLink Biotechnologies\nRelease testing of RNA capping reagents and small molecules.\n\n\n\n\n2018 — 2022\n\nB.S. Biological Sciences · California State University, San Marcos\n\n\n\n\n\n\n// recent\n\n\n\n\n\n\n\n\n\n\n\nHantavirus Assay Design\n\n\n\nMay 22, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n\nMiCBuS — Ovarian HGSOC\n\n\n\nMay 9, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\nSKIDLE\n\n\n\nSep 1, 2024\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n Back to top"
   },
   {
     "objectID": "projects/skidle/index.html",
@@ -25,7 +25,7 @@
     "href": "projects/index.html",
     "title": "Projects",
     "section": "",
-    "text": "MiCBuS — Ovarian HGSOC\n\n\nCan MiCBuS recover marker genes for a held-out tumor microenvironment population from bulk TCGA-OV when that population is missing from the single-cell reference?\n\n\n\nsingle-cell\n\nspatial\n\ntcga\n\novarian\n\ntutorial\n\nr\n\n\n\n\nMay 9, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\nSKIDLE\n\n\nLong-read Flye assembly + BinArena visualization pipeline for metagenomics.\n\n\n\nmetagenomics\n\nlong-read\n\nassembly\n\n\n\n\nSep 1, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\nTCGA Subcutaneous Skin Cancer Analysis\n\n\nBioinformatics tutorial on analyzing TCGA data for subcutaneous skin cancer.\n\n\n\ntcga\n\ncancer-genomics\n\ntutorial\n\n\n\n\nJun 1, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\nRNA-SEQ\n\n\nShort-read RNA-seq + metagenomics tutorial pipeline.\n\n\n\nrna-seq\n\nshort-read\n\ntutorial\n\n\n\n\nMar 1, 2024\n\n\n\n\n\n\nNo matching items\n Back to top"
+    "text": "Hantavirus Assay Design\n\n\nA molecular diagnostics case study on hantavirus phylogeny, epidemiology, and hypothetical TaqMan-style assay design.\n\n\n\nmolecular diagnostics\n\nvirology\n\nphylogenetics\n\nqpcr\n\n\n\n\nMay 22, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n\nMiCBuS — Ovarian HGSOC\n\n\nCan MiCBuS recover marker genes for a held-out tumor microenvironment population from bulk TCGA-OV when that population is missing from the single-cell reference?\n\n\n\nsingle-cell\n\nspatial\n\ntcga\n\novarian\n\ntutorial\n\nr\n\n\n\n\nMay 9, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\nSKIDLE\n\n\nLong-read Flye assembly + BinArena visualization pipeline for metagenomics.\n\n\n\nmetagenomics\n\nlong-read\n\nassembly\n\n\n\n\nSep 1, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\nTCGA Subcutaneous Skin Cancer Analysis\n\n\nBioinformatics tutorial on analyzing TCGA data for subcutaneous skin cancer.\n\n\n\ntcga\n\ncancer-genomics\n\ntutorial\n\n\n\n\nJun 1, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\nRNA-SEQ\n\n\nShort-read RNA-seq + metagenomics tutorial pipeline.\n\n\n\nrna-seq\n\nshort-read\n\ntutorial\n\n\n\n\nMar 1, 2024\n\n\n\n\n\n\nNo matching items\n Back to top"
   },
   {
     "objectID": "projects/micbus/micbus.html",
@@ -89,5 +89,26 @@
     "title": "Blog",
     "section": "",
     "text": "No posts yet.\n\n\n\n\n\n\n\n\n\nNo matching items\n Back to top"
+  },
+  {
+    "objectID": "projects/primer design/index.html",
+    "href": "projects/primer design/index.html",
+    "title": "Hantavirus Assay Design",
+    "section": "",
+    "text": "An educational portfolio notebook using the 2026 MV Hondius Andes virus cluster as a case study for infectious-disease assay-development reasoning. The project connects virology, epidemiology, phylogenetics, in-silico assay review, and validation planning without providing deployable primer/probe sequences or bench protocols."
+  },
+  {
+    "objectID": "projects/primer design/index.html#whats-inside",
+    "href": "projects/primer design/index.html#whats-inside",
+    "title": "Hantavirus Assay Design",
+    "section": "What’s inside",
+    "text": "What’s inside\n\nCurrent-event framing - public-health context for the MV Hondius Andes virus cluster.\nVirology and epidemiology - hantavirus taxonomy, genome structure, host ecology, and transmission considerations.\nAssay-design workflow - conceptual TaqMan-style RT-qPCR target-selection, inclusivity, exclusivity, and change-control criteria.\nValidation plan - analytical-risk questions that would need to be answered before any laboratory or clinical use."
+  },
+  {
+    "objectID": "projects/primer design/index.html#links",
+    "href": "projects/primer design/index.html#links",
+    "title": "Hantavirus Assay Design",
+    "section": "Links",
+    "text": "Links\n\nRendered notebook - full HTML case study.\nNotebook source - Quarto source.\nJupyter notebook - notebook export."
   }
 ]
