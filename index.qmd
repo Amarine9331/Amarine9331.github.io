@@ -21,7 +21,7 @@ listing:
 
 ```{=html}
 <section class="hero">
-<img src="assets/img/dam.png" alt="David A. Marinelarena" class="hero-avatar">
+<img src="assets/img/dam.jpg" alt="David A. Marinelarena" class="hero-avatar">
 <div class="hero-text">
 <div class="hero-name" role="heading" aria-level="1">DAVID A. MARINELARENA</div>
 <p class="hero-tagline">"COMPUTATIONAL BIOLOGIST · ASU PhD studet @Qiyunlab"<span class="cursor">▍</span></p>

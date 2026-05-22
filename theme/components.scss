@@ -82,7 +82,7 @@ hr {
   .hero-avatar {
     width: 140px;
     height: 140px;
-    border-radius: 50%;
+    border-radius: 0;
     object-fit: cover;
     border: 1px solid var(--border);
     flex-shrink: 0;
