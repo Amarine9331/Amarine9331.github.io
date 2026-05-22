@@ -38,7 +38,7 @@ listing:
 // about
 :::
 
-I'm a **Computational Biologist and Biotechnology Professional**, currently an **MCB PhD student** at **Arizona State University**.
+Doctoral research in **computational biology, microbiome multi-omics, bioinformatics, and machine-learning methods**.
 
 I aim to keep building computational tools and conducting research that benefits both scientists and patients.
 
