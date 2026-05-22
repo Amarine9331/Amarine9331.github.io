@@ -36,6 +36,9 @@ website:
       - icon: github
         href: https://github.com/Amarine9331
         aria-label: GitHub
+      - icon: twitter-x
+        href: https://x.com/Amarine9331
+        aria-label: X
       - icon: mortarboard
         href: https://scholar.google.com/citations?user=PS_CX0AAAAAJ
         aria-label: Google Scholar
@@ -47,6 +50,9 @@ website:
       - icon: github
         href: https://github.com/Amarine9331
         aria-label: GitHub
+      - icon: twitter-x
+        href: https://x.com/Amarine9331
+        aria-label: X
       - icon: mortarboard
         href: https://scholar.google.com/citations?user=PS_CX0AAAAAJ
         aria-label: Google Scholar
