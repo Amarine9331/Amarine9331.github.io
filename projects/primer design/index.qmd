@@ -28,5 +28,5 @@ protocols.
 
 - **[Rendered notebook](hantavirus_taqman_assay_design.html)** - full HTML case
   study.
-- **[Notebook source](hantavirus_taqman_assay_design.qmd)** - Quarto source.
-- **[Jupyter notebook](hantavirus_taqman_assay_design.ipynb)** - notebook export.
+- **<a href="https://github.com/Amarine9331/Amarine9331.github.io/blob/master/projects/primer%20design/hantavirus_taqman_assay_design.qmd">Notebook source</a>** - Quarto source.
+- **<a href="hantavirus_taqman_assay_design.ipynb" download>Jupyter notebook</a>** - notebook export.
