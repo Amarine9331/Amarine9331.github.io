@@ -275,6 +275,20 @@ hr {
   margin-bottom: 0.15rem;
 }
 
+.timeline-logo {
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  vertical-align: -3px;
+  margin-right: 0.5rem;
+  border-radius: 3px;
+  background: #fff;
+  padding: 1px;
+  border: 1px solid var(--border);
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
 .timeline-desc {
   font-size: 0.85rem;
   color: var(--muted-fg);
