@@ -38,9 +38,9 @@ listing:
 // about
 :::
 
-I'm a **Computational Biologist and Biotechnology Professional**, currently a graduate student at **Arizona State University** pursuing an M.S. in *Computational Life Sciences*.
+I'm a **Computational Biologist and Biotechnology Professional**, currently an **MCB PhD student** at **Arizona State University**.
 
-My research sits at the intersection of **genomics, computational biology, bioinformatics, and machine learning** — developing and applying computational methods to analyze complex multi-omics datasets, leveraging the entire multiome to build a more complete portrait of biological systems.
+My research sits at the intersection of **computational biology, microbiome science, multi-omics, bioinformatics, and machine learning** — developing and applying computational methods to analyze complex biological datasets and build a more complete portrait of biological systems.
 
 I aim to keep building computational tools and conducting research that benefits both scientists and patients.
 
@@ -75,15 +75,15 @@ I aim to keep building computational tools and conducting research that benefits
 </div>
 
 <div class="timeline-row">
-<div class="timeline-date">2024 — 2026</div>
+<div class="timeline-date">2025 — Present</div>
 <div class="timeline-content">
-<div class="timeline-title">M.S. Computational Life Sciences · Arizona State University</div>
-<div class="timeline-desc">Coursework and research at the intersection of genomics, bioinformatics, and machine learning.</div>
+<div class="timeline-title">PhD Student, Molecular and Cellular Biology · Arizona State University</div>
+<div class="timeline-desc">Doctoral research in computational biology, microbiome multi-omics, bioinformatics, and machine-learning methods.</div>
 </div>
 </div>
 
 <div class="timeline-row">
-<div class="timeline-date">2023 — 2024</div>
+<div class="timeline-date">2023 — 2025</div>
 <div class="timeline-content">
 <div class="timeline-title">Research Associate II · Roche</div>
 <div class="timeline-desc">Designed and executed experiments to expand molecular diagnostic assay offerings.</div>
