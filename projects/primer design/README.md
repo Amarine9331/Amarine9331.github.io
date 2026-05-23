@@ -3,7 +3,7 @@
 This repository contains a Quarto/Markdown-style academic notebook:
 
 - `hantavirus_taqman_assay_design.qmd` - source notebook
-- `hantavirus_taqman_assay_design.html` - rendered HTML output
+- `report.html` - rendered HTML output
 - `hantavirus_taqman_assay_design.ipynb` - Jupyter/Colab-compatible notebook
 
 The notebook is an educational portfolio case study about hantavirus phylogeny,

@@ -3,16 +3,17 @@ title: "Hantavirus Phylogeny, Epidemiology, and Hypothetical TaqMan Assay Design
 subtitle: "A molecular diagnostics case study inspired by the 2026 MV Hondius Andes virus cluster"
 author: "Portfolio notebook"
 date: "2026-05-22"
+toc: true
+number-sections: true
 format:
   html:
-    toc: true
+    output-file: report.html
+    toc-location: right
     toc-depth: 3
-    code-fold: true
-    theme: cosmo
-    embed-resources: true
+    code-fold: false
+    code-tools: true
 execute:
-  eval: false
-  echo: true
+  enabled: false
 ---
 
 ::: {.callout-important}
