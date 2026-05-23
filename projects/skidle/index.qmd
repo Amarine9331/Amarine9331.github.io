@@ -1,12 +1,25 @@
 ---
 title: "SKIDLE"
-subtitle: "Long-read Flye assembly + BinArena visualization pipeline for metagenomics."
+subtitle: "A Colab-runnable long-read metagenomics walkthrough — Flye `--meta` assembly through BinaRena binning, with the algorithm intuition built in."
 date: "2024-09-01"
-categories: [metagenomics, long-read, assembly]
+categories: [metagenomics, long-read, assembly, tutorial, python]
 image: skidle.png
 image-alt: "BinArena visualization of a metagenomic assembly"
 ---
 
-A visualization pipeline that doubles as a long-read metagenomics tutorial — covering Flye assembly through BinArena exploration. The full walkthrough is packaged as a Google Colaboratory notebook.
+A teaching-first long-read metagenomics pipeline. Designed to run end-to-end in a Google Colab notebook against a small mock community, with detours into the data structures (De Bruijn graphs, OLC, suffix tries) underneath each step. Equal parts practitioner scaffold and learner explainer.
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1grezI6faG4OpHTAgmbwmiF-_DvSujhZP)
+## What's inside
+
+- **Mock-community anchor** — ZymoBIOMICS D6300 ONT reads from the SRA, sized to fit Colab's RAM/wall-clock budget.
+- **Assembly path** — read QC with NanoPlot → Flye `--meta` assembly → assembly-graph inspection in Bandage.
+- **Algorithm detour** — minimal Python implementations of a De Bruijn graph, overlap-layout-consensus, and a suffix trie, to demystify what assemblers and mappers are actually doing.
+- **Binning from first principles** — k-mer composition (PCA / t-SNE / UMAP) plus long-read coverage (`minimap2` + `samtools`), then manual binning in **BinaRena**.
+- **Honest limits** — Colab budget, no polishing or taxonomy, and what you'd reach for at scale (MetaBAT2 / SemiBin2 / vamb / CheckM2).
+
+## Links
+
+- **[Rendered notebook](skidle.html)** — full walkthrough as a static page.
+- **[Notebook source (.qmd)](skidle.qmd)** — Quarto-ported markdown source.
+- **[Download .ipynb](skidle.ipynb)** — raw Jupyter notebook to run locally.
+- [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1grezI6faG4OpHTAgmbwmiF-_DvSujhZP)

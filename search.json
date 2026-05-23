@@ -18,14 +18,14 @@
     "href": "projects/skidle/index.html",
     "title": "SKIDLE",
     "section": "",
-    "text": "A visualization pipeline that doubles as a long-read metagenomics tutorial — covering Flye assembly through BinArena exploration. The full walkthrough is packaged as a Google Colaboratory notebook.\n\n\n\nOpen In Colab\n\n\n\n\n\n Back to top"
+    "text": "A teaching-first long-read metagenomics pipeline. Designed to run end-to-end in a Google Colab notebook against a small mock community, with detours into the data structures (De Bruijn graphs, OLC, suffix tries) underneath each step. Equal parts practitioner scaffold and learner explainer."
   },
   {
     "objectID": "projects/index.html",
     "href": "projects/index.html",
     "title": "Projects",
     "section": "",
-    "text": "Hantavirus Assay Design\n\n\nA molecular diagnostics case study on hantavirus phylogeny, epidemiology, and hypothetical TaqMan-style assay design.\n\n\n\nmolecular diagnostics\n\nvirology\n\nphylogenetics\n\nqpcr\n\n\n\n\nMay 22, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n\nMiCBuS — Ovarian HGSOC\n\n\nCan MiCBuS recover marker genes for a held-out tumor microenvironment population from bulk TCGA-OV when that population is missing from the single-cell reference?\n\n\n\nsingle-cell\n\nspatial\n\ntcga\n\novarian\n\ntutorial\n\nr\n\n\n\n\nMay 9, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\nSKIDLE\n\n\nLong-read Flye assembly + BinArena visualization pipeline for metagenomics.\n\n\n\nmetagenomics\n\nlong-read\n\nassembly\n\n\n\n\nSep 1, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\nTCGA Subcutaneous Skin Cancer Analysis\n\n\nBioinformatics tutorial on analyzing TCGA data for subcutaneous skin cancer.\n\n\n\ntcga\n\ncancer-genomics\n\ntutorial\n\n\n\n\nJun 1, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\nRNA-SEQ\n\n\nShort-read RNA-seq + metagenomics tutorial pipeline.\n\n\n\nrna-seq\n\nshort-read\n\ntutorial\n\n\n\n\nMar 1, 2024\n\n\n\n\n\n\nNo matching items\n Back to top"
+    "text": "Hantavirus Assay Design\n\n\nA molecular diagnostics case study on hantavirus phylogeny, epidemiology, and hypothetical TaqMan-style assay design.\n\n\n\nmolecular diagnostics\n\nvirology\n\nphylogenetics\n\nqpcr\n\n\n\n\nMay 22, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n\nMiCBuS — Ovarian HGSOC\n\n\nCan MiCBuS recover marker genes for a held-out tumor microenvironment population from bulk TCGA-OV when that population is missing from the single-cell reference?\n\n\n\nsingle-cell\n\nspatial\n\ntcga\n\novarian\n\ntutorial\n\nr\n\n\n\n\nMay 9, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\nSKIDLE\n\n\nA Colab-runnable long-read metagenomics walkthrough — Flye --meta assembly through BinaRena binning, with the algorithm intuition built in.\n\n\n\nmetagenomics\n\nlong-read\n\nassembly\n\ntutorial\n\npython\n\n\n\n\nSep 1, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\nTCGA Subcutaneous Skin Cancer Analysis\n\n\nBioinformatics tutorial on analyzing TCGA data for subcutaneous skin cancer.\n\n\n\ntcga\n\ncancer-genomics\n\ntutorial\n\n\n\n\nJun 1, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\nRNA-SEQ\n\n\nShort-read RNA-seq + metagenomics tutorial pipeline.\n\n\n\nrna-seq\n\nshort-read\n\ntutorial\n\n\n\n\nMar 1, 2024\n\n\n\n\n\n\nNo matching items\n Back to top"
   },
   {
     "objectID": "projects/micbus/micbus.html",
@@ -257,5 +257,145 @@
     "title": "Hantavirus Phylogeny, Epidemiology, and Hypothetical TaqMan Assay Design",
     "section": "Sources",
     "text": "Sources\n\nCDC. Andes Virus Outbreak on a Cruise Ship: Current Situation. Accessed 22 May 2026.\nCDC Health Alert Network. 2026 Multi-country Hantavirus Cluster Linked to Cruise Ship. 8 May 2026.\nECDC. Andes hantavirus outbreak in cruise ship, 21 May 2026.\nWHO. Hantavirus cluster linked to cruise ship travel, Multi-country. Disease Outbreak News, 13 May 2026.\nVirological. Preliminary analysis of Orthohantavirus andesense virus sequences from a cruise-ship related cluster, May 2026.\nICTV. Genus Orthohantavirus.\nNCBI. Design PCR primers and check them for specificity.\nCLSI. MM03: Molecular Diagnostic Methods for Infectious Diseases.\nCLSI. MM17: Validation and Verification of Multiplex Nucleic Acid Assays.\nATCC. Infectious Disease Assay Development: Establishing Inclusivity Exclusivity."
+  },
+  {
+    "objectID": "projects/skidle/skidle.html",
+    "href": "projects/skidle/skidle.html",
+    "title": "SKIDLE — Long-read metagenomics notebook (source)",
+    "section": "",
+    "text": "skid·əl · A Colab-runnable walkthrough that takes raw long reads from an environmental sample all the way to manually-binned genomes — explaining every step."
+  },
+  {
+    "objectID": "projects/skidle/skidle.html#tldr",
+    "href": "projects/skidle/skidle.html#tldr",
+    "title": "SKIDLE — Long-read metagenomics notebook (source)",
+    "section": "TL;DR",
+    "text": "TL;DR\n\nInput: Oxford Nanopore reads from a known mock community\nPipeline: raw reads → QC → Flye --meta assembly → composition + coverage features → interactive binning in BinaRena\nOutput: a handful of (hopefully separable) Metagenome-Assembled Genomes, plus an understanding of why every step is there"
+  },
+  {
+    "objectID": "projects/skidle/skidle.html#who-this-is-for",
+    "href": "projects/skidle/skidle.html#who-this-is-for",
+    "title": "SKIDLE — Long-read metagenomics notebook (source)",
+    "section": "Who this is for",
+    "text": "Who this is for\nPractitioners — a copy-pasteable scaffold for a small long-read metagenomics run.\nLearners — every section pairs a concept with a runnable example. The algorithm detour (§7) shows what assemblers are actually doing under the hood, in &lt;50 lines each."
+  },
+  {
+    "objectID": "projects/skidle/skidle.html#the-biological-question",
+    "href": "projects/skidle/skidle.html#the-biological-question",
+    "title": "SKIDLE — Long-read metagenomics notebook (source)",
+    "section": "1. The biological question",
+    "text": "1. The biological question\nMetagenomics: sequencing the collective DNA of a microbial community without isolating individual organisms.\nShotgun metagenomics fragments all DNA randomly, sequences the fragments, then tries to reconstruct each organism’s genome from the resulting jigsaw. The reconstructed pieces are called contigs; grouping contigs that came from the same organism is binning; a confident bin is a MAG (Metagenome-Assembled Genome)."
+  },
+  {
+    "objectID": "projects/skidle/skidle.html#why-long-reads",
+    "href": "projects/skidle/skidle.html#why-long-reads",
+    "title": "SKIDLE — Long-read metagenomics notebook (source)",
+    "section": "2. Why long reads?",
+    "text": "2. Why long reads?\nShort reads (Illumina) are accurate per-base but trip on repeats — any genomic region longer than the read collapses into ambiguous graph nodes. Microbial genomes (and especially metagenomes, where conserved regions are shared across species) are full of them.\nLong reads (Oxford Nanopore, PacBio) span repeats. The historical trade-off was per-base error — modern ONT R10 + recent basecallers have closed most of that gap."
+  },
+  {
+    "objectID": "projects/skidle/skidle.html#the-dataset",
+    "href": "projects/skidle/skidle.html#the-dataset",
+    "title": "SKIDLE — Long-read metagenomics notebook (source)",
+    "section": "3. The dataset",
+    "text": "3. The dataset\nWe’ll use a subset of the ZymoBIOMICS D6300 mock community — a defined mix of 8 bacteria + 2 yeasts. Known ground truth means we can evaluate whether our binning actually worked.\nStarting point (verify it fits Colab limits — downsample with seqtk sample if needed):\n\nSRR8351023 — Zymo GridION run (Nicholls et al. 2019)"
+  },
+  {
+    "objectID": "projects/skidle/skidle.html#environment-setup",
+    "href": "projects/skidle/skidle.html#environment-setup",
+    "title": "SKIDLE — Long-read metagenomics notebook (source)",
+    "section": "4. Environment setup",
+    "text": "4. Environment setup\nColab gives us a fresh VM; condacolab lets us install bioconda tooling without fighting pip.\n\n!pip install -q condacolab\nimport condacolab\ncondacolab.install()\n# Kernel restarts after this — expected."
+  },
+  {
+    "objectID": "projects/skidle/skidle.html#fetching-reads-from-the-sra",
+    "href": "projects/skidle/skidle.html#fetching-reads-from-the-sra",
+    "title": "SKIDLE — Long-read metagenomics notebook (source)",
+    "section": "5. Fetching reads from the SRA",
+    "text": "5. Fetching reads from the SRA\nNCBI’s SRA stores raw sequencing reads. sra-tools gives us prefetch (download .sra) and fasterq-dump (extract FASTQ).\n\n!conda install -y -c bioconda sra-tools\n\nACCESSION = \"SRR8351023\"  # confirm / swap for your chosen Zymo subset\n!prefetch {ACCESSION}\n!fasterq-dump --threads 4 {ACCESSION}\n\n# Optional: downsample so Flye finishes inside Colab's wall-clock budget\n# !conda install -y -c bioconda seqtk\n# !seqtk sample -s42 {ACCESSION}.fastq 0.1 &gt; reads.sub.fastq"
+  },
+  {
+    "objectID": "projects/skidle/skidle.html#read-qc-before-you-assemble-anything",
+    "href": "projects/skidle/skidle.html#read-qc-before-you-assemble-anything",
+    "title": "SKIDLE — Long-read metagenomics notebook (source)",
+    "section": "6. Read QC (before you assemble anything)",
+    "text": "6. Read QC (before you assemble anything)\nAlways look at your reads before assembling them. For ONT data, three things to check:\n\nRead length distribution — long enough to be useful?\nQuality (Phred / Q-score) distribution — basecaller version matters\nThroughput — enough coverage to assemble?\n\n\n!pip install -q NanoPlot\n!NanoPlot --fastq {ACCESSION}.fastq -o nanoplot_out --tsv_stats"
+  },
+  {
+    "objectID": "projects/skidle/skidle.html#detour-how-assemblers-actually-work",
+    "href": "projects/skidle/skidle.html#detour-how-assemblers-actually-work",
+    "title": "SKIDLE — Long-read metagenomics notebook (source)",
+    "section": "7. Detour — how assemblers actually work",
+    "text": "7. Detour — how assemblers actually work\nBefore handing reads to Flye, here are toy implementations of the three classical approaches. Not production code — the minimum viable demonstration of each idea, so the abstraction stops being a black box.\n\n7a. De Bruijn graph\nIdea: break every read into k-mers; each (k−1)-mer is a node, each k-mer is a directed edge. An Eulerian walk reconstructs the sequence (most of the time). This is what short-read assemblers (SPAdes, MEGAHIT) lean on.\n\nfrom collections import defaultdict\n\ndef build_debruijn(reads, k):\n    \"\"\"Nodes = (k-1)-mers, edges = k-mers.\"\"\"\n    graph = defaultdict(list)\n    for read in reads:\n        for i in range(len(read) - k + 1):\n            kmer = read[i:i + k]\n            graph[kmer[:-1]].append(kmer[1:])\n    return graph\n\nreads = [\"ATGCGA\", \"TGCGAT\", \"GCGATC\"]\nfor node, edges in build_debruijn(reads, k=3).items():\n    print(f\"{node} -&gt; {edges}\")\n\n\n\n7b. Overlap–Layout–Consensus (OLC)\nIdea: find pairwise overlaps between reads → build an overlap graph → walk it. Computationally expensive (all-vs-all) but tolerant of long, noisy reads. The family Flye descends from.\n\ndef overlap(a, b, min_len=3):\n    \"\"\"Longest suffix of a that matches a prefix of b.\"\"\"\n    start = 0\n    while True:\n        start = a.find(b[:min_len], start)\n        if start == -1:\n            return 0\n        if b.startswith(a[start:]):\n            return len(a) - start\n        start += 1\n\nreads = [\"ATGCG\", \"TGCGA\", \"GCGAT\"]\nfor a in reads:\n    for b in reads:\n        if a != b and (ol := overlap(a, b)):\n            print(f\"{a} -&gt; {b}: overlap {ol}\")\n\n\n\n7c. Suffix trie (aside)\nNot an assembler itself, but the data structure underneath suffix arrays / FM-indexes — i.e., the read-mapping side of the pipeline (bowtie2, minimap2). Worth seeing once because it’s how we get from “a pile of reads” to “reads aligned to contigs” in §11b.\n\nclass SuffixTrie:\n    def __init__(self, text):\n        self.root = {}\n        for i in range(len(text)):\n            node = self.root\n            for ch in text[i:] + \"$\":\n                node = node.setdefault(ch, {})\n\n    def contains(self, pattern):\n        node = self.root\n        for ch in pattern:\n            if ch not in node:\n                return False\n            node = node[ch]\n        return True\n\nt = SuffixTrie(\"ATGCGATC\")\nprint(t.contains(\"GCGA\"))  # True\nprint(t.contains(\"AAA\"))   # False\n\n\n\n7d. So what does Flye actually do?\nFlye builds a repeat graph — disjoint repetitive regions become single nodes regardless of how many times they appear in the source. Unique sequence forms the edges between them. This lets the assembler resolve repeats explicitly rather than collapsing them, which matters enormously for metagenomes where the same conserved gene (e.g., 16S) shows up in many species at once."
+  },
+  {
+    "objectID": "projects/skidle/skidle.html#assembly-with-flye---meta",
+    "href": "projects/skidle/skidle.html#assembly-with-flye---meta",
+    "title": "SKIDLE — Long-read metagenomics notebook (source)",
+    "section": "8. Assembly with Flye --meta",
+    "text": "8. Assembly with Flye --meta\n--meta tells Flye not to assume uniform coverage — in a community, different species are present at very different abundances and a uniform-coverage prior would discard the rare ones as errors.\n\n!conda install -y -c bioconda flye\n\n\n!flye --help\n\n\n# Note: --genome-size is OPTIONAL with --meta; omit if you don't know the total size.\n!flye \\\n  --nano-raw {ACCESSION}.fastq \\\n  --out-dir out_assembly \\\n  --meta \\\n  --threads 4\n\n\n8a. Inspecting the assembly\nFlye produces:\n\nassembly.fasta — the contigs\nassembly_info.txt — per-contig stats (length, coverage, circular?)\nassembly_graph.gfa — the repeat graph\nflye.log — overall stats including N50, mean divergence\n\n\n!tail -40 out_assembly/flye.log\nprint(\"---\")\n!head out_assembly/assembly_info.txt"
+  },
+  {
+    "objectID": "projects/skidle/skidle.html#viewing-the-assembly-graph",
+    "href": "projects/skidle/skidle.html#viewing-the-assembly-graph",
+    "title": "SKIDLE — Long-read metagenomics notebook (source)",
+    "section": "9. Viewing the assembly graph",
+    "text": "9. Viewing the assembly graph\nassembly_graph.gfa is best viewed in Bandage (or AGB / IGV). Bandage runs locally, so this is the one step that doesn’t live in Colab.\nThe interesting things to annotate on the graph view are the circular contigs (likely complete chromosomes — a win for long reads) versus the tangled regions where the assembler couldn’t resolve repeats."
+  },
+  {
+    "objectID": "projects/skidle/skidle.html#from-contigs-to-bins-the-intuition",
+    "href": "projects/skidle/skidle.html#from-contigs-to-bins-the-intuition",
+    "title": "SKIDLE — Long-read metagenomics notebook (source)",
+    "section": "10. From contigs to bins — the intuition",
+    "text": "10. From contigs to bins — the intuition\nAfter assembly we have a bag of contigs with no labels. To group them by source organism we use two signals that tend to be conserved within a genome but vary across genomes:\n\nComposition — every genome has a characteristic k-mer (tetra-/pentanucleotide) signature.\nCoverage — contigs from the same organism appear at the same abundance, so they recruit similar read depth.\n\nPlot contigs in (composition, coverage) space and same-organism contigs cluster together. That’s the entire conceptual basis for modern binning — every tool from MetaBAT2 to SemiBin2 is some variant of this picture."
+  },
+  {
+    "objectID": "projects/skidle/skidle.html#setting-up-binarena",
+    "href": "projects/skidle/skidle.html#setting-up-binarena",
+    "title": "SKIDLE — Long-read metagenomics notebook (source)",
+    "section": "11. Setting up BinaRena",
+    "text": "11. Setting up BinaRena\nBinaRena is a browser-based tool for manual, interactive binning. Its companion scripts compute the composition + coverage features we need.\n\n!conda install -y -c conda-forge -c bioconda \\\n  scikit-bio scikit-learn umap-learn \\\n  minimap2 samtools \\\n  checkm2\n\n\n!wget -q https://github.com/qiyunlab/binarena/archive/refs/heads/master.zip\n!unzip -j -o master.zip 'binarena-master/scripts/*.py' -d scripts\n!chmod +x scripts/*.py\n\n\n!ln -sf out_assembly/assembly.fasta contigs.fna\n\n\n11a. Composition features (k-mers)\nCount 5-mers per contig, then project to 2D with PCA / t-SNE / UMAP so we can see cluster structure.\n\n!scripts/sequence_basics.py -i contigs.fna -o basic.tsv\n!head basic.tsv\n\n\n!scripts/count_kmers.py -i contigs.fna -k 5 | \\\n  scripts/reduce_dimension.py --pca --tsne --umap -o k5\n\n\n\n11b. Coverage features\nMap the original reads back to the assembled contigs. Contigs from the same genome get hit at roughly the same depth.\nNote: for ONT/PacBio long reads use minimap2 -ax map-ont, not bowtie2 — bowtie2 is a short-read aligner and will mis-handle long, noisy reads.\n\n!minimap2 -ax map-ont -t 4 contigs.fna {ACCESSION}.fastq | \\\n  samtools sort -@ 4 -o reads.bam\n!samtools index reads.bam\n\n\n!samtools coverage reads.bam &gt; coverage.tsv\n!head coverage.tsv"
+  },
+  {
+    "objectID": "projects/skidle/skidle.html#interactive-binning-in-binarena",
+    "href": "projects/skidle/skidle.html#interactive-binning-in-binarena",
+    "title": "SKIDLE — Long-read metagenomics notebook (source)",
+    "section": "12. Interactive binning in BinaRena",
+    "text": "12. Interactive binning in BinaRena\nOpen binarena-master/BinaRena.html locally in a browser, then load:\n\nbasic.tsv — length, GC\nk5.tsv — composition coordinates (PCA / t-SNE / UMAP)\ncoverage.tsv — per-contig depth\n\nPlot composition-1 vs composition-2, color by coverage, size by contig length. Lasso each cluster → name → export as a bin."
+  },
+  {
+    "objectID": "projects/skidle/skidle.html#limitations-honest-caveats",
+    "href": "projects/skidle/skidle.html#limitations-honest-caveats",
+    "title": "SKIDLE — Long-read metagenomics notebook (source)",
+    "section": "13. Limitations & honest caveats",
+    "text": "13. Limitations & honest caveats\n\nColab. Real environmental metagenomes need 64+ GB RAM and hours of CPU. This pipeline is built around a small mock community on purpose.\nManual binning doesn’t scale. It’s a teaching tool; for real datasets you’d use MetaBAT2 / SemiBin2 / vamb and fall back to BinaRena for inspection and curating edge cases.\nNo polishing step. ONT assemblies usually want a polishing pass (Medaka, Racon) before downstream analysis — skipped here for brevity.\nNo taxonomy. We separated organisms but didn’t name them. Add GTDB-Tk or Kraken2 if you need labels."
+  },
+  {
+    "objectID": "projects/skidle/skidle.html#what-youd-reach-for-at-scale",
+    "href": "projects/skidle/skidle.html#what-youd-reach-for-at-scale",
+    "title": "SKIDLE — Long-read metagenomics notebook (source)",
+    "section": "14. What you’d reach for at scale",
+    "text": "14. What you’d reach for at scale\n\n\n\n\n\n\n\n\nstage\ndemo here\nproduction\n\n\n\n\nQC\nNanoPlot\nNanoPlot + Filtlong / chopper\n\n\nAssembly\nFlye --meta\nFlye + metaMDBG; polish with Medaka\n\n\nBinning\nBinaRena (manual)\nMetaBAT2 / SemiBin2 / vamb, ensembled w/ DAS_Tool\n\n\nValidation\n(omitted)\nCheckM2, GTDB-Tk\n\n\nRead mapping\nminimap2\nminimap2 (same)"
+  },
+  {
+    "objectID": "projects/skidle/skidle.html#further-reading",
+    "href": "projects/skidle/skidle.html#further-reading",
+    "title": "SKIDLE — Long-read metagenomics notebook (source)",
+    "section": "15. Further reading",
+    "text": "15. Further reading\n\nKolmogorov et al. 2020 — metaFlye: scalable long-read metagenome assembly\nNicholls et al. 2019 — Ultra-deep, long-read nanopore sequencing of mock microbial community standards (the Zymo dataset paper)\nBinaRena: https://github.com/qiyunlab/binarena\nAnvi’o tutorials for a richer view of MAG curation"
+  },
+  {
+    "objectID": "projects/skidle/index.html#whats-inside",
+    "href": "projects/skidle/index.html#whats-inside",
+    "title": "SKIDLE",
+    "section": "What’s inside",
+    "text": "What’s inside\n\nMock-community anchor — ZymoBIOMICS D6300 ONT reads from the SRA, sized to fit Colab’s RAM/wall-clock budget.\nAssembly path — read QC with NanoPlot → Flye --meta assembly → assembly-graph inspection in Bandage.\nAlgorithm detour — minimal Python implementations of a De Bruijn graph, overlap-layout-consensus, and a suffix trie, to demystify what assemblers and mappers are actually doing.\nBinning from first principles — k-mer composition (PCA / t-SNE / UMAP) plus long-read coverage (minimap2 + samtools), then manual binning in BinaRena.\nHonest limits — Colab budget, no polishing or taxonomy, and what you’d reach for at scale (MetaBAT2 / SemiBin2 / vamb / CheckM2)."
+  },
+  {
+    "objectID": "projects/skidle/index.html#links",
+    "href": "projects/skidle/index.html#links",
+    "title": "SKIDLE",
+    "section": "Links",
+    "text": "Links\n\nRendered notebook — full walkthrough as a static page.\nNotebook source (.qmd) — Quarto-ported markdown source.\nDownload .ipynb — raw Jupyter notebook to run locally."
   }
 ]

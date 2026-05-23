@@ -1,0 +1,302 @@
+---
+title: "SKIDLE — Long-read metagenomics notebook (source)"
+subtitle: "Quarto-ported Jupyter notebook. Source view — runnable copies live in the [.ipynb download](skidle.ipynb) or [Google Colab](https://colab.research.google.com/drive/1grezI6faG4OpHTAgmbwmiF-_DvSujhZP)."
+date: "2024-09-01"
+toc: true
+format:
+  html:
+    toc-location: right
+    code-fold: false
+    code-tools: true
+execute:
+  enabled: false
+---
+
+*skid·əl* · A Colab-runnable walkthrough that takes raw long reads from an environmental sample all the way to manually-binned genomes — explaining every step.
+
+## TL;DR
+
+- **Input:** Oxford Nanopore reads from a known mock community
+- **Pipeline:** raw reads → QC → Flye `--meta` assembly → composition + coverage features → interactive binning in BinaRena
+- **Output:** a handful of (hopefully separable) Metagenome-Assembled Genomes, plus an understanding of *why* every step is there
+
+## Who this is for
+
+**Practitioners** — a copy-pasteable scaffold for a small long-read metagenomics run.
+
+**Learners** — every section pairs a concept with a runnable example. The algorithm detour (§7) shows what assemblers are actually doing under the hood, in <50 lines each.
+
+## 1. The biological question
+
+Metagenomics: sequencing the collective DNA of a microbial community without isolating individual organisms.
+
+Shotgun metagenomics fragments all DNA randomly, sequences the fragments, then tries to reconstruct each organism's genome from the resulting jigsaw. The reconstructed pieces are called **contigs**; grouping contigs that came from the same organism is **binning**; a confident bin is a **MAG** (Metagenome-Assembled Genome).
+
+## 2. Why long reads?
+
+Short reads (Illumina) are accurate per-base but trip on **repeats** — any genomic region longer than the read collapses into ambiguous graph nodes. Microbial genomes (and especially metagenomes, where conserved regions are shared across species) are full of them.
+
+Long reads (Oxford Nanopore, PacBio) span repeats. The historical trade-off was per-base error — modern ONT R10 + recent basecallers have closed most of that gap.
+
+## 3. The dataset
+
+We'll use a subset of the **ZymoBIOMICS D6300 mock community** — a defined mix of 8 bacteria + 2 yeasts. Known ground truth means we can evaluate whether our binning actually worked.
+
+Starting point (verify it fits Colab limits — downsample with `seqtk sample` if needed):
+
+- `SRR8351023` — Zymo GridION run (Nicholls et al. 2019)
+
+## 4. Environment setup
+
+Colab gives us a fresh VM; `condacolab` lets us install bioconda tooling without fighting pip.
+
+```{python}
+!pip install -q condacolab
+import condacolab
+condacolab.install()
+# Kernel restarts after this — expected.
+```
+
+## 5. Fetching reads from the SRA
+
+NCBI's SRA stores raw sequencing reads. `sra-tools` gives us `prefetch` (download `.sra`) and `fasterq-dump` (extract FASTQ).
+
+```{python}
+!conda install -y -c bioconda sra-tools
+
+ACCESSION = "SRR8351023"  # confirm / swap for your chosen Zymo subset
+!prefetch {ACCESSION}
+!fasterq-dump --threads 4 {ACCESSION}
+
+# Optional: downsample so Flye finishes inside Colab's wall-clock budget
+# !conda install -y -c bioconda seqtk
+# !seqtk sample -s42 {ACCESSION}.fastq 0.1 > reads.sub.fastq
+```
+
+## 6. Read QC (before you assemble anything)
+
+Always look at your reads before assembling them. For ONT data, three things to check:
+
+- **Read length distribution** — long enough to be useful?
+- **Quality (Phred / Q-score) distribution** — basecaller version matters
+- **Throughput** — enough coverage to assemble?
+
+```{python}
+!pip install -q NanoPlot
+!NanoPlot --fastq {ACCESSION}.fastq -o nanoplot_out --tsv_stats
+```
+
+## 7. Detour — how assemblers actually work
+
+Before handing reads to Flye, here are toy implementations of the three classical approaches. Not production code — the minimum viable demonstration of each idea, so the abstraction stops being a black box.
+
+### 7a. De Bruijn graph
+
+Idea: break every read into k-mers; each (k−1)-mer is a node, each k-mer is a directed edge. An Eulerian walk reconstructs the sequence (most of the time). This is what short-read assemblers (SPAdes, MEGAHIT) lean on.
+
+```{python}
+from collections import defaultdict
+
+def build_debruijn(reads, k):
+    """Nodes = (k-1)-mers, edges = k-mers."""
+    graph = defaultdict(list)
+    for read in reads:
+        for i in range(len(read) - k + 1):
+            kmer = read[i:i + k]
+            graph[kmer[:-1]].append(kmer[1:])
+    return graph
+
+reads = ["ATGCGA", "TGCGAT", "GCGATC"]
+for node, edges in build_debruijn(reads, k=3).items():
+    print(f"{node} -> {edges}")
+```
+
+### 7b. Overlap–Layout–Consensus (OLC)
+
+Idea: find pairwise overlaps between reads → build an overlap graph → walk it. Computationally expensive (all-vs-all) but tolerant of long, noisy reads. The family Flye descends from.
+
+```{python}
+def overlap(a, b, min_len=3):
+    """Longest suffix of a that matches a prefix of b."""
+    start = 0
+    while True:
+        start = a.find(b[:min_len], start)
+        if start == -1:
+            return 0
+        if b.startswith(a[start:]):
+            return len(a) - start
+        start += 1
+
+reads = ["ATGCG", "TGCGA", "GCGAT"]
+for a in reads:
+    for b in reads:
+        if a != b and (ol := overlap(a, b)):
+            print(f"{a} -> {b}: overlap {ol}")
+```
+
+### 7c. Suffix trie (aside)
+
+Not an assembler itself, but the data structure underneath suffix arrays / FM-indexes — i.e., the read-*mapping* side of the pipeline (bowtie2, minimap2). Worth seeing once because it's how we get from "a pile of reads" to "reads aligned to contigs" in §11b.
+
+```{python}
+class SuffixTrie:
+    def __init__(self, text):
+        self.root = {}
+        for i in range(len(text)):
+            node = self.root
+            for ch in text[i:] + "$":
+                node = node.setdefault(ch, {})
+
+    def contains(self, pattern):
+        node = self.root
+        for ch in pattern:
+            if ch not in node:
+                return False
+            node = node[ch]
+        return True
+
+t = SuffixTrie("ATGCGATC")
+print(t.contains("GCGA"))  # True
+print(t.contains("AAA"))   # False
+```
+
+### 7d. So what does Flye actually do?
+
+Flye builds a **repeat graph** — disjoint repetitive regions become single nodes regardless of how many times they appear in the source. Unique sequence forms the edges between them. This lets the assembler resolve repeats explicitly rather than collapsing them, which matters enormously for metagenomes where the same conserved gene (e.g., 16S) shows up in many species at once.
+
+## 8. Assembly with Flye `--meta`
+
+`--meta` tells Flye not to assume uniform coverage — in a community, different species are present at very different abundances and a uniform-coverage prior would discard the rare ones as errors.
+
+```{python}
+!conda install -y -c bioconda flye
+```
+
+```{python}
+!flye --help
+```
+
+```{python}
+# Note: --genome-size is OPTIONAL with --meta; omit if you don't know the total size.
+!flye \
+  --nano-raw {ACCESSION}.fastq \
+  --out-dir out_assembly \
+  --meta \
+  --threads 4
+```
+
+### 8a. Inspecting the assembly
+
+Flye produces:
+
+- `assembly.fasta` — the contigs
+- `assembly_info.txt` — per-contig stats (length, coverage, circular?)
+- `assembly_graph.gfa` — the repeat graph
+- `flye.log` — overall stats including N50, mean divergence
+
+```{python}
+!tail -40 out_assembly/flye.log
+print("---")
+!head out_assembly/assembly_info.txt
+```
+
+## 9. Viewing the assembly graph
+
+`assembly_graph.gfa` is best viewed in [Bandage](https://rrwick.github.io/Bandage/) (or AGB / IGV). Bandage runs locally, so this is the one step that doesn't live in Colab.
+
+The interesting things to annotate on the graph view are the **circular** contigs (likely complete chromosomes — a win for long reads) versus the tangled regions where the assembler couldn't resolve repeats.
+
+## 10. From contigs to bins — the intuition
+
+After assembly we have a bag of contigs with no labels. To group them by source organism we use two signals that tend to be conserved *within* a genome but vary *across* genomes:
+
+1. **Composition** — every genome has a characteristic k-mer (tetra-/pentanucleotide) signature.
+2. **Coverage** — contigs from the same organism appear at the same abundance, so they recruit similar read depth.
+
+Plot contigs in (composition, coverage) space and same-organism contigs cluster together. That's the entire conceptual basis for modern binning — every tool from MetaBAT2 to SemiBin2 is some variant of this picture.
+
+## 11. Setting up BinaRena
+
+[BinaRena](https://github.com/qiyunlab/binarena) is a browser-based tool for **manual, interactive** binning. Its companion scripts compute the composition + coverage features we need.
+
+```{python}
+!conda install -y -c conda-forge -c bioconda \
+  scikit-bio scikit-learn umap-learn \
+  minimap2 samtools \
+  checkm2
+```
+
+```{python}
+!wget -q https://github.com/qiyunlab/binarena/archive/refs/heads/master.zip
+!unzip -j -o master.zip 'binarena-master/scripts/*.py' -d scripts
+!chmod +x scripts/*.py
+```
+
+```{python}
+!ln -sf out_assembly/assembly.fasta contigs.fna
+```
+
+### 11a. Composition features (k-mers)
+
+Count 5-mers per contig, then project to 2D with PCA / t-SNE / UMAP so we can see cluster structure.
+
+```{python}
+!scripts/sequence_basics.py -i contigs.fna -o basic.tsv
+!head basic.tsv
+```
+
+```{python}
+!scripts/count_kmers.py -i contigs.fna -k 5 | \
+  scripts/reduce_dimension.py --pca --tsne --umap -o k5
+```
+
+### 11b. Coverage features
+
+Map the original reads back to the assembled contigs. Contigs from the same genome get hit at roughly the same depth.
+
+**Note:** for ONT/PacBio long reads use `minimap2 -ax map-ont`, *not* `bowtie2` — bowtie2 is a short-read aligner and will mis-handle long, noisy reads.
+
+```{python}
+!minimap2 -ax map-ont -t 4 contigs.fna {ACCESSION}.fastq | \
+  samtools sort -@ 4 -o reads.bam
+!samtools index reads.bam
+```
+
+```{python}
+!samtools coverage reads.bam > coverage.tsv
+!head coverage.tsv
+```
+
+## 12. Interactive binning in BinaRena
+
+Open `binarena-master/BinaRena.html` locally in a browser, then load:
+
+- `basic.tsv` — length, GC
+- `k5.tsv` — composition coordinates (PCA / t-SNE / UMAP)
+- `coverage.tsv` — per-contig depth
+
+Plot composition-1 vs composition-2, color by coverage, size by contig length. Lasso each cluster → name → export as a bin.
+
+## 13. Limitations & honest caveats
+
+- **Colab.** Real environmental metagenomes need 64+ GB RAM and hours of CPU. This pipeline is built around a small mock community on purpose.
+- **Manual binning doesn't scale.** It's a teaching tool; for real datasets you'd use MetaBAT2 / SemiBin2 / vamb and fall back to BinaRena for inspection and curating edge cases.
+- **No polishing step.** ONT assemblies usually want a polishing pass (Medaka, Racon) before downstream analysis — skipped here for brevity.
+- **No taxonomy.** We *separated* organisms but didn't *name* them. Add GTDB-Tk or Kraken2 if you need labels.
+
+## 14. What you'd reach for at scale
+
+| stage          | demo here              | production                                       |
+|----------------|------------------------|--------------------------------------------------|
+| QC             | NanoPlot               | NanoPlot + Filtlong / chopper                    |
+| Assembly       | Flye `--meta`          | Flye + metaMDBG; polish with Medaka              |
+| Binning        | BinaRena (manual)      | MetaBAT2 / SemiBin2 / vamb, ensembled w/ DAS_Tool |
+| Validation     | (omitted)              | CheckM2, GTDB-Tk                                 |
+| Read mapping   | minimap2               | minimap2 (same)                                  |
+
+## 15. Further reading
+
+- Kolmogorov et al. 2020 — *metaFlye: scalable long-read metagenome assembly*
+- Nicholls et al. 2019 — *Ultra-deep, long-read nanopore sequencing of mock microbial community standards* (the Zymo dataset paper)
+- BinaRena: <https://github.com/qiyunlab/binarena>
+- Anvi'o tutorials for a richer view of MAG curation

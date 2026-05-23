@@ -47,9 +47,6 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../site_libs/bootstrap/bootstrap-2cfeeb82f05ea45cd7593e388d0fb6d7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/bootstrap/bootstrap-dark-3afa306f1f863f24ad19db98836f9ddb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="../../site_libs/bootstrap/bootstrap-2cfeeb82f05ea45cd7593e388d0fb6d7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
-<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
-<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
-<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -328,11 +325,13 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">SKIDLE</h1>
-<p class="subtitle lead">Long-read Flye assembly + BinArena visualization pipeline for metagenomics.</p>
+<p class="subtitle lead">A Colab-runnable long-read metagenomics walkthrough — Flye <code>--meta</code> assembly through BinaRena binning, with the algorithm intuition built in.</p>
   <div class="quarto-categories">
     <div class="quarto-category">metagenomics</div>
     <div class="quarto-category">long-read</div>
     <div class="quarto-category">assembly</div>
+    <div class="quarto-category">tutorial</div>
+    <div class="quarto-category">python</div>
   </div>
   </div>
 
@@ -356,15 +355,28 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>A visualization pipeline that doubles as a long-read metagenomics tutorial — covering Flye assembly through BinArena exploration. The full walkthrough is packaged as a Google Colaboratory notebook.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid figure-img"></p>
-<figcaption>Open In Colab</figcaption>
-</figure>
-</div>
+<p>A teaching-first long-read metagenomics pipeline. Designed to run end-to-end in a Google Colab notebook against a small mock community, with detours into the data structures (De Bruijn graphs, OLC, suffix tries) underneath each step. Equal parts practitioner scaffold and learner explainer.</p>
+<section id="whats-inside" class="level2">
+<h2 data-anchor-id="whats-inside">What’s inside</h2>
+<ul>
+<li><strong>Mock-community anchor</strong> — ZymoBIOMICS D6300 ONT reads from the SRA, sized to fit Colab’s RAM/wall-clock budget.</li>
+<li><strong>Assembly path</strong> — read QC with NanoPlot → Flye <code>--meta</code> assembly → assembly-graph inspection in Bandage.</li>
+<li><strong>Algorithm detour</strong> — minimal Python implementations of a De Bruijn graph, overlap-layout-consensus, and a suffix trie, to demystify what assemblers and mappers are actually doing.</li>
+<li><strong>Binning from first principles</strong> — k-mer composition (PCA / t-SNE / UMAP) plus long-read coverage (<code>minimap2</code> + <code>samtools</code>), then manual binning in <strong>BinaRena</strong>.</li>
+<li><strong>Honest limits</strong> — Colab budget, no polishing or taxonomy, and what you’d reach for at scale (MetaBAT2 / SemiBin2 / vamb / CheckM2).</li>
+</ul>
+</section>
+<section id="links" class="level2">
+<h2 data-anchor-id="links">Links</h2>
+<ul>
+<li><strong><a href="skidle.html">Rendered notebook</a></strong> — full walkthrough as a static page.</li>
+<li><strong><a href="../../projects/skidle/skidle.html">Notebook source (.qmd)</a></strong> — Quarto-ported markdown source.</li>
+<li><strong><a href="skidle.ipynb">Download .ipynb</a></strong> — raw Jupyter notebook to run locally.</li>
+<li><a href="https://colab.research.google.com/drive/1grezI6faG4OpHTAgmbwmiF-_DvSujhZP"><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid" alt="Open In Colab"></a></li>
+</ul>
 
 
+</section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -812,38 +824,6 @@ ul.task-list li input[type="checkbox"] {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
-(function() {
-  let previousOnload = window.onload;
-  window.onload = () => {
-    if (previousOnload) {
-      previousOnload();
-    }
-    lightboxQuarto.on('slide_before_load', (data) => {
-      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-      const href = trigger.getAttribute('href');
-      if (href !== null) {
-        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
-        if (imgEl !== null) {
-          const srcAttr = imgEl.getAttribute("src");
-          if (srcAttr && srcAttr.startsWith("data:")) {
-            slideConfig.href = srcAttr;
-          }
-        }
-      } 
-    });
-  
-    lightboxQuarto.on('slide_after_load', (data) => {
-      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(slideNode);
-      }
-    });
-  
-  };
-  
-})();
-          </script>
 
 
 
