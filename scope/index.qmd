@@ -52,27 +52,51 @@ The questions I find most compelling cross these layers — predicting community
 :::
 
 ```{=html}
-<section class="scope-panels" aria-label="Research thrusts">
+<section class="scope-thrusts" aria-label="Research thrusts">
 
-<div class="scope-panel">
-<h2>Microbial stress response</h2>
-<p>Environmental stressors induce rapid transcriptional, metabolic, and compositional shifts that can leave short-term ecological memory in microbial communities. I aim to quantify which functional products appear, how long they persist, and whether these responses generalize across systems and perturbations.</p>
+<article class="scope-thrust">
+<div class="scope-thrust-text">
+<h3>Microbial stress response</h3>
+<p>Environmental stressors induce rapid transcriptional, metabolic, and compositional shifts that can leave short-term ecological memory within microbial communities. I'm interested in quantifying which functional products appear under stress, how long they persist, and what timescales communities follow as they transition through disturbance and recovery. A central question is whether these responses are predictable and generalizable across systems and perturbations — whether a "stress signature" learned on one community transfers to another. This work integrates time-resolved multi-omic profiling with mechanistic and statistical models of community dynamics.</p>
 </div>
+<figure class="scope-thrust-figure">
+<div class="diagram-placeholder" data-label="figure / diagram"></div>
+<figcaption>Stress &rarr; response &rarr; recovery dynamics across multi-omic layers.</figcaption>
+</figure>
+</article>
 
-<div class="scope-panel">
-<h2>Linking function to (meta)phenome</h2>
-<p>Stress events reshape genomic context — composition, mobile elements, accessory genes, and horizontally transferred loci that mediate adaptation. I'm interested in how these features map onto observable community phenotypes: which lineages and genes drive measurable shifts in metabolite output and ecological role.</p>
+<article class="scope-thrust">
+<figure class="scope-thrust-figure">
+<div class="diagram-placeholder" data-label="figure / diagram"></div>
+<figcaption>Mapping genomic / accessory-gene context onto community phenotype.</figcaption>
+</figure>
+<div class="scope-thrust-text">
+<h3>Linking function to (meta)phenome</h3>
+<p>Stress events reshape the genomic context of microbial populations — composition, mobile elements, accessory genes, and horizontally transferred loci that mediate adaptation. I'm interested in how these features map onto observable community phenotypes: which lineages, gene clusters, and pathways drive measurable shifts in metabolite output, growth, and ecological role during environmental pulses. The goal is to anchor abstract functional annotations to concrete, measurable phenome-level traits — so that "this community has gene X" becomes "this community is more likely to do Y under Z."</p>
 </div>
+</article>
 
-<div class="scope-panel">
-<h2>Bioprospecting following stress response</h2>
-<p>Discovering and characterizing novel genes, enzymes, and small molecules that confer stress tolerance or facilitate rapid recovery. Through comparative multi-omics, I identify candidate loci enriched during stress pulses and validate them via heterologous expression — bridging ecological resilience to synthetic biology and biotechnology.</p>
+<article class="scope-thrust">
+<div class="scope-thrust-text">
+<h3>Bioprospecting following stress response</h3>
+<p>A tertiary aim is to discover and characterize novel genes, enzymes, and small molecules that confer stress tolerance or facilitate rapid recovery in their host or ecosystem. Through comparative multi-omics, I identify candidate loci and products enriched during stress pulses and validate them experimentally via heterologous expression and quantitative assays. This integrative pipeline bridges discovery and application — linking ecological resilience to synthetic biology, natural product discovery, bioremediation, and biotechnological innovation.</p>
 </div>
+<figure class="scope-thrust-figure">
+<div class="diagram-placeholder" data-label="figure / diagram"></div>
+<figcaption>Candidate discovery &rarr; heterologous expression &rarr; quantitative validation.</figcaption>
+</figure>
+</article>
 
-<div class="scope-panel">
-<h2>Computational and ML methodology for biological inference</h2>
-<p>Cross-cutting the above: building and applying computational methods — statistical models, foundation models, and modern ML — to integrate multi-omic, phylogenetic, and phenotypic data. The goal is methodology that scales across biological systems and lets predictions transfer.</p>
+<article class="scope-thrust">
+<figure class="scope-thrust-figure">
+<div class="diagram-placeholder" data-label="figure / diagram"></div>
+<figcaption>Computational and ML methodology spanning the three thrusts above.</figcaption>
+</figure>
+<div class="scope-thrust-text">
+<h3>Computational and ML methodology for biological inference</h3>
+<p>Cross-cutting the thrusts above: I build and apply computational methods — statistical models, phylogenetic frameworks, foundation models, and modern ML — to integrate multi-omic, phylogenetic, and phenotypic data. The goal is methodology that scales across biological systems and lets predictions from one community or perturbation generalize to the next. I care about methods that are honest about uncertainty, that respect the structure of the data they're trained on (compositional, phylogenetic, sparse), and that produce interpretable handles for biologists, not just leaderboard numbers.</p>
 </div>
+</article>
 
 </section>
 ```
