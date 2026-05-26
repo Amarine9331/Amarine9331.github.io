@@ -17,19 +17,19 @@ website:
     pinned: true
     title: "amarine9331"
     right:
-      - text: "ABOUT"
+      - text: "/about"
         href: index.qmd
-      - text: "PROJECTS"
+      - text: "/projects"
         href: projects/index.qmd
-      - text: "PUBLICATIONS"
+      - text: "/publications"
         href: publications/index.qmd
-      - text: "TALKS"
+      - text: "/talks"
         href: talks/index.qmd
-      - text: "TEACHING"
+      - text: "/teaching"
         href: teaching/index.qmd
-      - text: "BLOG"
+      - text: "/blog"
         href: blog/index.qmd
-      - text: "CV"
+      - text: "/cv"
         href: files/David_A_CV_Aug2025.pdf
         target: _blank
     tools:

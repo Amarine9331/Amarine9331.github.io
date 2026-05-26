@@ -40,7 +40,7 @@ hr {
 .navbar {
   background: var(--bg) !important;
   border-bottom: 1px solid var(--border);
-  padding: 0.6rem 1rem;
+  padding: 0.55rem 1rem;
   box-shadow: none;
 
   .navbar-brand-container {
@@ -79,14 +79,16 @@ hr {
     font-family: var(--bs-font-monospace, "Geist Mono", monospace);
     font-size: 0.72rem;
     font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
+    letter-spacing: 0;
     color: var(--muted-fg) !important;
-    border: none;
-    padding: 0.4rem 0.75rem;
-    transition: color 120ms ease-out;
+    border: 1px solid transparent;
+    border-radius: 0.375rem;
+    padding: 0.38rem 0.62rem;
+    transition: color 120ms ease-out, background 120ms ease-out, border-color 120ms ease-out;
     &:hover, &.active {
       color: var(--fg) !important;
+      background: var(--muted);
+      border-color: var(--border);
     }
   }
 
@@ -227,7 +229,7 @@ hr {
   display: flex;
   flex-wrap: wrap;
   gap: 0.45rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1.1rem;
 
   .tag {
     font-family: var(--bs-font-monospace, "Geist Mono", monospace);
@@ -238,6 +240,164 @@ hr {
     border: 1px solid var(--border);
     border-radius: 0.375rem;
     color: var(--muted-fg);
+  }
+}
+
+// ============================================================
+// Research scope + CSS DNA scroll motif
+// ============================================================
+
+.research-scope {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 5.5rem;
+  gap: 1.5rem;
+  align-items: start;
+  margin: 1.1rem 0 0.75rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.research-copy {
+  min-width: 0;
+}
+
+.focus-kicker {
+  font-family: var(--bs-font-monospace, "Geist Mono", monospace);
+  font-size: 0.72rem;
+  color: var(--muted-fg);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin: 0 0 0.9rem;
+}
+
+.scope-item {
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border);
+
+  &:first-of-type {
+    padding-top: 0;
+  }
+
+  h2 {
+    font-size: 1rem;
+    line-height: 1.25;
+    margin: 0 0 0.45rem;
+    letter-spacing: 0;
+  }
+
+  p {
+    color: var(--muted-fg);
+    font-size: 0.92rem;
+    line-height: 1.62;
+    margin: 0;
+  }
+}
+
+.dna-scroll {
+  position: sticky;
+  top: 5.25rem;
+  height: 22rem;
+  border-left: 1px solid var(--border);
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.dna-strand {
+  position: relative;
+  width: 3rem;
+  height: 100%;
+  animation: dna-drift 8s linear infinite;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 0.32rem;
+    border-radius: 999px;
+    background:
+      radial-gradient(circle at 50% 0.25rem, var(--fg) 0 0.13rem, transparent 0.14rem) 0 0 / 100% 2.4rem,
+      linear-gradient(var(--muted-fg), var(--muted-fg));
+    opacity: 0.82;
+  }
+
+  &::before {
+    left: 0.35rem;
+  }
+
+  &::after {
+    right: 0.35rem;
+  }
+
+  span {
+    position: absolute;
+    left: 0.75rem;
+    width: 1.5rem;
+    height: 1px;
+    background: var(--border);
+    transform-origin: center;
+    opacity: 0.95;
+  }
+
+  span:nth-child(1) { top: 4%; transform: rotate(18deg); }
+  span:nth-child(2) { top: 12%; transform: rotate(-18deg); }
+  span:nth-child(3) { top: 20%; transform: rotate(18deg); }
+  span:nth-child(4) { top: 28%; transform: rotate(-18deg); }
+  span:nth-child(5) { top: 36%; transform: rotate(18deg); }
+  span:nth-child(6) { top: 44%; transform: rotate(-18deg); }
+  span:nth-child(7) { top: 52%; transform: rotate(18deg); }
+  span:nth-child(8) { top: 60%; transform: rotate(-18deg); }
+  span:nth-child(9) { top: 68%; transform: rotate(18deg); }
+  span:nth-child(10) { top: 76%; transform: rotate(-18deg); }
+  span:nth-child(11) { top: 84%; transform: rotate(18deg); }
+  span:nth-child(12) { top: 92%; transform: rotate(-18deg); }
+}
+
+@keyframes dna-drift {
+  from { transform: translateY(-1.2rem); }
+  to { transform: translateY(1.2rem); }
+}
+
+@supports (animation-timeline: view()) {
+  .dna-strand {
+    animation: dna-scroll-spin linear both;
+    animation-timeline: view(block);
+    animation-range: entry 10% exit 90%;
+  }
+}
+
+@keyframes dna-scroll-spin {
+  from { transform: translateY(-1.2rem) rotate(0deg); }
+  to { transform: translateY(1.2rem) rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dna-strand {
+    animation: none;
+  }
+}
+
+@media (max-width: 680px) {
+  .research-scope {
+    grid-template-columns: 1fr;
+  }
+
+  .dna-scroll {
+    position: relative;
+    top: auto;
+    height: 5.25rem;
+    border-left: 0;
+    border-top: 1px solid var(--border);
+    align-items: center;
+  }
+
+  .dna-strand {
+    width: 14rem;
+    height: 3rem;
+    animation: none;
+    transform: rotate(90deg);
   }
 }
 

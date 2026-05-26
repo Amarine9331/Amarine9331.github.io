@@ -58,6 +58,34 @@ I aim to keep building computational tools and conducting research that benefits
 <span class="tag">MACHINE LEARNING</span>
 <span class="tag">BIOTECHNOLOGY</span>
 </div>
+
+<section class="research-scope" aria-labelledby="research-scope-title">
+<div class="research-copy">
+<p class="focus-kicker" id="research-scope-title">Research scope</p>
+
+<div class="scope-item">
+<h2>SOP mechanisms and memory of stress response in microbial communities</h2>
+<p>Environmental stressors induce rapid transcriptional, metabolic, and compositional shifts that can leave short-term ecological memory within microbial communities. I aim to integrate multi-omic methodologies to quantify which functional products appear, how long they persist, and over what timescales communities transition through disturbance and recovery. A central question is whether these responses are predictable and generalizable across different biological systems and perturbations.</p>
+</div>
+
+<div class="scope-item">
+<h2>Linking phylogeny to stress</h2>
+<p>Stress events often reshape the genomic context of microbial populations, altering the microbial composition and distribution of mobile elements, accessory genes, and horizontally transferred loci that mediate adaptation. I am interested in how these genomic features reorganize functional potential during environmental pulses, and how lineage-specific traits map onto chemical and metabolite pulses.</p>
+</div>
+
+<div class="scope-item">
+<h2>Bioprospecting following stress response</h2>
+<p>A tertiary aim is to discover and characterize novel genes, enzymes, and small molecules that confer stress tolerance or facilitate rapid recovery in their host or ecosystem. Through comparative multi-omics, I will identify candidate loci and products enriched during stress pulses and experimentally validate them using heterologous expression and quantitative assays. This integrative pipeline bridges discovery and application, linking ecological resilience to synthetic biology, natural product discovery, bioremediation, and biotechnological innovation.</p>
+</div>
+</div>
+
+<div class="dna-scroll" aria-hidden="true">
+<div class="dna-strand">
+<span></span><span></span><span></span><span></span><span></span><span></span>
+<span></span><span></span><span></span><span></span><span></span><span></span>
+</div>
+</div>
+</section>
 ```
 
 ::: {.section-label}
