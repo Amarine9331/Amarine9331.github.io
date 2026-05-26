@@ -487,6 +487,23 @@ hr {
   }
 }
 
+.scope-thrust-svg {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  background: var(--bg);
+  box-sizing: border-box;
+  display: block;
+  padding: 1.25rem;
+  overflow: visible;
+
+  text {
+    font-family: var(--bs-font-monospace, "Geist Mono", monospace);
+    user-select: none;
+  }
+}
+
 @media (max-width: 720px) {
   .scope-thrust {
     grid-template-columns: 1fr;

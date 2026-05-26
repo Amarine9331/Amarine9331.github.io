@@ -14,7 +14,7 @@ section-divs: false
 {{< include /_includes/dna-banner.html >}}
 
 ```{=html}
-<p class="page-lede">A longer-form description of the research questions I'm working on, the biological scales I move between, and the methodology I rely on.</p>
+<p class="page-lede">A deep-dive into the research questions driving my work, the biological scales I navigate, and the computational methodologies I build to make sense of complex ecosystems.</p>
 ```
 
 ::: {.section-label}
@@ -23,44 +23,27 @@ section-divs: false
 
 The biology I care about is fundamentally multi-scale. The same perturbation that flips a transcript on or off inside a single cell propagates outward into cellular behavior and, eventually, into the composition and output of an entire community. Understanding any one scale in isolation is incomplete; the interesting questions live in the seams.
 
-```{=html}
-<section class="scope-thrusts" aria-label="Systems across scales">
+::: {.scale-grid}
 
-<article class="scope-thrust">
-<div class="scope-thrust-text">
-<h3>Molecular layer</h3>
-<p>The genome, transcriptome, proteome, and metabolome — the molecular state that encodes and executes cellular function. Modern profiling (long- and short-read sequencing, mass spectrometry, single-cell methods) lets us read out this layer with increasing depth and resolution. Most of my computational work starts here: cleaning, integrating, and modeling molecular readouts.</p>
-</div>
-<figure class="scope-thrust-figure">
-<div class="diagram-placeholder" data-label="figure / diagram"></div>
-<figcaption>Multi-omic profiling stack at the molecular layer.</figcaption>
-</figure>
-</article>
+::: {.scale-item}
+**Molecular layer**
 
-<article class="scope-thrust">
-<figure class="scope-thrust-figure">
-<div class="diagram-placeholder" data-label="figure / diagram"></div>
-<figcaption>Genotype &rarr; integrated cellular phenotype under perturbation.</figcaption>
-</figure>
-<div class="scope-thrust-text">
-<h3>Cellular layer</h3>
-<p>The integrated phenotype of an individual cell or organism — how molecular state propagates into observable behavior, growth, stress tolerance, metabolic output, and lineage-specific traits. This is where genotype starts to make contact with environment, and where the assumptions baked into molecular models get tested.</p>
-</div>
-</article>
+The genome, transcriptome, proteome, and metabolome — the molecular state executing cellular function. Using high-resolution profiling (long-read sequencing, mass spectrometry, and single-cell multi-omics), I integrate and model high-dimensional molecular readouts to trace functional states.
+:::
 
-<article class="scope-thrust">
-<div class="scope-thrust-text">
-<h3>Community layer</h3>
-<p>Interacting populations in ecological or host-associated contexts. Microbial communities are the canonical example: thousands of distinct lineages co-occurring, exchanging metabolites, and responding collectively to disturbance. Behavior at this scale is rarely the sum of its parts — emergent dynamics dominate, and that's what makes prediction hard and interesting.</p>
-</div>
-<figure class="scope-thrust-figure">
-<div class="diagram-placeholder" data-label="figure / diagram"></div>
-<figcaption>Emergent dynamics across a microbial community.</figcaption>
-</figure>
-</article>
+::: {.scale-item}
+**Cellular layer**
 
-</section>
-```
+The integrated phenotype of an individual cell or organism — how molecular cascades translate to growth, stress tolerance, metabolic yield, and lineage-specific traits. This is where genotype meets environment, and where our molecular models face physical validation.
+:::
+
+::: {.scale-item}
+**Community layer**
+
+Interacting populations in ecological or host-associated niches. Thousands of distinct lineages co-occur, exchange metabolites, and respond collectively to perturbations. Emergent dynamics dominate this scale, making prediction both challenging and highly rewarding.
+:::
+
+:::
 
 The questions I find most compelling cross these layers — predicting community-level behavior from molecular state, or inferring molecular determinants from community-level observations. The same data, read at a different scale, often tells a different story.
 
@@ -74,44 +57,197 @@ The questions I find most compelling cross these layers — predicting community
 <article class="scope-thrust">
 <div class="scope-thrust-text">
 <h3>Microbial stress response</h3>
-<p>Environmental stressors induce rapid transcriptional, metabolic, and compositional shifts that can leave short-term ecological memory within microbial communities. I'm interested in quantifying which functional products appear under stress, how long they persist, and what timescales communities follow as they transition through disturbance and recovery. A central question is whether these responses are predictable and generalizable across systems and perturbations — whether a "stress signature" learned on one community transfers to another. This work integrates time-resolved multi-omic profiling with mechanistic and statistical models of community dynamics.</p>
+<p>Environmental stressors induce rapid transcriptional, metabolic, and compositional shifts that leave ecological signatures in microbial systems. I study which functional products emerge under stress, how long they persist, and the precise timescales of disturbance and recovery. My goal is to discover whether these responses are generalizable — whether a "stress signature" learned in one system predicts dynamics in another. This work integrates time-resolved multi-omics with mechanistic and statistical models of community behavior.</p>
 </div>
 <figure class="scope-thrust-figure">
-<div class="diagram-placeholder" data-label="figure / diagram"></div>
-<figcaption>Stress &rarr; response &rarr; recovery dynamics across multi-omic layers.</figcaption>
+<svg class="scope-thrust-svg" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" aria-label="Microbial stress response timeline graph">
+  <line x1="30" y1="230" x2="370" y2="230" stroke="var(--border)" stroke-width="1.5" />
+  <line x1="30" y1="30" x2="30" y2="230" stroke="var(--border)" stroke-width="1.5" />
+  <line x1="110" y1="30" x2="110" y2="230" stroke="var(--muted-fg)" stroke-width="1.25" stroke-dasharray="3 3" />
+  <text x="115" y="45" fill="var(--muted-fg)" font-size="8" letter-spacing="0.05em">STRESS EVENT</text>
+  <path d="M 30 190 L 110 190 Q 130 50, 160 50 T 210 190 L 370 190" fill="none" stroke="var(--fg)" stroke-width="2" />
+  <path d="M 30 190 L 110 190 Q 140 190, 170 110 T 250 190 L 370 190" fill="none" stroke="var(--fg)" stroke-width="1.5" stroke-dasharray="4 2" />
+  <path d="M 30 140 L 110 140 Q 130 140, 150 210 T 280 150 L 370 150" fill="none" stroke="var(--muted-fg)" stroke-width="1.25" />
+  <text x="175" y="60" fill="var(--fg)" font-size="8">TRANSCRIPTOME</text>
+  <text x="210" y="115" fill="var(--fg)" font-size="8">METABOLOME</text>
+  <text x="270" y="165" fill="var(--muted-fg)" font-size="8">COMMUNITY</text>
+  <text x="365" y="245" fill="var(--muted-fg)" font-size="8" text-anchor="end">TIME &rarr;</text>
+</svg>
+<figcaption>Sleek timeline showing time-resolved transcription spikes preceding metabolic shifts and community adaptation.</figcaption>
 </figure>
 </article>
 
 <article class="scope-thrust">
 <figure class="scope-thrust-figure">
-<div class="diagram-placeholder" data-label="figure / diagram"></div>
-<figcaption>Mapping genomic / accessory-gene context onto community phenotype.</figcaption>
+<svg class="scope-thrust-svg" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" aria-label="Species-to-phenome bipartite matching network">
+  <!-- Connections -->
+  <line x1="70" y1="70" x2="160" y2="90" stroke="var(--border)" stroke-width="1" />
+  <line x1="70" y1="150" x2="160" y2="90" stroke="var(--border)" stroke-width="1" />
+  <line x1="70" y1="150" x2="160" y2="170" stroke="var(--border)" stroke-width="1" />
+  <line x1="70" y1="230" x2="160" y2="170" stroke="var(--border)" stroke-width="1" />
+  <line x1="240" y1="90" x2="310" y2="70" stroke="var(--fg)" stroke-width="1.5" />
+  <line x1="240" y1="90" x2="310" y2="150" stroke="var(--muted-fg)" stroke-width="1" stroke-dasharray="3 3" />
+  <line x1="240" y1="170" x2="310" y2="150" stroke="var(--fg)" stroke-width="1.5" />
+  <line x1="240" y1="170" x2="310" y2="230" stroke="var(--muted-fg)" stroke-width="1" stroke-dasharray="3 3" />
+
+  <!-- Taxa Nodes -->
+  <circle cx="60" cy="70" r="10" fill="var(--bg)" stroke="var(--fg)" stroke-width="1.5" />
+  <text x="45" y="73" fill="var(--fg)" font-size="8" text-anchor="end">Taxon A</text>
+  <circle cx="60" cy="150" r="10" fill="var(--bg)" stroke="var(--fg)" stroke-width="1.5" />
+  <text x="45" y="153" fill="var(--fg)" font-size="8" text-anchor="end">Taxon B</text>
+  <circle cx="60" cy="230" r="10" fill="var(--bg)" stroke="var(--fg)" stroke-width="1.5" />
+  <text x="45" y="233" fill="var(--fg)" font-size="8" text-anchor="end">Taxon C</text>
+
+  <!-- Accessory Gene Clusters -->
+  <rect x="160" y="80" width="80" height="20" rx="3" fill="var(--bg)" stroke="var(--fg)" stroke-width="1" />
+  <text x="200" y="92" fill="var(--fg)" font-size="8" text-anchor="middle">accessory_I</text>
+  <rect x="160" y="160" width="80" height="20" rx="3" fill="var(--bg)" stroke="var(--fg)" stroke-width="1" />
+  <text x="200" y="172" fill="var(--fg)" font-size="8" text-anchor="middle">accessory_II</text>
+
+  <!-- Shared Phenotypic Outputs -->
+  <circle cx="320" cy="70" r="10" fill="var(--bg)" stroke="var(--fg)" stroke-width="1.5" />
+  <text x="335" y="73" fill="var(--fg)" font-size="8" text-anchor="start">Metabolic Profile</text>
+  <circle cx="320" cy="150" r="10" fill="var(--bg)" stroke="var(--fg)" stroke-width="1.5" />
+  <text x="335" y="153" fill="var(--fg)" font-size="8" text-anchor="start">Growth Resilience</text>
+  <circle cx="320" cy="230" r="10" fill="var(--bg)" stroke="var(--muted-fg)" stroke-width="1" stroke-dasharray="3 3" />
+  <text x="335" y="233" fill="var(--muted-fg)" font-size="8" text-anchor="start">Niche Expansion</text>
+</svg>
+<figcaption>Bipartite species-to-phenome network mapping lineage gene context to macroscopic outcomes.</figcaption>
 </figure>
 <div class="scope-thrust-text">
 <h3>Linking function to (meta)phenome</h3>
-<p>Stress events reshape the genomic context of microbial populations — composition, mobile elements, accessory genes, and horizontally transferred loci that mediate adaptation. I'm interested in how these features map onto observable community phenotypes: which lineages, gene clusters, and pathways drive measurable shifts in metabolite output, growth, and ecological role during environmental pulses. The goal is to anchor abstract functional annotations to concrete, measurable phenome-level traits — so that "this community has gene X" becomes "this community is more likely to do Y under Z."</p>
+<p>Stress events reshape the genomic context of microbial populations, selecting for specific mobile elements, accessory genes, and horizontally transferred loci. I map these genomic features to observable community phenotypes to identify which lineages, gene clusters, and pathways drive shifts in metabolic output and growth. By anchoring abstract gene annotations to concrete, measurable phenome traits, I seek to predict exactly how a community behaves in a given environment based on its genetic repertoire.</p>
 </div>
 </article>
 
 <article class="scope-thrust">
 <div class="scope-thrust-text">
 <h3>Bioprospecting following stress response</h3>
-<p>A tertiary aim is to discover and characterize novel genes, enzymes, and small molecules that confer stress tolerance or facilitate rapid recovery in their host or ecosystem. Through comparative multi-omics, I identify candidate loci and products enriched during stress pulses and validate them experimentally via heterologous expression and quantitative assays. This integrative pipeline bridges discovery and application — linking ecological resilience to synthetic biology, natural product discovery, bioremediation, and biotechnological innovation.</p>
+<p>I discover and characterize novel genes, enzymes, and small molecules that confer stress tolerance or accelerate ecosystem recovery. Using comparative multi-omics, I identify candidate loci enriched during environmental pulses and validate them experimentally via heterologous expression and quantitative assays. This integrative pipeline bridges ecological resilience and synthetic biology, accelerating natural product discovery, bioremediation, and biotechnological innovation.</p>
 </div>
 <figure class="scope-thrust-figure">
-<div class="diagram-placeholder" data-label="figure / diagram"></div>
-<figcaption>Candidate discovery &rarr; heterologous expression &rarr; quantitative validation.</figcaption>
+<svg class="scope-thrust-svg" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" aria-label="Bioprospecting discovery pipeline">
+  <!-- Selection Funnel -->
+  <g transform="translate(10, 40)">
+    <path d="M 20 50 L 100 50 L 75 110 L 45 110 Z" fill="none" stroke="var(--muted-fg)" stroke-width="1.25" />
+    <circle cx="40" cy="65" r="2.5" fill="var(--muted-fg)" />
+    <circle cx="60" cy="60" r="2.5" fill="var(--fg)" />
+    <circle cx="80" cy="65" r="2.5" fill="var(--muted-fg)" />
+    <circle cx="50" cy="80" r="2.5" fill="var(--fg)" />
+    <circle cx="70" cy="80" r="2.5" fill="var(--muted-fg)" />
+    <circle cx="60" cy="98" r="2.5" fill="var(--fg)" />
+    <line x1="60" y1="110" x2="60" y2="135" stroke="var(--fg)" stroke-width="1.5" stroke-dasharray="3 2" />
+    <circle cx="60" cy="142" r="3.5" fill="var(--fg)" />
+    <text x="60" y="38" fill="var(--muted-fg)" font-size="8" text-anchor="middle">1. FILTER</text>
+  </g>
+
+  <!-- Connectors -->
+  <path d="M 115 170 L 140 170" stroke="var(--border)" stroke-width="1" stroke-dasharray="2 2" />
+  <path d="M 255 170 L 275 170" stroke="var(--border)" stroke-width="1" stroke-dasharray="2 2" />
+
+  <!-- Plasmid Map -->
+  <g transform="translate(190, 100)">
+    <circle cx="10" cy="70" r="32" fill="none" stroke="var(--muted-fg)" stroke-width="1" />
+    <circle cx="10" cy="70" r="28" fill="none" stroke="var(--muted-fg)" stroke-width="0.75" />
+    <path d="M 10 38 A 32 32 0 0 1 42 70" fill="none" stroke="var(--fg)" stroke-width="3.5" stroke-linecap="round" />
+    <text x="48" y="52" fill="var(--fg)" font-size="8">target_gene</text>
+    <path d="M -13 47 A 32 32 0 0 1 10 38" fill="none" stroke="var(--fg)" stroke-width="1.5" />
+    <text x="-38" y="36" fill="var(--fg)" font-size="8">PROMOTER</text>
+    <text x="10" y="73" fill="var(--muted-fg)" font-size="8" text-anchor="middle">pUC19</text>
+    <text x="10" y="-22" fill="var(--muted-fg)" font-size="8" text-anchor="middle">2. EXPRESS</text>
+  </g>
+
+  <!-- Assay Validation -->
+  <g transform="translate(280, 100)">
+    <line x1="10" y1="110" x2="90" y2="110" stroke="var(--border)" stroke-width="1.25" />
+    <line x1="10" y1="10" x2="10" y2="110" stroke="var(--border)" stroke-width="1.25" />
+    <line x1="10" y1="95" x2="90" y2="95" stroke="var(--muted-fg)" stroke-width="1" stroke-dasharray="3 3" />
+    <path d="M 10 95 Q 40 95 50 25 T 90 95" fill="none" stroke="var(--fg)" stroke-width="2" />
+    <text x="50" y="45" fill="var(--fg)" font-size="8">&uarr; YIELD</text>
+    <text x="50" y="-22" fill="var(--muted-fg)" font-size="8" text-anchor="middle">3. VALIDATE</text>
+  </g>
+</svg>
+<figcaption>Pipeline schematic demonstrating candidate screening &rarr; expression plasmid design &rarr; validation assay yields.</figcaption>
 </figure>
 </article>
 
 <article class="scope-thrust">
 <figure class="scope-thrust-figure">
-<div class="diagram-placeholder" data-label="figure / diagram"></div>
-<figcaption>Computational and ML methodology spanning the three thrusts above.</figcaption>
+<svg class="scope-thrust-svg" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" aria-label="Phylogeny-ML Integration diagram">
+  <!-- Dendrogram (Phylogeny) -->
+  <g transform="translate(10, 20)">
+    <path d="M 15 120 L 35 120 M 35 70 L 35 170 M 35 70 L 50 70 M 35 170 L 55 170 M 50 50 L 50 90 M 50 50 L 70 50 M 50 90 L 70 90 M 55 140 L 55 200 M 55 140 L 70 140 M 55 200 L 70 200" fill="none" stroke="var(--muted-fg)" stroke-width="1.25" />
+    <text x="40" y="235" fill="var(--muted-fg)" font-size="8" text-anchor="middle">PHYLOGENY</text>
+  </g>
+
+  <!-- Omics Matrix -->
+  <g transform="translate(85, 20)">
+    <!-- Row 1 -->
+    <rect x="0" y="43" width="10" height="14" fill="var(--fg)" stroke="var(--border)" stroke-width="0.5" />
+    <rect x="12" y="43" width="10" height="14" fill="var(--bg)" stroke="var(--border)" stroke-width="0.5" />
+    <rect x="24" y="43" width="10" height="14" fill="var(--muted)" stroke="var(--border)" stroke-width="0.5" />
+    <!-- Row 2 -->
+    <rect x="0" y="83" width="10" height="14" fill="var(--bg)" stroke="var(--border)" stroke-width="0.5" />
+    <rect x="12" y="83" width="10" height="14" fill="var(--fg)" stroke="var(--border)" stroke-width="0.5" />
+    <rect x="24" y="83" width="10" height="14" fill="var(--fg)" stroke="var(--border)" stroke-width="0.5" />
+    <!-- Row 3 -->
+    <rect x="0" y="133" width="10" height="14" fill="var(--muted)" stroke="var(--border)" stroke-width="0.5" />
+    <rect x="12" y="133" width="10" height="14" fill="var(--muted)" stroke="var(--border)" stroke-width="0.5" />
+    <rect x="24" y="133" width="10" height="14" fill="var(--bg)" stroke="var(--border)" stroke-width="0.5" />
+    <!-- Row 4 -->
+    <rect x="0" y="193" width="10" height="14" fill="var(--fg)" stroke="var(--border)" stroke-width="0.5" />
+    <rect x="12" y="193" width="10" height="14" fill="var(--muted)" stroke="var(--border)" stroke-width="0.5" />
+    <rect x="24" y="193" width="10" height="14" fill="var(--fg)" stroke="var(--border)" stroke-width="0.5" />
+    <text x="17" y="235" fill="var(--muted-fg)" font-size="8" text-anchor="middle">OMICS</text>
+  </g>
+
+  <!-- Projection paths matrix to input layers -->
+  <path d="M 125 50 L 170 70 M 125 90 L 170 70 M 125 90 L 170 120 M 125 140 L 170 120 M 125 140 L 170 170 M 125 200 L 170 170" stroke="var(--border)" stroke-width="0.75" fill="none" />
+
+  <!-- Deep Learning Graph (Neural Layer) -->
+  <g transform="translate(0, 0)">
+    <!-- Connections (Weights) -->
+    <line x1="175" y1="70" x2="225" y2="50" stroke="var(--border)" stroke-width="0.5" />
+    <line x1="175" y1="70" x2="225" y2="95" stroke="var(--border)" stroke-width="0.5" />
+    <line x1="175" y1="70" x2="225" y2="140" stroke="var(--border)" stroke-width="0.5" />
+    <line x1="175" y1="120" x2="225" y2="50" stroke="var(--border)" stroke-width="0.5" />
+    <line x1="175" y1="120" x2="225" y2="95" stroke="var(--border)" stroke-width="0.5" />
+    <line x1="175" y1="120" x2="225" y2="140" stroke="var(--border)" stroke-width="0.5" />
+    <line x1="175" y1="120" x2="225" y2="185" stroke="var(--border)" stroke-width="0.5" />
+    <line x1="175" y1="170" x2="225" y2="95" stroke="var(--border)" stroke-width="0.5" />
+    <line x1="175" y1="170" x2="225" y2="140" stroke="var(--border)" stroke-width="0.5" />
+    <line x1="175" y1="170" x2="225" y2="185" stroke="var(--border)" stroke-width="0.5" />
+    <line x1="235" y1="50" x2="284" y2="90" stroke="var(--border)" stroke-width="0.75" />
+    <line x1="235" y1="95" x2="284" y2="90" stroke="var(--fg)" stroke-width="1.25" />
+    <line x1="235" y1="140" x2="284" y2="90" stroke="var(--border)" stroke-width="0.75" />
+    <line x1="235" y1="185" x2="284" y2="90" stroke="var(--border)" stroke-width="0.75" />
+    <line x1="235" y1="50" x2="284" y2="150" stroke="var(--border)" stroke-width="0.75" />
+    <line x1="235" y1="95" x2="284" y2="150" stroke="var(--border)" stroke-width="0.75" />
+    <line x1="235" y1="140" x2="284" y2="150" stroke="var(--fg)" stroke-width="1.25" />
+    <line x1="235" y1="185" x2="284" y2="150" stroke="var(--border)" stroke-width="0.75" />
+
+    <!-- Nodes -->
+    <circle cx="175" cy="70" r="5" fill="var(--bg)" stroke="var(--fg)" stroke-width="1.25" />
+    <circle cx="175" cy="120" r="5" fill="var(--bg)" stroke="var(--fg)" stroke-width="1.25" />
+    <circle cx="175" cy="170" r="5" fill="var(--bg)" stroke="var(--fg)" stroke-width="1.25" />
+    <circle cx="235" cy="50" r="5" fill="var(--bg)" stroke="var(--muted-fg)" stroke-width="1" />
+    <circle cx="235" cy="95" r="5" fill="var(--bg)" stroke="var(--muted-fg)" stroke-width="1" />
+    <circle cx="235" cy="140" r="5" fill="var(--bg)" stroke="var(--muted-fg)" stroke-width="1" />
+    <circle cx="235" cy="185" r="5" fill="var(--bg)" stroke="var(--muted-fg)" stroke-width="1" />
+    <circle cx="290" cy="90" r="6" fill="var(--bg)" stroke="var(--fg)" stroke-width="1.5" />
+    <circle cx="290" cy="150" r="6" fill="var(--bg)" stroke="var(--fg)" stroke-width="1.5" />
+
+    <!-- Labels -->
+    <text x="235" y="235" fill="var(--muted-fg)" font-size="8" text-anchor="middle">DEEP LEARNING</text>
+    <text x="302" y="93" fill="var(--fg)" font-size="8">Adaptive Phenotype</text>
+    <text x="302" y="153" fill="var(--fg)" font-size="8">Decline Phenotype</text>
+  </g>
+</svg>
+<figcaption>Computational and ML methodology integration schema, showing biological phylogeny and omics matrix mapping through dense neural layers to phenotype predictions.</figcaption>
 </figure>
 <div class="scope-thrust-text">
 <h3>Computational and ML methodology for biological inference</h3>
-<p>Cross-cutting the thrusts above: I build and apply computational methods — statistical models, phylogenetic frameworks, foundation models, and modern ML — to integrate multi-omic, phylogenetic, and phenotypic data. The goal is methodology that scales across biological systems and lets predictions from one community or perturbation generalize to the next. I care about methods that are honest about uncertainty, that respect the structure of the data they're trained on (compositional, phylogenetic, sparse), and that produce interpretable handles for biologists, not just leaderboard numbers.</p>
+<p>Cross-cutting these domains, I build computational frameworks — integrating statistical models, phylogenetic structures, foundation models, and machine learning — to unify multi-omic and phenotypic datasets. I focus on developing methods that scale across systems, remain honest about biological uncertainty, and respect data-specific structures (compositional, sparse, or hierarchical). My priority is creating interpretable models that yield biological insights rather than just maximizing performance benchmarks.</p>
 </div>
 </article>
 
