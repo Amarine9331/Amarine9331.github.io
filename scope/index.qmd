@@ -77,4 +77,4 @@ Cross-cutting the thrusts above: I build and apply computational methods — sta
 // collaboration
 :::
 
-If your work touches any of the above — multi-omic microbiome data, stress / perturbation experiments, comparative genomics, ML methodology for biology — [reach out](mailto:andy.marine99@gmail.com). I'm always interested in collaborations that span scales or that pair computational methodology with experimental validation.
+If your work touches any of the above — multi-omic microbiome data, stress / perturbation experiments, comparative genomics, ML methodology for biology — [reach out on GitHub](https://github.com/Amarine9331). I'm always interested in collaborations that span scales or that pair computational methodology with experimental validation.
