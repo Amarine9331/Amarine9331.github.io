@@ -333,11 +333,16 @@ hr {
     opacity: 0.5;
   }
 
-  .node {
+  .ring {
     fill: var(--bg);
     stroke: var(--fg);
     stroke-width: 0.6;
+    stroke-linejoin: round;
     vector-effect: non-scaling-stroke;
+  }
+
+  .ring.sub {
+    stroke-width: 0.5;
   }
 }
 
