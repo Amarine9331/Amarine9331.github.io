@@ -43,9 +43,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-f00b4c320c198c7684a2f5dda5733dc9.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-36988298609288ec625a2308cd68c6a9.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-bbd4372d7e49e8e9caec3ef17493a951.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-36988298609288ec625a2308cd68c6a9.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-c0c9c9b38515025e47c1257f53ae6a7c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-44a90ff57103eccc7e3de3dd2b0da2aa.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-c0c9c9b38515025e47c1257f53ae6a7c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -322,13 +322,76 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content column-page" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content page-columns page-full column-page" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
 
 
 
 
-<div class="section-label">
+<aside class="scope-legend" aria-label="Page legend">
+<div class="legend-head">// legend</div>
+<nav class="legend-list">
+<a href="#sec-scope" class="legend-item is-active"><span class="legend-bullet"></span>scope</a>
+<a href="#sec-scales" class="legend-item"><span class="legend-bullet"></span>scales
+<ul class="legend-sub">
+<li>molecular</li>
+<li>cellular</li>
+<li>community</li>
+</ul>
+</a>
+<a href="#sec-thrusts" class="legend-item"><span class="legend-bullet"></span>thrusts
+<ul class="legend-sub">
+<li>stress</li>
+<li>function</li>
+<li>discovery</li>
+<li>methodology</li>
+</ul>
+</a>
+<a href="#sec-collab" class="legend-item"><span class="legend-bullet"></span>collab</a>
+</nav>
+</aside>
+
+<aside class="scope-ticker" aria-label="Scroll ticker" aria-hidden="true">
+<div class="ticker-head">// scroll</div>
+<div class="ticker-progress"><div class="ticker-bar"></div></div>
+<div class="ticker-meta"><span class="ticker-label">pos</span><span class="ticker-pct">0%</span></div>
+<div class="ticker-meta"><span class="ticker-label">at</span><span class="ticker-section">scope</span></div>
+<div class="ticker-stream">
+<div class="ticker-track">
+<div class="ticker-item">microbiome</div>
+<div class="ticker-item">multi-omics</div>
+<div class="ticker-item">bioinformatics</div>
+<div class="ticker-item">machine-learning</div>
+<div class="ticker-item">stress-response</div>
+<div class="ticker-item">(meta)phenome</div>
+<div class="ticker-item">bioprospecting</div>
+<div class="ticker-item">foundation-models</div>
+<div class="ticker-item">single-cell</div>
+<div class="ticker-item">mass-spec</div>
+<div class="ticker-item">transcriptome</div>
+<div class="ticker-item">metabolome</div>
+<div class="ticker-item">phylogeny</div>
+<div class="ticker-item">comparative-omics</div>
+<div class="ticker-item">heterologous-expr</div>
+<div class="ticker-item">microbiome</div>
+<div class="ticker-item">multi-omics</div>
+<div class="ticker-item">bioinformatics</div>
+<div class="ticker-item">machine-learning</div>
+<div class="ticker-item">stress-response</div>
+<div class="ticker-item">(meta)phenome</div>
+<div class="ticker-item">bioprospecting</div>
+<div class="ticker-item">foundation-models</div>
+<div class="ticker-item">single-cell</div>
+<div class="ticker-item">mass-spec</div>
+<div class="ticker-item">transcriptome</div>
+<div class="ticker-item">metabolome</div>
+<div class="ticker-item">phylogeny</div>
+<div class="ticker-item">comparative-omics</div>
+<div class="ticker-item">heterologous-expr</div>
+</div>
+</div>
+</aside>
+<div id="sec-scope" class="section-label">
 <p>// scope</p>
 </div>
 <div class="dna-banner" aria-hidden="true">
@@ -337,7 +400,7 @@ ul.task-list li input[type="checkbox"] {
 </svg>
 </div>
 <p class="page-lede">A longer-form description of the research questions I'm working on, the biological scales I move between, and the methodology I rely on.</p>
-<div class="section-label">
+<div id="sec-scales" class="section-label">
 <p>// systems across scales</p>
 </div>
 <p>The biology I care about is fundamentally multi-scale. The same perturbation that flips a transcript on or off inside a single cell propagates outward into cellular behavior and, eventually, into the composition and output of an entire community. Understanding any one scale in isolation is incomplete; the interesting questions live in the seams.</p>
@@ -472,7 +535,7 @@ ul.task-list li input[type="checkbox"] {
 
 </section>
 <p>The questions I find most compelling cross these layers — predicting community-level behavior from molecular state, or inferring molecular determinants from community-level observations. The same data, read at a different scale, often tells a different story.</p>
-<div class="section-label">
+<div id="sec-thrusts" class="section-label">
 <p>// research thrusts</p>
 </div>
 <section class="scope-thrusts" aria-label="Research thrusts">
@@ -675,10 +738,79 @@ ul.task-list li input[type="checkbox"] {
 </article>
 
 </section>
-<div class="section-label">
+<div id="sec-collab" class="section-label">
 <p>// collaboration</p>
 </div>
 <p>If your work touches any of the above — multi-omic microbiome data, stress / perturbation experiments, comparative genomics, ML methodology for biology — <a href="https://github.com/Amarine9331">reach out on GitHub</a>. I’m always interested in collaborations that span scales or that pair computational methodology with experimental validation.</p>
+<script>
+(function () {
+  if (typeof IntersectionObserver === "undefined") return;
+
+  const sections = Array.from(document.querySelectorAll(".section-label[id]"));
+  if (!sections.length) return;
+
+  const legendLinks = Array.from(document.querySelectorAll(".scope-legend a.legend-item"));
+  const tickerBar = document.querySelector(".scope-ticker .ticker-bar");
+  const tickerPct = document.querySelector(".scope-ticker .ticker-pct");
+  const tickerSection = document.querySelector(".scope-ticker .ticker-section");
+
+  const labelOf = id => id.replace(/^sec-/, "").replace(/-/g, " ");
+
+  function setActive(id) {
+    legendLinks.forEach(a => {
+      a.classList.toggle("is-active", a.getAttribute("href") === "#" + id);
+    });
+    if (tickerSection) tickerSection.textContent = labelOf(id);
+  }
+
+  // Track which section's label was last crossed (top-of-viewport).
+  const positions = () => sections.map(s => ({ id: s.id, top: s.getBoundingClientRect().top }));
+
+  function pickActive() {
+    const ps = positions();
+    // Pick the last section whose top is <= 25% of the viewport height.
+    const triggerY = window.innerHeight * 0.25;
+    let current = ps[0].id;
+    for (const p of ps) {
+      if (p.top <= triggerY) current = p.id;
+      else break;
+    }
+    setActive(current);
+  }
+
+  function updateProgress() {
+    const max = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+    const pct = Math.max(0, Math.min(100, Math.round((window.scrollY / max) * 100)));
+    if (tickerBar) tickerBar.style.height = pct + "%";
+    if (tickerPct) tickerPct.textContent = pct + "%";
+  }
+
+  let raf = 0;
+  function onScroll() {
+    if (raf) return;
+    raf = requestAnimationFrame(() => {
+      raf = 0;
+      pickActive();
+      updateProgress();
+    });
+  }
+
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", onScroll, { passive: true });
+  pickActive();
+  updateProgress();
+
+  // Smooth-scroll clicks on legend links — Quarto already has smooth-scroll
+  // enabled in _quarto.yml, but make sure focus moves correctly for a11y.
+  legendLinks.forEach(a => {
+    a.addEventListener("click", () => {
+      const id = a.getAttribute("href").slice(1);
+      const t = document.getElementById(id);
+      if (t) t.setAttribute("tabindex", "-1");
+    });
+  });
+})();
+</script>
 
 
 
