@@ -23,27 +23,44 @@ section-divs: false
 
 The biology I care about is fundamentally multi-scale. The same perturbation that flips a transcript on or off inside a single cell propagates outward into cellular behavior and, eventually, into the composition and output of an entire community. Understanding any one scale in isolation is incomplete; the interesting questions live in the seams.
 
-::: {.scale-grid}
+```{=html}
+<section class="scope-thrusts" aria-label="Systems across scales">
 
-::: {.scale-item}
-**Molecular layer**
+<article class="scope-thrust">
+<div class="scope-thrust-text">
+<h3>Molecular layer</h3>
+<p>The genome, transcriptome, proteome, and metabolome — the molecular state that encodes and executes cellular function. Modern profiling (long- and short-read sequencing, mass spectrometry, single-cell methods) lets us read out this layer with increasing depth and resolution. Most of my computational work starts here: cleaning, integrating, and modeling molecular readouts.</p>
+</div>
+<figure class="scope-thrust-figure">
+<div class="diagram-placeholder" data-label="figure / diagram"></div>
+<figcaption>Multi-omic profiling stack at the molecular layer.</figcaption>
+</figure>
+</article>
 
-The genome, transcriptome, proteome, and metabolome — the molecular state that encodes and executes cellular function. Modern profiling (long- and short-read sequencing, mass spectrometry, single-cell methods) lets us read out this layer with increasing depth and resolution. Most of my computational work starts here: cleaning, integrating, and modeling molecular readouts.
-:::
+<article class="scope-thrust">
+<figure class="scope-thrust-figure">
+<div class="diagram-placeholder" data-label="figure / diagram"></div>
+<figcaption>Genotype &rarr; integrated cellular phenotype under perturbation.</figcaption>
+</figure>
+<div class="scope-thrust-text">
+<h3>Cellular layer</h3>
+<p>The integrated phenotype of an individual cell or organism — how molecular state propagates into observable behavior, growth, stress tolerance, metabolic output, and lineage-specific traits. This is where genotype starts to make contact with environment, and where the assumptions baked into molecular models get tested.</p>
+</div>
+</article>
 
-::: {.scale-item}
-**Cellular layer**
+<article class="scope-thrust">
+<div class="scope-thrust-text">
+<h3>Community layer</h3>
+<p>Interacting populations in ecological or host-associated contexts. Microbial communities are the canonical example: thousands of distinct lineages co-occurring, exchanging metabolites, and responding collectively to disturbance. Behavior at this scale is rarely the sum of its parts — emergent dynamics dominate, and that's what makes prediction hard and interesting.</p>
+</div>
+<figure class="scope-thrust-figure">
+<div class="diagram-placeholder" data-label="figure / diagram"></div>
+<figcaption>Emergent dynamics across a microbial community.</figcaption>
+</figure>
+</article>
 
-The integrated phenotype of an individual cell or organism — how molecular state propagates into observable behavior, growth, stress tolerance, metabolic output, and lineage-specific traits. This is where genotype starts to make contact with environment, and where the assumptions baked into molecular models get tested.
-:::
-
-::: {.scale-item}
-**Community layer**
-
-Interacting populations in ecological or host-associated contexts. Microbial communities are the canonical example: thousands of distinct lineages co-occurring, exchanging metabolites, and responding collectively to disturbance. Behavior at this scale is rarely the sum of its parts — emergent dynamics dominate, and that's what makes prediction hard and interesting.
-:::
-
-:::
+</section>
+```
 
 The questions I find most compelling cross these layers — predicting community-level behavior from molecular state, or inferring molecular determinants from community-level observations. The same data, read at a different scale, often tells a different story.
 
