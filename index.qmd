@@ -65,29 +65,7 @@ I aim to keep building computational tools and conducting research that benefits
 :::
 
 ```{=html}
-<section class="scope-panels" aria-label="Research scope">
-
-<div class="scope-panel">
-<h2>Microbial stress response</h2>
-<p>Environmental stressors induce rapid transcriptional, metabolic, and compositional shifts that can leave short-term ecological memory in microbial communities. I aim to quantify which functional products appear, how long they persist, and whether these responses generalize across systems and perturbations.</p>
-</div>
-
-<div class="scope-panel">
-<h2>Linking function to (meta)phenome</h2>
-<p>Stress events reshape genomic context — composition, mobile elements, accessory genes, and horizontally transferred loci that mediate adaptation. I'm interested in how these features map onto observable community phenotypes: which lineages and genes drive measurable shifts in metabolite output and ecological role.</p>
-</div>
-
-<div class="scope-panel">
-<h2>Bioprospecting following stress response</h2>
-<p>Discovering and characterizing novel genes, enzymes, and small molecules that confer stress tolerance or facilitate rapid recovery. Through comparative multi-omics, I identify candidate loci enriched during stress pulses and validate them via heterologous expression — bridging ecological resilience to synthetic biology and biotechnology.</p>
-</div>
-
-<div class="scope-panel">
-<h2>Computational and ML methodology for biological inference</h2>
-<p>Cross-cutting the above: building and applying computational methods — statistical models, foundation models, and modern ML — to integrate multi-omic, phylogenetic, and phenotypic data. The goal is methodology that scales across biological systems and lets predictions transfer.</p>
-</div>
-
-</section>
+<p class="scope-teaser">Four research thrusts span microbial stress response, linking function to (meta)phenome, bioprospecting following stress, and computational and ML methodology for biological inference. <a class="scope-teaser-link" href="scope/">Full scope &rarr;</a></p>
 ```
 
 ::: {.section-label}
