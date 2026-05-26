@@ -58,10 +58,15 @@ I aim to keep building computational tools and conducting research that benefits
 <span class="tag">MACHINE LEARNING</span>
 <span class="tag">BIOTECHNOLOGY</span>
 </div>
+```
 
-<section class="research-scope" aria-labelledby="research-scope-title">
+::: {.section-label}
+// scope
+:::
+
+```{=html}
+<section class="research-scope" aria-label="Research scope">
 <div class="research-copy">
-<p class="focus-kicker" id="research-scope-title">Research scope</p>
 
 <div class="scope-item">
 <h2>SOP mechanisms and memory of stress response in microbial communities</h2>
@@ -80,10 +85,61 @@ I aim to keep building computational tools and conducting research that benefits
 </div>
 
 <div class="dna-scroll" aria-hidden="true">
-<div class="dna-strand">
-<span></span><span></span><span></span><span></span><span></span><span></span>
-<span></span><span></span><span></span><span></span><span></span><span></span>
-</div>
+<svg class="dna-helix" viewBox="0 0 80 600" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+<g class="helix-rotor">
+<path class="backbone" d="M 40 0 C 65 0 65 75 40 75 C 15 75 15 150 40 150 C 65 150 65 225 40 225 C 15 225 15 300 40 300 C 65 300 65 375 40 375 C 15 375 15 450 40 450 C 65 450 65 525 40 525 C 15 525 15 600 40 600"/>
+<path class="backbone" d="M 40 0 C 15 0 15 75 40 75 C 65 75 65 150 40 150 C 15 150 15 225 40 225 C 65 225 65 300 40 300 C 15 300 15 375 40 375 C 65 375 65 450 40 450 C 15 450 15 525 40 525 C 65 525 65 600 40 600"/>
+
+<g class="bp" transform="translate(0,37.5)">
+<g class="hbonds h2"><line x1="23" x2="57" y1="-1.6" y2="-1.6"/><line x1="23" x2="57" y1="1.6" y2="1.6"/></g>
+<g class="base purine left" transform="translate(15,0)"><polygon class="ring" points="0,-6 5.2,-3 5.2,3 0,6 -5.2,3 -5.2,-3"/><polygon class="ring fused" points="-5.2,-3 -9,-2 -10.5,0 -9,2 -5.2,3"/><text class="label" x="0" y="2.2">A</text></g>
+<g class="base pyrimidine right" transform="translate(65,0)"><polygon class="ring" points="0,-5 4.3,-2.5 4.3,2.5 0,5 -4.3,2.5 -4.3,-2.5"/><text class="label" x="0" y="1.9">T</text></g>
+</g>
+
+<g class="bp" transform="translate(0,112.5)">
+<g class="hbonds h3"><line x1="23" x2="57" y1="-2.6" y2="-2.6"/><line x1="23" x2="57" y1="0" y2="0"/><line x1="23" x2="57" y1="2.6" y2="2.6"/></g>
+<g class="base pyrimidine left" transform="translate(15,0)"><polygon class="ring" points="0,-5 4.3,-2.5 4.3,2.5 0,5 -4.3,2.5 -4.3,-2.5"/><text class="label" x="0" y="1.9">C</text></g>
+<g class="base purine right" transform="translate(65,0)"><polygon class="ring" points="0,-6 5.2,-3 5.2,3 0,6 -5.2,3 -5.2,-3"/><polygon class="ring fused" points="5.2,-3 9,-2 10.5,0 9,2 5.2,3"/><text class="label" x="0" y="2.2">G</text></g>
+</g>
+
+<g class="bp" transform="translate(0,187.5)">
+<g class="hbonds h2"><line x1="23" x2="57" y1="-1.6" y2="-1.6"/><line x1="23" x2="57" y1="1.6" y2="1.6"/></g>
+<g class="base pyrimidine left" transform="translate(15,0)"><polygon class="ring" points="0,-5 4.3,-2.5 4.3,2.5 0,5 -4.3,2.5 -4.3,-2.5"/><text class="label" x="0" y="1.9">T</text></g>
+<g class="base purine right" transform="translate(65,0)"><polygon class="ring" points="0,-6 5.2,-3 5.2,3 0,6 -5.2,3 -5.2,-3"/><polygon class="ring fused" points="5.2,-3 9,-2 10.5,0 9,2 5.2,3"/><text class="label" x="0" y="2.2">A</text></g>
+</g>
+
+<g class="bp" transform="translate(0,262.5)">
+<g class="hbonds h3"><line x1="23" x2="57" y1="-2.6" y2="-2.6"/><line x1="23" x2="57" y1="0" y2="0"/><line x1="23" x2="57" y1="2.6" y2="2.6"/></g>
+<g class="base purine left" transform="translate(15,0)"><polygon class="ring" points="0,-6 5.2,-3 5.2,3 0,6 -5.2,3 -5.2,-3"/><polygon class="ring fused" points="-5.2,-3 -9,-2 -10.5,0 -9,2 -5.2,3"/><text class="label" x="0" y="2.2">G</text></g>
+<g class="base pyrimidine right" transform="translate(65,0)"><polygon class="ring" points="0,-5 4.3,-2.5 4.3,2.5 0,5 -4.3,2.5 -4.3,-2.5"/><text class="label" x="0" y="1.9">C</text></g>
+</g>
+
+<g class="bp" transform="translate(0,337.5)">
+<g class="hbonds h2"><line x1="23" x2="57" y1="-1.6" y2="-1.6"/><line x1="23" x2="57" y1="1.6" y2="1.6"/></g>
+<g class="base purine left" transform="translate(15,0)"><polygon class="ring" points="0,-6 5.2,-3 5.2,3 0,6 -5.2,3 -5.2,-3"/><polygon class="ring fused" points="-5.2,-3 -9,-2 -10.5,0 -9,2 -5.2,3"/><text class="label" x="0" y="2.2">A</text></g>
+<g class="base pyrimidine right" transform="translate(65,0)"><polygon class="ring" points="0,-5 4.3,-2.5 4.3,2.5 0,5 -4.3,2.5 -4.3,-2.5"/><text class="label" x="0" y="1.9">T</text></g>
+</g>
+
+<g class="bp" transform="translate(0,412.5)">
+<g class="hbonds h3"><line x1="23" x2="57" y1="-2.6" y2="-2.6"/><line x1="23" x2="57" y1="0" y2="0"/><line x1="23" x2="57" y1="2.6" y2="2.6"/></g>
+<g class="base pyrimidine left" transform="translate(15,0)"><polygon class="ring" points="0,-5 4.3,-2.5 4.3,2.5 0,5 -4.3,2.5 -4.3,-2.5"/><text class="label" x="0" y="1.9">C</text></g>
+<g class="base purine right" transform="translate(65,0)"><polygon class="ring" points="0,-6 5.2,-3 5.2,3 0,6 -5.2,3 -5.2,-3"/><polygon class="ring fused" points="5.2,-3 9,-2 10.5,0 9,2 5.2,3"/><text class="label" x="0" y="2.2">G</text></g>
+</g>
+
+<g class="bp" transform="translate(0,487.5)">
+<g class="hbonds h2"><line x1="23" x2="57" y1="-1.6" y2="-1.6"/><line x1="23" x2="57" y1="1.6" y2="1.6"/></g>
+<g class="base pyrimidine left" transform="translate(15,0)"><polygon class="ring" points="0,-5 4.3,-2.5 4.3,2.5 0,5 -4.3,2.5 -4.3,-2.5"/><text class="label" x="0" y="1.9">T</text></g>
+<g class="base purine right" transform="translate(65,0)"><polygon class="ring" points="0,-6 5.2,-3 5.2,3 0,6 -5.2,3 -5.2,-3"/><polygon class="ring fused" points="5.2,-3 9,-2 10.5,0 9,2 5.2,3"/><text class="label" x="0" y="2.2">A</text></g>
+</g>
+
+<g class="bp" transform="translate(0,562.5)">
+<g class="hbonds h3"><line x1="23" x2="57" y1="-2.6" y2="-2.6"/><line x1="23" x2="57" y1="0" y2="0"/><line x1="23" x2="57" y1="2.6" y2="2.6"/></g>
+<g class="base purine left" transform="translate(15,0)"><polygon class="ring" points="0,-6 5.2,-3 5.2,3 0,6 -5.2,3 -5.2,-3"/><polygon class="ring fused" points="-5.2,-3 -9,-2 -10.5,0 -9,2 -5.2,3"/><text class="label" x="0" y="2.2">G</text></g>
+<g class="base pyrimidine right" transform="translate(65,0)"><polygon class="ring" points="0,-5 4.3,-2.5 4.3,2.5 0,5 -4.3,2.5 -4.3,-2.5"/><text class="label" x="0" y="1.9">C</text></g>
+</g>
+
+</g>
+</svg>
 </div>
 </section>
 ```
