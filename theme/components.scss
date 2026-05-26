@@ -361,57 +361,157 @@ hr {
 }
 
 // ============================================================
-// Horizontal DNA helix — divider between scope and adjacent sections
+// Horizontal DNA helix banner (scope page)
 // ============================================================
 
-.dna-strip {
-  margin: 1.1rem 0;
+.dna-banner {
+  margin: 1.25rem 0 1.75rem;
   width: 100%;
   display: block;
 }
 
-.dna-helix-horizontal {
+.dna-helix-banner {
   width: 100%;
   height: auto;
-  max-height: 3.6rem;
+  max-height: 6rem;
   display: block;
   overflow: visible;
 
   .backbone {
     fill: none;
-    stroke: var(--muted-fg);
-    stroke-width: 0.7;
+    stroke: var(--fg);
+    stroke-width: 0.85;
     stroke-linecap: round;
     vector-effect: non-scaling-stroke;
-    opacity: 0.6;
+    opacity: 0.75;
   }
 
   .phosphate {
     fill: var(--bg);
-    stroke: var(--muted-fg);
-    stroke-width: 0.55;
+    stroke: var(--fg);
+    stroke-width: 0.65;
     vector-effect: non-scaling-stroke;
-    opacity: 0.85;
+    opacity: 0.9;
   }
 
   .hbond {
     stroke: var(--muted-fg);
-    stroke-width: 0.5;
-    stroke-dasharray: 1.4 1.2;
+    stroke-width: 0.55;
+    stroke-dasharray: 1.6 1.4;
     vector-effect: non-scaling-stroke;
-    opacity: 0.5;
+    opacity: 0.6;
   }
 
   .ring {
     fill: var(--bg);
     stroke: var(--fg);
-    stroke-width: 0.8;
+    stroke-width: 0.9;
     stroke-linejoin: round;
     vector-effect: non-scaling-stroke;
   }
 
   .ring.sub {
-    stroke-width: 0.6;
+    stroke-width: 0.7;
+  }
+}
+
+// ============================================================
+// Scope thrusts (scope page: text + diagram, alternating sides)
+// ============================================================
+
+.scope-thrusts {
+  margin: 0.5rem 0 1rem;
+}
+
+.scope-thrust {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 2.25rem;
+  align-items: start;
+  padding: 1.75rem 0;
+  border-bottom: 1px solid var(--border);
+
+  &:last-of-type {
+    border-bottom: 0;
+  }
+
+  .scope-thrust-text {
+    h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      line-height: 1.25;
+      margin: 0 0 0.7rem;
+      letter-spacing: 0;
+    }
+
+    p {
+      color: var(--muted-fg);
+      font-size: 0.94rem;
+      line-height: 1.65;
+      margin: 0;
+    }
+  }
+
+  .scope-thrust-figure {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+
+    figcaption {
+      font-family: var(--bs-font-monospace, "Geist Mono", monospace);
+      font-size: 0.72rem;
+      color: var(--muted-fg);
+      letter-spacing: 0.02em;
+      line-height: 1.4;
+    }
+  }
+}
+
+.diagram-placeholder {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border: 1px dashed var(--border);
+  border-radius: 0.5rem;
+  position: relative;
+  background:
+    repeating-linear-gradient(
+      135deg,
+      transparent 0,
+      transparent 9px,
+      var(--muted) 9px,
+      var(--muted) 10px
+    );
+
+  &::after {
+    content: attr(data-label);
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted-fg);
+    font-family: var(--bs-font-monospace, "Geist Mono", monospace);
+    font-size: 0.72rem;
+    letter-spacing: 0.02em;
+    background: var(--bg);
+    margin: auto;
+    width: fit-content;
+    height: fit-content;
+    padding: 0.2rem 0.55rem;
+    border: 1px solid var(--border);
+    border-radius: 0.25rem;
+  }
+}
+
+@media (max-width: 720px) {
+  .scope-thrust {
+    grid-template-columns: 1fr;
+    gap: 1.1rem;
+
+    // ensure text always reads first on mobile regardless of source order
+    .scope-thrust-text { order: 1; }
+    .scope-thrust-figure { order: 2; }
   }
 }
 
