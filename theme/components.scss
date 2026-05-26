@@ -305,30 +305,30 @@ hr {
   .helix-rotor {
     transform-origin: 40px 300px;
     transform-box: view-box;
-    animation: dna-drift 18s ease-in-out infinite alternate;
+    animation: dna-drift 24s ease-in-out infinite alternate;
   }
 
   .backbone {
     fill: none;
     stroke: var(--muted-fg);
-    stroke-width: 0.5;
+    stroke-width: 0.6;
     stroke-linecap: round;
     vector-effect: non-scaling-stroke;
-    opacity: 0.65;
+    opacity: 0.55;
   }
 
-  .bp {
-    transform-origin: 50% 50%;
-    transform-box: fill-box;
-    animation: helix-spin 7s linear infinite;
-    animation-delay: calc(var(--i, 0) * -0.875s);
-    will-change: transform, opacity;
+  .phosphate {
+    fill: var(--bg);
+    stroke: var(--muted-fg);
+    stroke-width: 0.5;
+    vector-effect: non-scaling-stroke;
+    opacity: 0.85;
   }
 
   .hbond {
     stroke: var(--muted-fg);
     stroke-width: 0.5;
-    stroke-dasharray: 1.4 1.2;
+    stroke-dasharray: 1.5 1.3;
     vector-effect: non-scaling-stroke;
     opacity: 0.5;
   }
@@ -336,27 +336,19 @@ hr {
   .ring {
     fill: var(--bg);
     stroke: var(--fg);
-    stroke-width: 0.6;
+    stroke-width: 0.75;
     stroke-linejoin: round;
     vector-effect: non-scaling-stroke;
   }
 
   .ring.sub {
-    stroke-width: 0.5;
+    stroke-width: 0.55;
   }
 }
 
 @keyframes dna-drift {
-  from { transform: translateY(-1.2rem); }
-  to { transform: translateY(1.2rem); }
-}
-
-@keyframes helix-spin {
-  0%   { transform: scaleX(1);     opacity: 1; }
-  25%  { transform: scaleX(0.06);  opacity: 0.4; }
-  50%  { transform: scaleX(-1);    opacity: 1; }
-  75%  { transform: scaleX(0.06);  opacity: 0.4; }
-  100% { transform: scaleX(1);     opacity: 1; }
+  from { transform: translateY(-0.5rem); }
+  to { transform: translateY(0.5rem); }
 }
 
 @supports (animation-timeline: view()) {
@@ -373,8 +365,7 @@ hr {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .dna-helix .helix-rotor,
-  .dna-helix .bp {
+  .dna-helix .helix-rotor {
     animation: none;
   }
 }
@@ -399,8 +390,7 @@ hr {
     height: 4rem;
     transform: rotate(90deg);
 
-    .helix-rotor,
-    .bp {
+    .helix-rotor {
       animation: none;
     }
   }
