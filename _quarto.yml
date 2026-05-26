@@ -19,6 +19,8 @@ website:
     right:
       - text: "/about"
         href: index.qmd
+      - text: "/scope"
+        href: scope/index.qmd
       - text: "/projects"
         href: projects/index.qmd
       - text: "/publications"

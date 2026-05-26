@@ -1,23 +1,36 @@
 ---
-title: "Blog"
-description: "// notes from the lab"
+pagetitle: "Blog · David A. Marinelarena"
+title: ""
 page-layout: full
-title-block-style: default
-listing:
-  contents: ["*/index.qmd", "*.qmd"]
-  exclude:
-    filename: index.qmd
-  type: default
-  sort: "date desc"
-  fields: [title, date, categories, description, image]
-  image-height: 130px
-  image-align: right
-  categories: false
-  sort-ui: false
-  filter-ui: false
-feed: true
 toc: false
+title-block-style: none
+section-divs: false
+feed: true
+listing:
+  - id: blog-list
+    contents: ["*/index.qmd", "*.qmd"]
+    exclude:
+      filename: index.qmd
+    type: default
+    sort: "date desc"
+    fields: [title, date, categories, description, image]
+    image-height: 130px
+    image-align: right
+    categories: false
+    sort-ui: false
+    filter-ui: false
 ---
+
+::: {.section-label}
+// blog
+:::
+
+```{=html}
+<p class="page-lede">Notes from the lab.</p>
+```
+
+::: {#blog-list}
+:::
 
 ::: {.empty-note}
 No posts yet.

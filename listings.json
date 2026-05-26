@@ -14,6 +14,10 @@
     ]
   },
   {
+    "listing": "/talks/index.html",
+    "items": []
+  },
+  {
     "listing": "/projects/index.html",
     "items": [
       "/projects/primer design/index.html",
@@ -25,10 +29,6 @@
   },
   {
     "listing": "/publications/index.html",
-    "items": []
-  },
-  {
-    "listing": "/talks/index.html",
     "items": []
   },
   {

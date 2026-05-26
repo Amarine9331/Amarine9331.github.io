@@ -1,20 +1,33 @@
 ---
-title: "Publications"
-description: "// peer-reviewed work and preprints"
+pagetitle: "Publications · David A. Marinelarena"
+title: ""
 page-layout: full
-title-block-style: default
-listing:
-  contents: ["*/index.qmd", "*.qmd"]
-  exclude:
-    filename: index.qmd
-  type: default
-  sort: "date desc"
-  fields: [title, date, categories, description]
-  categories: false
-  sort-ui: false
-  filter-ui: false
 toc: false
+title-block-style: none
+section-divs: false
+listing:
+  - id: publications-list
+    contents: ["*/index.qmd", "*.qmd"]
+    exclude:
+      filename: index.qmd
+    type: default
+    sort: "date desc"
+    fields: [title, date, categories, description]
+    categories: false
+    sort-ui: false
+    filter-ui: false
 ---
+
+::: {.section-label}
+// publications
+:::
+
+```{=html}
+<p class="page-lede">Peer-reviewed work and preprints.</p>
+```
+
+::: {#publications-list}
+:::
 
 ::: {.empty-note}
 Nothing published here yet — in the meantime, see [Google Scholar](https://scholar.google.com/citations?user=xzyk_aQAAAAJ&hl=en).

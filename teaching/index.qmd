@@ -1,20 +1,33 @@
 ---
-title: "Teaching"
-description: "// courses, workshops, and mentorship"
+pagetitle: "Teaching · David A. Marinelarena"
+title: ""
 page-layout: full
-title-block-style: default
-listing:
-  contents: ["*/index.qmd", "*.qmd"]
-  exclude:
-    filename: index.qmd
-  type: default
-  sort: "date desc"
-  fields: [title, date, categories, description]
-  categories: false
-  sort-ui: false
-  filter-ui: false
 toc: false
+title-block-style: none
+section-divs: false
+listing:
+  - id: teaching-list
+    contents: ["*/index.qmd", "*.qmd"]
+    exclude:
+      filename: index.qmd
+    type: default
+    sort: "date desc"
+    fields: [title, date, categories, description]
+    categories: false
+    sort-ui: false
+    filter-ui: false
 ---
+
+::: {.section-label}
+// teaching
+:::
+
+```{=html}
+<p class="page-lede">Courses, workshops, and mentorship.</p>
+```
+
+::: {#teaching-list}
+:::
 
 ::: {.empty-note}
 No teaching entries yet.

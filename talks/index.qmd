@@ -1,20 +1,33 @@
 ---
-title: "Talks"
-description: "// invited talks, workshops, and conference presentations"
+pagetitle: "Talks · David A. Marinelarena"
+title: ""
 page-layout: full
-title-block-style: default
-listing:
-  contents: ["*/index.qmd", "*.qmd"]
-  exclude:
-    filename: index.qmd
-  type: default
-  sort: "date desc"
-  fields: [title, date, categories, description]
-  categories: false
-  sort-ui: false
-  filter-ui: false
 toc: false
+title-block-style: none
+section-divs: false
+listing:
+  - id: talks-list
+    contents: ["*/index.qmd", "*.qmd"]
+    exclude:
+      filename: index.qmd
+    type: default
+    sort: "date desc"
+    fields: [title, date, categories, description]
+    categories: false
+    sort-ui: false
+    filter-ui: false
 ---
+
+::: {.section-label}
+// talks
+:::
+
+```{=html}
+<p class="page-lede">Invited talks, workshops, and conference presentations.</p>
+```
+
+::: {#talks-list}
+:::
 
 ::: {.empty-note}
 No talks listed yet — check back soon.

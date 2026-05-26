@@ -1,17 +1,30 @@
 ---
-title: "Projects"
-description: "// portfolio of pipelines, tutorials, and analyses"
+pagetitle: "Projects · David A. Marinelarena"
+title: ""
 page-layout: full
-title-block-style: default
-listing:
-  contents: ["*/index.qmd"]
-  type: grid
-  grid-columns: 2
-  sort: "date desc"
-  fields: [image, title, subtitle, categories, date]
-  image-height: 200px
-  categories: false
-  sort-ui: false
-  filter-ui: false
 toc: false
+title-block-style: none
+section-divs: false
+listing:
+  - id: projects-list
+    contents: ["*/index.qmd"]
+    type: grid
+    grid-columns: 2
+    sort: "date desc"
+    fields: [image, title, subtitle, categories, date]
+    image-height: 200px
+    categories: false
+    sort-ui: false
+    filter-ui: false
 ---
+
+::: {.section-label}
+// projects
+:::
+
+```{=html}
+<p class="page-lede">Portfolio of pipelines, tutorials, and analyses.</p>
+```
+
+::: {#projects-list}
+:::
