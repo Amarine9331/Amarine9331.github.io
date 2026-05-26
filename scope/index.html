@@ -341,20 +341,136 @@ ul.task-list li input[type="checkbox"] {
 <p>// systems across scales</p>
 </div>
 <p>The biology I care about is fundamentally multi-scale. The same perturbation that flips a transcript on or off inside a single cell propagates outward into cellular behavior and, eventually, into the composition and output of an entire community. Understanding any one scale in isolation is incomplete; the interesting questions live in the seams.</p>
-<div class="scale-grid">
-<div class="scale-item">
-<p><strong>Molecular layer</strong></p>
+<section class="scope-thrusts" aria-label="Systems across scales">
+
+<article class="scope-thrust">
+<div class="scope-thrust-text">
+<h3>Molecular layer</h3>
 <p>The genome, transcriptome, proteome, and metabolome — the molecular state that encodes and executes cellular function. Modern profiling (long- and short-read sequencing, mass spectrometry, single-cell methods) lets us read out this layer with increasing depth and resolution. Most of my computational work starts here: cleaning, integrating, and modeling molecular readouts.</p>
 </div>
-<div class="scale-item">
-<p><strong>Cellular layer</strong></p>
+<figure class="scope-thrust-figure figure">
+<svg class="scope-thrust-svg" viewbox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" aria-label="Central-dogma cascade across molecular layers">
+  <!-- DNA -->
+  <g transform="translate(55, 150)">
+    <path d="M -15 -28 C 15 -28 15 0 -15 0 C 15 0 15 28 -15 28" fill="none" stroke="var(--fg)" stroke-width="1.5"></path>
+    <path d="M 15 -28 C -15 -28 -15 0 15 0 C -15 0 -15 28 15 28" fill="none" stroke="var(--fg)" stroke-width="1.5"></path>
+    <line x1="-13" y1="-21" x2="13" y2="-21" stroke="var(--muted-fg)" stroke-width="0.7" stroke-dasharray="1.5 1.5"></line>
+    <line x1="-13" y1="-7" x2="13" y2="-7" stroke="var(--muted-fg)" stroke-width="0.7" stroke-dasharray="1.5 1.5"></line>
+    <line x1="-13" y1="7" x2="13" y2="7" stroke="var(--muted-fg)" stroke-width="0.7" stroke-dasharray="1.5 1.5"></line>
+    <line x1="-13" y1="21" x2="13" y2="21" stroke="var(--muted-fg)" stroke-width="0.7" stroke-dasharray="1.5 1.5"></line>
+    <text x="0" y="55" fill="var(--muted-fg)" font-size="9" text-anchor="middle" letter-spacing="0.05em">DNA</text>
+  </g>
+  <!-- Arrow + label -->
+  <line x1="90" y1="150" x2="125" y2="150" stroke="var(--fg)" stroke-width="1"></line>
+  <polygon points="125,150 119,146 119,154" fill="var(--fg)"></polygon>
+  <text x="107" y="138" fill="var(--muted-fg)" font-size="8" text-anchor="middle">transcribe</text>
+  <!-- RNA: single zigzag strand -->
+  <g transform="translate(135, 150)">
+    <path d="M 0 0 L 6 -12 L 12 0 L 18 -12 L 24 0 L 30 -12" stroke="var(--fg)" stroke-width="1.5" fill="none"></path>
+    <text x="15" y="55" fill="var(--muted-fg)" font-size="9" text-anchor="middle" letter-spacing="0.05em">RNA</text>
+  </g>
+  <!-- Arrow + label -->
+  <line x1="180" y1="150" x2="215" y2="150" stroke="var(--fg)" stroke-width="1"></line>
+  <polygon points="215,150 209,146 209,154" fill="var(--fg)"></polygon>
+  <text x="197" y="138" fill="var(--muted-fg)" font-size="8" text-anchor="middle">translate</text>
+  <!-- Protein: folded cluster -->
+  <g transform="translate(245, 150)">
+    <circle cx="-10" cy="-10" r="7" fill="var(--bg)" stroke="var(--fg)" stroke-width="1.5"></circle>
+    <circle cx="10" cy="-8" r="7" fill="var(--bg)" stroke="var(--fg)" stroke-width="1.5"></circle>
+    <circle cx="-5" cy="10" r="7" fill="var(--bg)" stroke="var(--fg)" stroke-width="1.5"></circle>
+    <circle cx="12" cy="12" r="7" fill="var(--bg)" stroke="var(--fg)" stroke-width="1.5"></circle>
+    <text x="0" y="55" fill="var(--muted-fg)" font-size="9" text-anchor="middle" letter-spacing="0.05em">PROTEIN</text>
+  </g>
+  <!-- Arrow + label -->
+  <line x1="295" y1="150" x2="330" y2="150" stroke="var(--fg)" stroke-width="1"></line>
+  <polygon points="330,150 324,146 324,154" fill="var(--fg)"></polygon>
+  <text x="312" y="138" fill="var(--muted-fg)" font-size="8" text-anchor="middle">catalyze</text>
+  <!-- Metabolite -->
+  <g transform="translate(355, 150)">
+    <polygon points="0,-12 12,0 0,12 -12,0" fill="var(--bg)" stroke="var(--fg)" stroke-width="1.5"></polygon>
+    <text x="0" y="55" fill="var(--muted-fg)" font-size="9" text-anchor="middle" letter-spacing="0.05em">METABOLITE</text>
+  </g>
+</svg>
+<figcaption>Central-dogma cascade and downstream metabolite output.</figcaption>
+</figure>
+</article>
+
+<article class="scope-thrust">
+<figure class="scope-thrust-figure figure">
+<svg class="scope-thrust-svg" viewbox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" aria-label="Cell with stress input and phenotypic outputs">
+  <!-- Stress input -->
+  <line x1="30" y1="60" x2="85" y2="105" stroke="var(--fg)" stroke-width="1.5" stroke-dasharray="3 2"></line>
+  <polygon points="85,105 76,103 81,113" fill="var(--fg)"></polygon>
+  <text x="22" y="50" fill="var(--muted-fg)" font-size="9" letter-spacing="0.05em">STRESS</text>
+  <!-- Cell outline -->
+  <ellipse cx="200" cy="150" rx="115" ry="78" fill="var(--bg)" stroke="var(--fg)" stroke-width="1.5"></ellipse>
+  <!-- Nucleus -->
+  <circle cx="172" cy="140" r="28" fill="var(--bg)" stroke="var(--fg)" stroke-width="1.25"></circle>
+  <text x="172" y="143" fill="var(--muted-fg)" font-size="8" text-anchor="middle" letter-spacing="0.04em">NUCLEUS</text>
+  <!-- Organelles -->
+  <ellipse cx="238" cy="112" rx="10" ry="6" fill="none" stroke="var(--muted-fg)" stroke-width="1"></ellipse>
+  <ellipse cx="262" cy="155" rx="12" ry="7" fill="none" stroke="var(--muted-fg)" stroke-width="1"></ellipse>
+  <ellipse cx="232" cy="184" rx="9" ry="5" fill="none" stroke="var(--muted-fg)" stroke-width="1"></ellipse>
+  <!-- Output: growth -->
+  <line x1="315" y1="105" x2="365" y2="80" stroke="var(--fg)" stroke-width="1.5"></line>
+  <polygon points="365,80 358,79 362,88" fill="var(--fg)"></polygon>
+  <text x="370" y="78" fill="var(--fg)" font-size="9" letter-spacing="0.04em">GROWTH</text>
+  <!-- Output: metabolites -->
+  <line x1="315" y1="150" x2="365" y2="150" stroke="var(--muted-fg)" stroke-width="1" stroke-dasharray="3 2"></line>
+  <polygon points="365,150 358,147 358,153" fill="var(--muted-fg)"></polygon>
+  <text x="370" y="153" fill="var(--muted-fg)" font-size="9" letter-spacing="0.04em">METABOLITES</text>
+  <!-- Output: stress phenotype -->
+  <line x1="315" y1="195" x2="365" y2="220" stroke="var(--fg)" stroke-width="1.5"></line>
+  <polygon points="365,220 358,219 362,210" fill="var(--fg)"></polygon>
+  <text x="370" y="223" fill="var(--fg)" font-size="9" letter-spacing="0.04em">PHENOTYPE</text>
+  <text x="200" y="248" fill="var(--muted-fg)" font-size="9" text-anchor="middle" letter-spacing="0.05em">CELL</text>
+</svg>
+<figcaption>Genotype → integrated cellular phenotype under perturbation.</figcaption>
+</figure>
+<div class="scope-thrust-text">
+<h3>Cellular layer</h3>
 <p>The integrated phenotype of an individual cell or organism — how molecular state propagates into observable behavior, growth, stress tolerance, metabolic output, and lineage-specific traits. This is where genotype starts to make contact with environment, and where the assumptions baked into molecular models get tested.</p>
 </div>
-<div class="scale-item">
-<p><strong>Community layer</strong></p>
-<p>Interacting populations in ecological or host-associated contexts. Microbial communities are the canonical example: thousands of distinct lineages co-occurring, exchanging metabolites, and responding collectively to disturbance. Behavior at this scale is rarely the sum of its parts — emergent dynamics dominate, and that’s what makes prediction hard and interesting.</p>
+</article>
+
+<article class="scope-thrust">
+<div class="scope-thrust-text">
+<h3>Community layer</h3>
+<p>Interacting populations in ecological or host-associated contexts. Microbial communities are the canonical example: thousands of distinct lineages co-occurring, exchanging metabolites, and responding collectively to disturbance. Behavior at this scale is rarely the sum of its parts — emergent dynamics dominate, and that's what makes prediction hard and interesting.</p>
 </div>
-</div>
+<figure class="scope-thrust-figure figure">
+<svg class="scope-thrust-svg" viewbox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" aria-label="Interacting community network responding to a pulse">
+  <!-- Edges -->
+  <line x1="105" y1="110" x2="170" y2="70" stroke="var(--border)" stroke-width="1"></line>
+  <line x1="105" y1="110" x2="195" y2="140" stroke="var(--fg)" stroke-width="1.5"></line>
+  <line x1="170" y1="70" x2="245" y2="90" stroke="var(--border)" stroke-width="1"></line>
+  <line x1="195" y1="140" x2="245" y2="90" stroke="var(--border)" stroke-width="1"></line>
+  <line x1="195" y1="140" x2="275" y2="190" stroke="var(--fg)" stroke-width="1.5"></line>
+  <line x1="195" y1="140" x2="135" y2="210" stroke="var(--muted-fg)" stroke-width="1" stroke-dasharray="3 2"></line>
+  <line x1="245" y1="90" x2="305" y2="130" stroke="var(--border)" stroke-width="1"></line>
+  <line x1="275" y1="190" x2="305" y2="130" stroke="var(--border)" stroke-width="1"></line>
+  <line x1="275" y1="190" x2="225" y2="245" stroke="var(--border)" stroke-width="1"></line>
+  <line x1="135" y1="210" x2="225" y2="245" stroke="var(--border)" stroke-width="1"></line>
+  <!-- Nodes -->
+  <circle cx="105" cy="110" r="9" fill="var(--bg)" stroke="var(--fg)" stroke-width="1.25"></circle>
+  <circle cx="170" cy="70" r="7" fill="var(--bg)" stroke="var(--fg)" stroke-width="1.25"></circle>
+  <circle cx="195" cy="140" r="11" fill="var(--bg)" stroke="var(--fg)" stroke-width="1.5"></circle>
+  <circle cx="245" cy="90" r="8" fill="var(--bg)" stroke="var(--fg)" stroke-width="1.25"></circle>
+  <circle cx="305" cy="130" r="9" fill="var(--bg)" stroke="var(--fg)" stroke-width="1.25"></circle>
+  <circle cx="275" cy="190" r="10" fill="var(--bg)" stroke="var(--fg)" stroke-width="1.25"></circle>
+  <circle cx="135" cy="210" r="7" fill="var(--bg)" stroke="var(--fg)" stroke-width="1.25"></circle>
+  <circle cx="225" cy="245" r="8" fill="var(--bg)" stroke="var(--fg)" stroke-width="1.25"></circle>
+  <!-- Perturbation arrow -->
+  <line x1="365" y1="50" x2="312" y2="118" stroke="var(--fg)" stroke-width="1.5" stroke-dasharray="3 2"></line>
+  <polygon points="312,118 311,109 320,114" fill="var(--fg)"></polygon>
+  <text x="365" y="42" fill="var(--muted-fg)" font-size="9" text-anchor="end" letter-spacing="0.05em">PULSE</text>
+  <text x="200" y="280" fill="var(--muted-fg)" font-size="9" text-anchor="middle" letter-spacing="0.05em">INTERACTING POPULATIONS</text>
+</svg>
+<figcaption>Emergent network response to an external pulse.</figcaption>
+</figure>
+</article>
+
+</section>
 <p>The questions I find most compelling cross these layers — predicting community-level behavior from molecular state, or inferring molecular determinants from community-level observations. The same data, read at a different scale, often tells a different story.</p>
 <div class="section-label">
 <p>// research thrusts</p>
