@@ -305,72 +305,71 @@ hr {
   .helix-rotor {
     transform-origin: 40px 300px;
     transform-box: view-box;
-    animation: dna-drift 14s ease-in-out infinite alternate;
+    animation: dna-drift 18s ease-in-out infinite alternate;
   }
 
   .backbone {
     fill: none;
     stroke: var(--muted-fg);
-    stroke-width: 1.1;
+    stroke-width: 0.5;
     stroke-linecap: round;
-    opacity: 0.75;
+    vector-effect: non-scaling-stroke;
+    opacity: 0.65;
   }
 
   .bp {
-    .hbonds line {
-      stroke: var(--muted-fg);
-      stroke-width: 0.6;
-      stroke-dasharray: 1.6 1.4;
-      opacity: 0.55;
-    }
+    transform-origin: 50% 50%;
+    transform-box: fill-box;
+    animation: helix-spin 7s linear infinite;
+    animation-delay: calc(var(--i, 0) * -0.875s);
+    will-change: transform, opacity;
   }
 
-  .ring {
+  .hbond {
+    stroke: var(--muted-fg);
+    stroke-width: 0.5;
+    stroke-dasharray: 1.4 1.2;
+    vector-effect: non-scaling-stroke;
+    opacity: 0.5;
+  }
+
+  .node {
     fill: var(--bg);
     stroke: var(--fg);
-    stroke-width: 0.9;
-    stroke-linejoin: round;
-  }
-
-  .ring.fused {
-    stroke-width: 0.75;
-    opacity: 0.85;
-  }
-
-  .label {
-    fill: var(--fg);
-    font-family: var(--bs-font-monospace, "Geist Mono", monospace);
-    font-size: 5.2px;
-    font-weight: 600;
-    text-anchor: middle;
-    letter-spacing: 0;
-  }
-
-  .purine .label {
-    font-size: 5.6px;
+    stroke-width: 0.6;
+    vector-effect: non-scaling-stroke;
   }
 }
 
 @keyframes dna-drift {
-  from { transform: translateY(-1.4rem) rotate(-8deg); }
-  to { transform: translateY(1.4rem) rotate(8deg); }
+  from { transform: translateY(-1.2rem); }
+  to { transform: translateY(1.2rem); }
+}
+
+@keyframes helix-spin {
+  0%   { transform: scaleX(1);     opacity: 1; }
+  25%  { transform: scaleX(0.06);  opacity: 0.4; }
+  50%  { transform: scaleX(-1);    opacity: 1; }
+  75%  { transform: scaleX(0.06);  opacity: 0.4; }
+  100% { transform: scaleX(1);     opacity: 1; }
 }
 
 @supports (animation-timeline: view()) {
   .dna-helix .helix-rotor {
-    animation: dna-scroll-spin linear both;
+    animation: dna-scroll-glide linear both;
     animation-timeline: view(block);
     animation-range: entry 5% exit 95%;
   }
 }
 
-@keyframes dna-scroll-spin {
-  from { transform: translateY(-1.4rem) rotate(0deg); }
-  to { transform: translateY(1.4rem) rotate(360deg); }
+@keyframes dna-scroll-glide {
+  from { transform: translateY(-1.4rem); }
+  to { transform: translateY(1.4rem); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .dna-helix .helix-rotor {
+  .dna-helix .helix-rotor,
+  .dna-helix .bp {
     animation: none;
   }
 }
@@ -395,7 +394,8 @@ hr {
     height: 4rem;
     transform: rotate(90deg);
 
-    .helix-rotor {
+    .helix-rotor,
+    .bp {
       animation: none;
     }
   }
