@@ -71,7 +71,7 @@ hr {
     &::after {
       content: "/";
       display: inline-block;
-      margin-left: 0.15rem;
+      margin-left: 0;
       color: var(--fg);
       animation: slash-pulse 0.9s steps(1) infinite;
     }
@@ -120,7 +120,7 @@ hr {
 
 @keyframes brand-type {
   from { width: 0; }
-  to { width: 13ch; }
+  to { width: 11.5ch; }
 }
 
 @keyframes slash-pulse {
