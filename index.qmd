@@ -64,59 +64,35 @@ I aim to keep building computational tools and conducting research that benefits
 // scope
 :::
 
+{{< include _includes/dna-strip.html >}}
+
 ```{=html}
-<section class="research-scope" aria-label="Research scope">
-<div class="research-copy">
+<section class="scope-panels" aria-label="Research scope">
 
-<div class="scope-item">
+<div class="scope-panel">
 <h2>Microbial stress response</h2>
-<p>Environmental stressors induce rapid transcriptional, metabolic, and compositional shifts that can leave short-term ecological memory within microbial communities. I aim to quantify which functional products appear, how long they persist, and over what timescales communities transition through disturbance and recovery — and whether these responses are predictable across systems and perturbations.</p>
+<p>Environmental stressors induce rapid transcriptional, metabolic, and compositional shifts that can leave short-term ecological memory in microbial communities. I aim to quantify which functional products appear, how long they persist, and whether these responses generalize across systems and perturbations.</p>
 </div>
 
-<div class="scope-item">
+<div class="scope-panel">
 <h2>Linking function to (meta)phenome</h2>
-<p>Stress events reshape genomic context — composition, mobile elements, accessory genes, and horizontally transferred loci that mediate adaptation. I'm interested in how these features map onto observable community phenotypes: which lineages and genes drive measurable shifts in metabolite output, growth, and ecological role during environmental pulses.</p>
+<p>Stress events reshape genomic context — composition, mobile elements, accessory genes, and horizontally transferred loci that mediate adaptation. I'm interested in how these features map onto observable community phenotypes: which lineages and genes drive measurable shifts in metabolite output and ecological role.</p>
 </div>
 
-<div class="scope-item">
+<div class="scope-panel">
 <h2>Bioprospecting following stress response</h2>
-<p>A tertiary aim is to discover and characterize novel genes, enzymes, and small molecules that confer stress tolerance or facilitate rapid recovery in their host or ecosystem. Through comparative multi-omics, I identify candidate loci enriched during stress pulses and validate them via heterologous expression and quantitative assays — bridging ecological resilience to synthetic biology, natural product discovery, and biotechnology.</p>
+<p>Discovering and characterizing novel genes, enzymes, and small molecules that confer stress tolerance or facilitate rapid recovery. Through comparative multi-omics, I identify candidate loci enriched during stress pulses and validate them via heterologous expression — bridging ecological resilience to synthetic biology and biotechnology.</p>
 </div>
 
-<div class="scope-item">
+<div class="scope-panel">
 <h2>Computational and ML methodology for biological inference</h2>
-<p>Cross-cutting the above: I build and apply computational methods — statistical models, foundation models, and modern ML — to integrate multi-omic, phylogenetic, and phenotypic data. The goal is methodology that scales across biological systems and lets predictions from one community or perturbation generalize to the next.</p>
+<p>Cross-cutting the above: building and applying computational methods — statistical models, foundation models, and modern ML — to integrate multi-omic, phylogenetic, and phenotypic data. The goal is methodology that scales across biological systems and lets predictions transfer.</p>
 </div>
-</div>
 
-<div class="dna-scroll" aria-hidden="true">
-<svg class="dna-helix" viewBox="0 0 80 600" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
-<g class="helix-rotor">
-<path class="backbone" d="M 40 0 C 68 0 68 75 40 75 C 12 75 12 150 40 150 C 68 150 68 225 40 225 C 12 225 12 300 40 300 C 68 300 68 375 40 375 C 12 375 12 450 40 450 C 68 450 68 525 40 525 C 12 525 12 600 40 600"/>
-<path class="backbone" d="M 40 0 C 12 0 12 75 40 75 C 68 75 68 150 40 150 C 12 150 12 225 40 225 C 68 225 68 300 40 300 C 12 300 12 375 40 375 C 68 375 68 450 40 450 C 12 450 12 525 40 525 C 68 525 68 600 40 600"/>
-
-<circle class="phosphate" cx="40" cy="75" r="1.2"/>
-<circle class="phosphate" cx="40" cy="150" r="1.2"/>
-<circle class="phosphate" cx="40" cy="225" r="1.2"/>
-<circle class="phosphate" cx="40" cy="300" r="1.2"/>
-<circle class="phosphate" cx="40" cy="375" r="1.2"/>
-<circle class="phosphate" cx="40" cy="450" r="1.2"/>
-<circle class="phosphate" cx="40" cy="525" r="1.2"/>
-
-<g class="bp" transform="translate(0,37.5)"><line class="hbond" x1="22" x2="58" y1="-1.2" y2="-1.2"/><line class="hbond" x1="22" x2="58" y1="1.2" y2="1.2"/><polygon class="ring" points="12,-6.5 17.63,-3.25 17.63,3.25 12,6.5 6.37,3.25 6.37,-3.25"/><polygon class="ring sub" points="17.63,-3.25 20.0,-1.95 20.9,0 20.0,1.95 17.63,3.25"/><polygon class="ring" points="68,-6.5 73.63,-3.25 73.63,3.25 68,6.5 62.37,3.25 62.37,-3.25"/></g>
-<g class="bp" transform="translate(0,112.5)"><line class="hbond" x1="22" x2="58" y1="-1.8" y2="-1.8"/><line class="hbond" x1="22" x2="58" y1="0" y2="0"/><line class="hbond" x1="22" x2="58" y1="1.8" y2="1.8"/><polygon class="ring" points="12,-6.5 17.63,-3.25 17.63,3.25 12,6.5 6.37,3.25 6.37,-3.25"/><polygon class="ring" points="68,-6.5 73.63,-3.25 73.63,3.25 68,6.5 62.37,3.25 62.37,-3.25"/><polygon class="ring sub" points="62.37,-3.25 60.0,-1.95 59.1,0 60.0,1.95 62.37,3.25"/></g>
-<g class="bp" transform="translate(0,187.5)"><line class="hbond" x1="22" x2="58" y1="-1.2" y2="-1.2"/><line class="hbond" x1="22" x2="58" y1="1.2" y2="1.2"/><polygon class="ring" points="12,-6.5 17.63,-3.25 17.63,3.25 12,6.5 6.37,3.25 6.37,-3.25"/><polygon class="ring" points="68,-6.5 73.63,-3.25 73.63,3.25 68,6.5 62.37,3.25 62.37,-3.25"/><polygon class="ring sub" points="62.37,-3.25 60.0,-1.95 59.1,0 60.0,1.95 62.37,3.25"/></g>
-<g class="bp" transform="translate(0,262.5)"><line class="hbond" x1="22" x2="58" y1="-1.8" y2="-1.8"/><line class="hbond" x1="22" x2="58" y1="0" y2="0"/><line class="hbond" x1="22" x2="58" y1="1.8" y2="1.8"/><polygon class="ring" points="12,-6.5 17.63,-3.25 17.63,3.25 12,6.5 6.37,3.25 6.37,-3.25"/><polygon class="ring sub" points="17.63,-3.25 20.0,-1.95 20.9,0 20.0,1.95 17.63,3.25"/><polygon class="ring" points="68,-6.5 73.63,-3.25 73.63,3.25 68,6.5 62.37,3.25 62.37,-3.25"/></g>
-<g class="bp" transform="translate(0,337.5)"><line class="hbond" x1="22" x2="58" y1="-1.2" y2="-1.2"/><line class="hbond" x1="22" x2="58" y1="1.2" y2="1.2"/><polygon class="ring" points="12,-6.5 17.63,-3.25 17.63,3.25 12,6.5 6.37,3.25 6.37,-3.25"/><polygon class="ring sub" points="17.63,-3.25 20.0,-1.95 20.9,0 20.0,1.95 17.63,3.25"/><polygon class="ring" points="68,-6.5 73.63,-3.25 73.63,3.25 68,6.5 62.37,3.25 62.37,-3.25"/></g>
-<g class="bp" transform="translate(0,412.5)"><line class="hbond" x1="22" x2="58" y1="-1.8" y2="-1.8"/><line class="hbond" x1="22" x2="58" y1="0" y2="0"/><line class="hbond" x1="22" x2="58" y1="1.8" y2="1.8"/><polygon class="ring" points="12,-6.5 17.63,-3.25 17.63,3.25 12,6.5 6.37,3.25 6.37,-3.25"/><polygon class="ring" points="68,-6.5 73.63,-3.25 73.63,3.25 68,6.5 62.37,3.25 62.37,-3.25"/><polygon class="ring sub" points="62.37,-3.25 60.0,-1.95 59.1,0 60.0,1.95 62.37,3.25"/></g>
-<g class="bp" transform="translate(0,487.5)"><line class="hbond" x1="22" x2="58" y1="-1.2" y2="-1.2"/><line class="hbond" x1="22" x2="58" y1="1.2" y2="1.2"/><polygon class="ring" points="12,-6.5 17.63,-3.25 17.63,3.25 12,6.5 6.37,3.25 6.37,-3.25"/><polygon class="ring" points="68,-6.5 73.63,-3.25 73.63,3.25 68,6.5 62.37,3.25 62.37,-3.25"/><polygon class="ring sub" points="62.37,-3.25 60.0,-1.95 59.1,0 60.0,1.95 62.37,3.25"/></g>
-<g class="bp" transform="translate(0,562.5)"><line class="hbond" x1="22" x2="58" y1="-1.8" y2="-1.8"/><line class="hbond" x1="22" x2="58" y1="0" y2="0"/><line class="hbond" x1="22" x2="58" y1="1.8" y2="1.8"/><polygon class="ring" points="12,-6.5 17.63,-3.25 17.63,3.25 12,6.5 6.37,3.25 6.37,-3.25"/><polygon class="ring sub" points="17.63,-3.25 20.0,-1.95 20.9,0 20.0,1.95 17.63,3.25"/><polygon class="ring" points="68,-6.5 73.63,-3.25 73.63,3.25 68,6.5 62.37,3.25 62.37,-3.25"/></g>
-
-</g>
-</svg>
-</div>
 </section>
 ```
+
+{{< include _includes/dna-strip.html >}}
 
 ::: {.section-label}
 // timeline
